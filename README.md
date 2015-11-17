@@ -2,7 +2,7 @@
 
 This is the group project for Dev Bootcamp to increase the availability of information for voters. The app is mobile-first.
 
- 
+
 
 Here are the user stories:
 
@@ -20,6 +20,21 @@ Here are the user stories:
 * Add logic to the show page for the order of the information
 * Add link to federal "trouble voting" chat 
 * Translate site into Spanish/Polish/other
+
+Push Masters
+
+** Tuesday - Cora/Kyle
+** Wednesday - Lucy/Josue
+** Thursday- Cora/Kyle
+** Friday - Lucy/Josue
+** Saturday - Cora/Kyle
+** Sunday - Lucy/Josue
+** Monday - Cora/Kyle
+** Tuesday- Lucy/Josue
+** Wednesday - Cora/Kyle (Really, let's not need to push on that day)
+
+
+Tests:  Rspec using Travis to monitor
 
 
 
