@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'sessions/create'
+
 
   get 'users/new' => 'users#new'
 
-  # post 'users/login' => 'users#create'
+  post 'users/create' => 'users#create'
 
   get 'sessions/login' => 'sessions#login'
 
