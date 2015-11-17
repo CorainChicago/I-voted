@@ -1,0 +1,9 @@
+<div >
+  <%= form_tag  sessions_create_path do %>
+  <p><%= label_tag :email %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <%= text_field_tag "user[email]" %></p>
+  <p><%= label_tag :password %>: &nbsp;
+  <%= password_field_tag "user[password]" %></p>
+  <p id ="login_button"><%= submit_tag "Log In" %>
+  <%end%>
+</div>
