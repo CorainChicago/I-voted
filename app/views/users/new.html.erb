@@ -1,0 +1,13 @@
+<h2>Sign Up</h2>
+<div>
+  <%= form_for @user, :url => users_create_path do |f| %>
+
+    <p><%= f.label :address %>:&nbsp;
+    <%= f.text_field :address %></p>
+    <p><%= f.label :email %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <%= f.text_field :email %></p>
+    <p><%= f.label :password %>:&nbsp; &nbsp;
+    <%= f.text_field :password %></p>
+    <p><%= f.submit "Register" %></p>
+  <% end %>
+</div>
