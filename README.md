@@ -1,7 +1,4 @@
 # I-voted
-<<<<<<< HEAD
-rails g foundation:install to install Foundation.
-=======
 
 This is the group project for Dev Bootcamp to increase the availability of information for voters. The app is mobile-first.
 
