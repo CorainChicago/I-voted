@@ -2,19 +2,18 @@
 class HTMLVoterDataParser
   require 'open-uri'
   require 'Nokogiri'
+  require 'json'
 
   def parse
     @doc = Nokogiri::HTML(open("https://www.usvotefoundation.org/vote/state-elections/state-voting-laws-requirements.htm"))
 
     @table = @doc.search("table.election-dates")
     @rows = @table.search("tr")
-
-    
     @data = []
     counter = 1
     53.times do 
       state = Hash.new
-      state[name:] = @rows[counter].search.("td").first.text
+      state["name"] = @rows[counter].search("td").first.text
       state["Early In-Person Voting"] = @rows[counter].search("td:nth-child(2)").text
       state["No Excuse Absentee Voting"] = @rows[counter].search("td:nth-child(3)").text
       state["Absentee Voting with Excuse"] = @rows[counter].search("td:nth-child(4)").text
@@ -25,15 +24,6 @@ class HTMLVoterDataParser
       counter += 1
     end
   end
-
-
-# > ~/Documents/devbootcamp/week-8/i-voted/public/state_data.json
-
-
-# #To save data from console to a file
-# > ~/Documents/devbootcamp/week-8/i-voted/public/state_data.json
-
-
 
   def save_data
     File.open("public/state_data.json","w") do |f|
@@ -47,8 +37,3 @@ p = HTMLVoterDataParser.new
 p.parse
 p.save_data
 
-# [{name: Alabama, early_voting: false...}, {}]
-
-
-# {"Alabama" => {early_voting: false},
-# "Ohio" => {early_voting: true} }
