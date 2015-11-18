@@ -13,13 +13,13 @@ class HTMLVoterDataParser
     counter = 1
     53.times do 
       state = Hash.new
-      state["name"] = @rows[counter].search("td").first.text
-      state["Early In-Person Voting"] = @rows[counter].search("td:nth-child(2)").text
-      state["No Excuse Absentee Voting"] = @rows[counter].search("td:nth-child(3)").text
-      state["Absentee Voting with Excuse"] = @rows[counter].search("td:nth-child(4)").text
-      state["Same Day Voter Registration"] = @rows[counter].search("td:nth-child(5)").text
-      state["All-Mail Voting"] = @rows[counter].search("td:nth-child(6)").text
-      state["Voter ID on Election Day"] = @rows[counter].search("td:nth-child(7)").text
+      state["name"] = @rows[counter].search("td").first.text.strip
+      state["Early In-Person Voting"] = @rows[counter].search("td:nth-child(2)").text.strip
+      state["No Excuse Absentee Voting"] = @rows[counter].search("td:nth-child(3)").text.strip
+      state["Absentee Voting with Excuse"] = @rows[counter].search("td:nth-child(4)").text.strip
+      state["Same Day Voter Registration"] = @rows[counter].search("td:nth-child(5)").text.strip
+      state["All-Mail Voting"] = @rows[counter].search("td:nth-child(6)").text.strip
+      state["Voter ID on Election Day"] = @rows[counter].search("td:nth-child(7)").text.strip
       @data << state 
       counter += 1
     end
