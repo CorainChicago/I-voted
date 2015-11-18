@@ -1,4 +1,11 @@
 <h2>Sign Up</h2>
+
+<% if @user.errors.any? %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
 <div>
   <%= form_for @user, :url => users_create_path do |f| %>
     <p><%= f.label :email %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
