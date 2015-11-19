@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Zipcode, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Zipcode do
+  it "should have many candidates" do
+    zipcode = Zipcode.reflect_on_association(:candidates)
+    expect(zipcode.macro).to eq(:has_many)
+  end
 end

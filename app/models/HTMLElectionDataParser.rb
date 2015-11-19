@@ -13,7 +13,7 @@ class HTMLElectionDataParser
     169.times do
       state = Hash.new
       state["Election Title"] = @rows[counter].search("td.election-title").text.strip
-      state["Election DAte"] = @rows[counter].search("td:nth-child(2)").text.strip
+      state["Election Date"] = @rows[counter].search("td:nth-child(2)").text.strip
       state["Voter Registration"] = @rows[counter].search("td:nth-child(3)").text.strip
       state["Absentee Ballot Request"] = @rows[counter].search("td:nth-child(4)").text.strip
       state["Absentee Ballot Return"] = @rows[counter].search("td:nth-child(5)").text.strip
