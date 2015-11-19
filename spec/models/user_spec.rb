@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 describe "User" do
   describe "validations" do
     it "is not valid without email " do
@@ -38,3 +39,4 @@ describe "User" do
     end
   end
 end
+
