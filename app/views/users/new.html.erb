@@ -8,6 +8,9 @@
 
 <div>
   <%= form_for @user, :url => users_create_path do |f| %>
+    <%=f.label 'email'%>
+    <%=f.text_field :email %>
+    <br>
     <%=f.label 'street address'%>
     <%=f.text_field :street_address %>
     <br>

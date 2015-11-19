@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $('form').on('submit', function(event){
-    event.preventDefault();
+    // event.preventDefault();
     if (checkForm() == true) {
       setZipSession($('#user_zip').val());
       insertComma();
