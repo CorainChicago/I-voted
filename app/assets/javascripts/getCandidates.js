@@ -2,32 +2,29 @@ $(document).ready(function(){
   $('form').on('submit', function(event){
     event.preventDefault();
     if (checkForm() == true) {
-      setZipSession($('#_zip').val());
+      setZipSession($('#user_zip').val());
       insertComma();
       getCandidates();
     }
     else {
-      if ($('#_street_number').val().length < 1) {
-        $('#_street_number').val("Insert a street number.");
+      if ($('#user_street_address').val().length < 1) {
+        $('#user_street_address').val("Insert a street.");
       }
-      if ($('#_street_address').val().length < 1) {
-        $('#_street_address').val("Insert a street.");
+      if ($('#user_city').val().length < 1) {
+        $('#user_city').val("Insert a city.");
       }
-      if ($('#_city').val().length < 1) {
-        $('#_city').val("Insert a city.");
+      if ($('#user_state').val().length < 1) {
+        $('#user_state').val("Insert a state.");
       }
-      if ($('#_state').val().length < 1) {
-        $('#_state').val("Insert a state.");
-      }
-      if ($('#_zip').val().length < 1) {
-        $('#_zip').val("Insert a zip code.");
+      if ($('#user_zip').val().length < 1) {
+        $('#user_zip').val("Insert a zip code.");
       }
     }
   });
 });
 
 var checkForm = function() {
-  if (($('#_street_number').val().length > 1) && ($('#_street_address').val().length > 1) && ($('#_city').val().length > 1) && ($('#_zip').val().length > 1) && ($('#_state').val().length > 1)) {
+  if (($('#user_street_address').val().length > 1) && ($('#user_city').val().length > 1) && ($('#user_zip').val().length > 1) && ($('#user_state').val().length > 1)) {
     return true;
   }
   else {
@@ -45,11 +42,11 @@ var setZipSession = function(zip){
 };
 
 var insertComma = function() {
-   $('#_city').val($('#_city').val() + ',');
+   $('#user_city').val($('#user_city').val() + ',');
 }
 
 var getCandidates = function() {
-  formattedUrl = 'http://votesmart.org/x/search?s=' + $('#_street_number').val() + '%20' + $('#_street_address').val() + '%20' + $('#_city').val() + '%20' + $('#_state').val() + '%20' + $('#_zip').val();
+  formattedUrl = 'http://votesmart.org/x/search?s=' + $('#user_street_address').val() + '%20' + $('#user_city').val() + '%20' + $('#user_state').val() + '%20' + $('#user_zip').val();
   var candidatesRequest = $.ajax({
    method: 'get',
    url: formattedUrl
