@@ -13,6 +13,7 @@ def scraper(zip_code)
   candidates = {}
 
   candidate_html.css('.candidate-list-item').each do |candidate_list|
+
     candidates[candidate_list.css('.office-title').inner_text] = []
 
     candidate_list.css('.candidate-name').each do |candidate|
