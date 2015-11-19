@@ -1,5 +1,5 @@
-require 'nokogiri'
-require 'watir'
+# require_relative 'us_postal_codes.csv'
+#
 require 'csv'
 def scraper(zip_code)
   $browser = Watir::Browser.new
@@ -12,27 +12,25 @@ def scraper(zip_code)
 
   candidates = {}
 
+  @zip = Zipcode.create(zip: zip_code)
   candidate_html.css('.candidate-list-item').each do |candidate_list|
-
     candidates[candidate_list.css('.office-title').inner_text] = []
 
     candidate_list.css('.candidate-name').each do |candidate|
         array = candidate.inner_text.split("|")
-        candidates[candidate_list.css('.office-title').inner_text] << {"name" => array[0].strip, "party" => array[1].strip}
+        @zip.candidates.create(name:array[0].strip , office:candidate_list.css('.office-title').inner_text , party_affiliation: array[1].strip)
+
+        # candidates[candidate_list.css('.office-title').inner_text] << {"name" => array[0].strip, "party" => array[1].strip}
     end
   end
-
-  puts candidates
-
-
+  candidates
 end
 
 
 def load_zip_codes
-  scraper(55364)
-  # CSV.foreach("us_postal_codes.csv") do |row|
-  #   puts row
-  # end
+  CSV.foreach("us_postal_codes.csv") do |row|
+     scraper(73069)
+  end
 end
 load_zip_codes
 
