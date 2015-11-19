@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe StateVoteInformation, type: :model do
+RSpec.describe StateVotingInformation, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end
