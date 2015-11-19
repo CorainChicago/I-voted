@@ -4,6 +4,7 @@ class CreateCandidates < ActiveRecord::Migration
       t.string :name
       t.string :office
       t.string :party_affiliation
+      t.integer :zip_id
 
       t.timestamps null: false
     end

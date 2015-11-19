@@ -12,6 +12,15 @@ Electioninfo.create([
   {title: "Voting Rights Matter", subtitle: "A historical overview of voting rights and restrictions in the US. This site is funded by the Democratic Party.", url: "http://www.votingrightsmatter.com/"}
   ])
 
+
+
+
+
+
+
+
+
+
 StateWebsite.create([
   {name: "Ohio", initial: "OH", url: "http://voterlookup.sos.state.oh.us/voterlookup.aspx"},
   ])
