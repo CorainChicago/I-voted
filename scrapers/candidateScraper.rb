@@ -17,11 +17,11 @@ def scraper(zip_code)
 
     candidate_list.css('.candidate-name').each do |candidate|
         array = candidate.inner_text.split("|")
-        candidates[candidate_list.css('.office-title').inner_text] << [{"name" => array[0].strip, "party" => array[1].strip}]
+        candidates[candidate_list.css('.office-title').inner_text] << {"name" => array[0].strip, "party" => array[1].strip}
     end
   end
 
-  p candidates["US Senator"]
+  p candidates
 
 
 end
