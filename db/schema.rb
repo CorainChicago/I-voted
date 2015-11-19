@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20151119015557) do
     t.string   "name"
     t.string   "office"
     t.string   "party_affiliation"
+    t.integer  "zip_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end

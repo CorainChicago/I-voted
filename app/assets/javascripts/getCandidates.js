@@ -60,8 +60,5 @@ var getCandidates = function() {
     data: response,
     method: 'post'
   });
-  candidateCreateRequest.done(function(response){
-    alert(response);
-  });
  });
 };
