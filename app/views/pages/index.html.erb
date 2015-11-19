@@ -22,6 +22,24 @@
 <!-- <div class="single-item"> -->
   <%= image_tag("slick/vintage-buttons.jpeg") %>
 <!-- </div> -->
+  <%=form_for @address do |f|%>
+    <%=f.label 'street number'%>
+    <%=f.text_field :street_number, size: 3 %>
+    <br>
+    <%=f.label 'street'%>
+    <%=f.text_field :street_address%>
+    <br>
+    <%=f.label 'city'%>
+    <%=f.text_field :city%>
+    <br>
+    <%=f.label 'state'%>
+    <%=f.text_field :state%>
+    <br>
+    <%=f.label 'zip'%>
+    <%=f.text_field :zip%>
+    <br>
+    <%=f.submit 'submit'%>
+  <%end%>
 
   <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
     <li><a href='#'>A much much longer string to test</a></li>
