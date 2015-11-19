@@ -13,7 +13,7 @@ Electioninfo.create([
   ])
 
 StateWebsite.create([
-  {state: "Ohio", initial: "OH", url: "http://voterlookup.sos.state.oh.us/voterlookup.aspx"},
+  {name: "Ohio", initial: "OH", url: "http://voterlookup.sos.state.oh.us/voterlookup.aspx"},
   ])
  
 
