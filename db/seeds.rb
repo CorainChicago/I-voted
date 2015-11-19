@@ -14,7 +14,7 @@ Electioninfo.create([
 
 records = JSON.parse(File.read('public/state_data.json'))
 records.each do |record|
-  if record["Early In-Person Voting"] == "✓" || record["Early In-Person Voting"] == "✓ " 
+  if record["Early In-Person Voting"] == "✓" || record["Early In-Person Voting"] == "✓ "
     record["Early In-Person Voting"] = true
   else
     record["Early In-Person Voting"] = false
@@ -45,9 +45,11 @@ records.each do |record|
   end
 
   StateVotingInformation.create!(
-      name: record["name"], 
+      name: record["name"],
       early_in_person_voting: record["Early In-Person Voting"],no_excuse_absentee_voting: record["No Excuse Absentee Voting"],  absentee_voting_with_excuse: ["Absentee Voting with Excuse"],same_day_voter_registration: record["Same Day Voter Registration"], all_mail_voting: record["All Mail Voting"], voter_id_on_election_day: record["Voter ID on Election Day"])
 end
+
+election_data = JSON.parse(File.read('public/election_data.json'))
 
 
 # StateWebsite.create([
@@ -65,5 +67,3 @@ zip_files.each do |file|
   Zipcode.create!(zip: row[0].to_i, state_name: row[2], abbreviation: row[3])
   end
 end
-
-
