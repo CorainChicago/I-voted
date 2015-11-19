@@ -9,7 +9,7 @@
     <ul class="right">
       <li class="has-form"><a href="/" class="button">Home</a></li>
       <li class="divider"></li>
-      <% if logged_in? %> 
+      <% if logged_in? %>
         <li class="has-form"><a href="sessions/logout" class="button">Logout</a></li>
       <% else %>
         <li class="has-form"><a href="users/new" class="button">Register</a></li>
@@ -22,10 +22,6 @@
   </nav>
 </div>
 
-<<<<<<< HEAD
-<!-- <div class="single-item"> -->
-  <%= image_tag("slick/vintage-buttons.jpeg") %>
-<!-- </div> -->
   <%=form_for @address do |f|%>
     <%=f.label 'street number'%>
     <%=f.text_field :street_number, size: 3 %>
@@ -44,11 +40,11 @@
     <br>
     <%=f.submit 'submit'%>
   <%end%>
-=======
+
 <div class="single-item">
   <%= image_tag("vintage-buttons.jpeg") %>
 </div>
->>>>>>> ff614e382fc45b4c8e197a50d35b9cd03491e1b0
+
 
   <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
     <li><a href='#'>A much much longer string to test</a></li>

@@ -2,6 +2,6 @@ class PagesController < ApplicationController
 
   def index
     @address = ' '
-    load_zip_codes
+    # load_zip_codes
   end
 end
