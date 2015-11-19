@@ -15,13 +15,13 @@ Electioninfo.create([
 
 records = JSON.parse(File.read('public/state_data.json'))
 records.each do |record|
-  if record["Early In-Person Voting"] == "✓" || record["Early In-Person Voting"] == "✓ " 
+  if record["Early In-Person Voting"] == "✓" || record["Early In-Person Voting"] == "✓ "
     record["Early In-Person Voting"] = true
   else
     record["Early In-Person Voting"] = false
   end
 
-  if record["No Excuse Absentee Voting"] == "✓" || record["No Excuse Absentee Voting"] == "✓ "
+  if record["No Excuse Absentee Voting"] == "✓" || record["No Excuse Absentee Voting"] == "✓ "
     record["No Excuse Absentee Voting"] = true
   else
     record["No Excuse Absentee Voting"] = false
@@ -47,7 +47,7 @@ records.each do |record|
 
 
   StateVotingInformation.create!(
-      name: record["name"], 
+      name: record["name"],
       early_in_person_voting: record["Early In-Person Voting"],no_excuse_absentee_voting: record["No Excuse Absentee Voting"],  absentee_voting_with_excuse: ["Absentee Voting with Excuse"],same_day_voter_registration: record["Same Day Voter Registration"], all_mail_voting: record["All Mail Voting"], voter_id_on_election_day: record["Voter ID on Election Day"])
 end
 
@@ -57,5 +57,4 @@ end
 # StateWebsite.create([
 #   {name: "Ohio", initial: "OH", url: "http://voterlookup.sos.state.oh.us/voterlookup.aspx"},
 #   ])
- 
 
