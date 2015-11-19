@@ -11,7 +11,7 @@ class HTMLVoterDataParser
     @rows = @table.search("tr")
     @data = []
     counter = 1
-    53.times do 
+    55.times do 
       state = Hash.new
       state["name"] = @rows[counter].search("td").first.text.strip
       state["Early In-Person Voting"] = @rows[counter].search("td:nth-child(2)").text.strip

@@ -63,4 +63,10 @@ ActiveRecord::Schema.define(version: 20151119164256) do
     t.integer  "zip"
   end
 
+  create_table "zipcodes", force: :cascade do |t|
+    t.integer  "zip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
