@@ -21,13 +21,11 @@ def scraper(zip_code)
     end
   end
 
-  p candidates
+  puts candidates
 
 
 end
-# def close_window
-#   browser.close if browser
-# end
+
 
 def load_zip_codes
   scraper(55364)
@@ -36,4 +34,4 @@ def load_zip_codes
   # end
 end
 load_zip_codes
-# close_window
+
