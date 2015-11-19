@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   post 'candidates/create' => 'candidates#create'
 
-  get '/zipcode/:id' => 'zipcodes#show'
+  get '/zipcode' => 'zipcodes#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
