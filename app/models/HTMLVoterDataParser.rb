@@ -1,7 +1,7 @@
 
 class HTMLVoterDataParser
   require 'open-uri'
-  require 'Nokogiri'
+  require 'nokogiri'
   require 'json'
 
   def parse
