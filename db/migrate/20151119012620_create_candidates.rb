@@ -3,7 +3,7 @@ class CreateCandidates < ActiveRecord::Migration
     create_table :candidates do |t|
       t.string :name
       t.string :office
-      t.string :party_affiliationt
+      t.string :party_affiliation
       t.integer :zip_id
 
       t.timestamps null: false

@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 20151119015557) do
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
     t.string   "office"
-    t.string   "party_affiliationt"
+    t.string   "party_affiliation"
     t.integer  "zip_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "electioninfos", force: :cascade do |t|
