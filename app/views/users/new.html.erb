@@ -8,16 +8,21 @@
 
 <div>
   <%= form_for @user, :url => users_create_path do |f| %>
-    <p><%= f.label :email %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <%= f.text_field :email %></p>
-    <p><%= label_tag :street_address %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <%= text_field_tag "user[street_address]" %></p>
-    <p><%= label_tag :city %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <%= text_field_tag "user[city]" %></p>
-    <p><%= label_tag :state %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <%= text_field_tag "user[state]" %></p>
-    <p><%= f.label :password %>:&nbsp; &nbsp;
-    <%= f.text_field :password %></p>
-    <p><%= f.submit "Register" %></p>
-  <% end %>
+    <%=f.label 'street address'%>
+    <%=f.text_field :street_address %>
+    <br>
+    <%=f.label 'city'%>
+    <%=f.text_field :city%>
+    <br>
+    <%=f.label 'state'%>
+    <%=f.text_field :state%>
+    <br>
+    <%=f.label 'zip'%>
+    <%=f.text_field :zip%>
+    <br>
+    <%=f.label 'password'%>
+    <%=f.text_field :password%>
+    <br>
+    <%=f.submit 'register'%>
+  <%end%>
 </div>
