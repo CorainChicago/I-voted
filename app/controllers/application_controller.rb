@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+<<<<<<< HEAD
 
   def scraper(zip_numbers, zip_code)
 
@@ -37,4 +38,16 @@ class ApplicationController < ActionController::Base
         $browser.close
       end
     end
+=======
+   def current_user
+    @current_user ||= User.find(session[:user_id])
+  end
+
+  def logged_in?
+    session[:user_id] != nil
+  end
+
+  helper_method :current_user
+  helper_method :logged_in?
+>>>>>>> 9ea6501a49a289360f654b9592843880a32986dc
 end

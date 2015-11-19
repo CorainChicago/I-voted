@@ -1,11 +1,21 @@
 <h2>Sign Up</h2>
+
+<% if @user.errors.any? %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
 <div>
   <%= form_for @user, :url => users_create_path do |f| %>
-
-    <p><%= f.label :address %>:&nbsp;
-    <%= f.text_field :address %></p>
     <p><%= f.label :email %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     <%= f.text_field :email %></p>
+    <p><%= label_tag :street_address %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <%= text_field_tag "user[street_address]" %></p>
+    <p><%= label_tag :city %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <%= text_field_tag "user[city]" %></p>
+    <p><%= label_tag :state %>:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <%= text_field_tag "user[state]" %></p>
     <p><%= f.label :password %>:&nbsp; &nbsp;
     <%= f.text_field :password %></p>
     <p><%= f.submit "Register" %></p>
