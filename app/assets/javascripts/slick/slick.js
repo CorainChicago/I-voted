@@ -7,7 +7,7 @@ $(document).ready(function(){
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
-        // centerMode: true,
+        centerMode: true,
         // variableWidth: true
         // adaptiveHeight: true
       });
