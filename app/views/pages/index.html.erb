@@ -22,25 +22,6 @@
   </nav>
 </div>
 
-  <%=form_for @address do |f|%>
-    <%=f.label 'street number'%>
-    <%=f.text_field :street_number, size: 3 %>
-    <br>
-    <%=f.label 'street'%>
-    <%=f.text_field :street_address%>
-    <br>
-    <%=f.label 'city'%>
-    <%=f.text_field :city%>
-    <br>
-    <%=f.label 'state'%>
-    <%=f.text_field :state%>
-    <br>
-    <%=f.label 'zip'%>
-    <%=f.text_field :zip%>
-    <br>
-    <%=f.submit 'submit'%>
-  <%end%>
-
 <div class="single-item">
 <div class="image-carousel">
   <div class="image-carousel-slide">
