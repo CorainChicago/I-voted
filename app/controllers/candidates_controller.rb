@@ -1,5 +1,8 @@
 class CandidatesController < ApplicationController
   def create
-    redirect_to ''
+    puts "------"
+    puts params
+    puts "------"
+    redirect_to "/zipcode/#{params[:zip]}"
   end
 end

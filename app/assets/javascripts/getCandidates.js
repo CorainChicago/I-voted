@@ -2,6 +2,7 @@ $(document).ready(function(){
   $('form').on('submit', function(event){
     event.preventDefault();
     if (checkForm() == true) {
+      setZipSession($('#_zip').val());
       insertComma();
       getCandidates();
     }
@@ -34,6 +35,14 @@ var checkForm = function() {
   }
 }
 
+var setZipSession = function(zip){
+  var zipargs = {zip: zip}
+  $.ajax({
+    url: "/sessions/create_zip",
+    data: zipargs,
+    method: 'post'
+  });
+};
 
 var insertComma = function() {
    $('#_city').val($('#_city').val() + ',');
