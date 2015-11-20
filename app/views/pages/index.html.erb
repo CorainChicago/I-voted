@@ -22,12 +22,11 @@
   </nav>
 </div>
 
-<div class="single-item">
+
 <div class="image-carousel">
   <div class="image-carousel-slide">
     <div class="image-carousel-media">
   <%= image_tag("vintage-buttons.jpeg") %>
-  <!-- <%= image_tag("flagsmlr.jpg") %> -->
     </div>
   </div>
 
@@ -39,10 +38,12 @@
 
 </div>
 
-<%= render "zipcodes/form" %>
+  <div class="zipcode-form">
+    <%= render "zipcodes/form" %>
+  </div>
 
+  <ul class="resource-link-block-grid small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
 
-  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
     <li><a href='#'>A much much longer string to test</a></li>
     <li><a href='#'>A much much longer string to test</a></li>
     <li><a href='#'>An even longer much much longer string to test</a></li>
