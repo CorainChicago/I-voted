@@ -1,9 +1,13 @@
 class SessionsController < ApplicationController
-
+respond_to :html, :js
 
   def login
   end
 
+  def create_zip
+    session[:zip] = params[:zip]
+    render :nothing => true, :status => :ok
+  end
 
   def create
     user = User.find_by(email: user_params[:email])
@@ -14,6 +18,13 @@ class SessionsController < ApplicationController
       render :login
     end
   end
+
+
+  def logout
+    session.delete(:user_id)
+    redirect_to '/'
+  end
+
 
 
   def user_params

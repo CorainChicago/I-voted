@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
 
   def index
-    load_zip_codes
+    @general_voting_info = Electioninfo.all
   end
+
+
 end

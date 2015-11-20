@@ -1,3 +1,2 @@
-class Electioninfo < ActiveRecord::Base
-  
+class Electioninfo < ActiveRecord::Base  
 end

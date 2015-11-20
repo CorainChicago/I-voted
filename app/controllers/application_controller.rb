@@ -5,15 +5,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
-
   def scraper(zip_numbers, zip_code)
 
     $browser = Watir::Browser.new
     $browser.goto "http://www.rockthevote.com/get-informed/elections/find-your-polling-place/?myaddress=" + zip_code.to_s + "#koqg"
     at_exit { $browser.close if $browser}
     candidate_html = Nokogiri::HTML($browser.html)
-
-
 
     candidates = {}
 
@@ -34,12 +31,14 @@ class ApplicationController < ActionController::Base
 
     def load_zip_codes
       CSV.foreach("db/zipcodes/us_postal_codes_two.csv") do |row|
+
         scraper(row[0], ([row[0],row[1],row[2],row[3],row[4]]).join('+').gsub(' ', "+"))
         $browser.close
       end
     end
 
-   def current_user
+
+  def current_user
     @current_user ||= User.find(session[:user_id])
   end
 
