@@ -1,10 +1,10 @@
 $(document).ready(function(){
   $('form').on('submit', function(event){
-    // event.preventDefault();
     if (checkForm() == true) {
+      event.preventDefault();
       setZipSession($('#user_zip').val());
       insertComma();
-      getCandidates();
+      getCandidates($(this));
     }
     else {
       if ($('#user_street_address').val().length < 1) {
@@ -45,7 +45,7 @@ var insertComma = function() {
    $('#user_city').val($('#user_city').val() + ',');
 }
 
-var getCandidates = function() {
+var getCandidates = function(form) {
   formattedUrl = 'http://votesmart.org/x/search?s=' + $('#user_street_address').val() + '%20' + $('#user_city').val() + '%20' + $('#user_state').val() + '%20' + $('#user_zip').val();
   var candidatesRequest = $.ajax({
    method: 'get',
@@ -57,5 +57,6 @@ var getCandidates = function() {
     data: response,
     method: 'post'
   });
+  form.unbind('submit').submit();
  });
 };

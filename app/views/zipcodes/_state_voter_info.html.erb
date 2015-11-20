@@ -1,0 +1,18 @@
+<div>
+  <p>For: <%= @voter_registration_data.name %></p>
+  <p>Has Early In-Person Voting: </p>
+  <%= @voter_registration_data.early_in_person_voting %> 
+  <br>
+  <p>Has No Excuse Absentee Voting: </p>
+  <%= @voter_registration_data.no_excuse_absentee_voting %>
+  <br>
+  <p>Has Absentee Voting With Excuse:</p>
+  <%= @voter_registration_data.absentee_voting_with_excuse %>
+  <br>
+  <p>All Mail Voting</p>
+
+  <%= @voter_registration_data.all_mail_voting %>
+  <br>
+  <p>ID Requirements to Vote: </p>
+  <%= @voter_registration_data.voter_id_on_election_day %>
+</div>
