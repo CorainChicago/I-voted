@@ -53,7 +53,10 @@ records.each do |record|
       early_in_person_voting: record["Early In-Person Voting"],no_excuse_absentee_voting: record["No Excuse Absentee Voting"],  absentee_voting_with_excuse: ["Absentee Voting with Excuse"],same_day_voter_registration: record["Same Day Voter Registration"], all_mail_voting: record["All Mail Voting"], voter_id_on_election_day: record["Voter ID on Election Day"])
 end
 
-JSON.parse(File.read('public/election_data.json'))
+record1 = JSON.parse(File.read('public/election_data.json'))
+records1.each do |record|
+  StateElectionDatum.create!(election_title: record["Election Title"],election_date: record["Election Date"], voter_registration: record["Voter Registration"], absentee_ballot_request: record["Absentee Ballot Request"], absentee_ballot_return: record["Absentee Ballot Return"], early_in_person_voting: record["Early in Person Voting"]  )
+end
 
 
 require 'csv'
