@@ -1,4 +1,3 @@
-<h2>Sign Up</h2>
 
 <% if @user.errors.any? %>
   <% @errors.each do |error| %>
@@ -6,26 +5,36 @@
   <% end %>
 <% end %>
 
-<div>
+<div class="grid-block new-user-form">
+  <div class="small-4 medium-8 large-10 grid-content">
+    <h2 class="sign-up-header">Sign Up</h2>
   <%= form_for @user, :url => users_create_path do |f| %>
-    <%=f.label 'email'%>
+    <%=f.label 'Email:'%>
     <%=f.text_field :email %>
     <br>
-    <%=f.label 'street address'%>
+    <%=f.label 'Password:'%>
+    <%=f.text_field :password%>
+    <br>
+    <%=f.label 'Street Address:'%>
     <%=f.text_field :street_address %>
     <br>
-    <%=f.label 'city'%>
+    <%=f.label 'City:'%>
     <%=f.text_field :city%>
     <br>
-    <%=f.label 'state'%>
+    <%=f.label 'State:'%>
     <%=f.text_field :state%>
     <br>
-    <%=f.label 'zip'%>
+    <%=f.label 'Zip:'%>
     <%=f.text_field :zip%>
     <br>
+<<<<<<< HEAD
     <%=f.label 'password'%>
     <%=f.password_field :password%>
     <br>
     <%=f.submit 'register'%>
+=======
+    <%=f.submit 'Register'%>
+>>>>>>> 12fb843b1c5cf58e118da8de1c656ed6e6148c4a
   <%end%>
+  </div>
 </div>
