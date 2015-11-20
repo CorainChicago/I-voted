@@ -6,7 +6,7 @@ desc "generate a seeds file from data in the database"
       name = candidate.name.gsub("Chip", '')
       name = name.gsub("Bill", '')
       name = name.gsub("New Blue", '')
-      puts "Candidate.create!(name: \'#{name}\', office: \'#{candidate.office}\', party_affiliation: \'#{candidate.party_affiliation}\', zip_id: \'#{candidate.zip_id}\')"
+      puts "Candidate.create!(name: \"#{name}\", office: \"#{candidate.office}\", party_affiliation: \"#{candidate.party_affiliation}\", zip_id: \"#{candidate.zip_id}\")"
   end
 end
 
