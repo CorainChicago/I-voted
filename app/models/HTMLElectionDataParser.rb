@@ -24,13 +24,13 @@ class HTMLElectionDataParser
   end
 
   def save_data
-    File.open("public/election_data.json","w") do |f|
+    File.open("election_data.json","w") do |f|
       f.write(@data.to_json)
     end
   end
 
 end
 
-p = HTMLElectionDataParser.new
-p.parse
-p.save_data
+parsed = HTMLElectionDataParser.new
+parsed.parse
+parsed.save_data

@@ -49,7 +49,7 @@ records.each do |record|
       early_in_person_voting: record["Early In-Person Voting"],no_excuse_absentee_voting: record["No Excuse Absentee Voting"],  absentee_voting_with_excuse: ["Absentee Voting with Excuse"],same_day_voter_registration: record["Same Day Voter Registration"], all_mail_voting: record["All Mail Voting"], voter_id_on_election_day: record["Voter ID on Election Day"])
 end
 
-election_data = JSON.parse(File.read('public/election_data.json'))
+election_data = JSON.parse(File.read('election_data.json'))
 
 
 # StateWebsite.create([

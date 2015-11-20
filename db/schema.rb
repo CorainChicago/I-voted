@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119201754) do
+ActiveRecord::Schema.define(version: 20151119231821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20151119201754) do
     t.string   "url",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "state_elections_datas", force: :cascade do |t|
+    t.string   "election_title"
+    t.string   "election_date"
+    t.string   "voter_registration"
+    t.string   "absentee_ballot_request"
+    t.string   "absentee_ballot_return"
+    t.string   "early_in_person_voting"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "state_voting_informations", force: :cascade do |t|
