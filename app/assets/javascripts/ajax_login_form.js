@@ -11,7 +11,6 @@ $(document).ready(function(){
 
     request.done(function(response){
       $(".slick-list").append(response);
-      // alert(response);
     })
 
   })

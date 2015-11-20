@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
 respond_to :html, :js
 
   def login
-     # respond_with(:layout => request.xhr? )
   end
 
   def create_zip
