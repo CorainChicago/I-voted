@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119015557) do
+ActiveRecord::Schema.define(version: 20151120020347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,27 @@ ActiveRecord::Schema.define(version: 20151119015557) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "state_voting_informations", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "early_in_person_voting"
+    t.boolean  "no_excuse_absentee_voting"
+    t.boolean  "absentee_voting_with_excuse"
+    t.boolean  "same_day_voter_registration"
+    t.string   "all_mail_voting"
+    t.string   "voter_id_on_election_day"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "sos_url"
+  end
+
+  create_table "statewebsites", force: :cascade do |t|
+    t.string   "name"
+    t.string   "initials"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
@@ -46,8 +67,10 @@ ActiveRecord::Schema.define(version: 20151119015557) do
 
   create_table "zipcodes", force: :cascade do |t|
     t.integer  "zip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "state_name"
+    t.string   "abbreviation"
   end
 
 end
