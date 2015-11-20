@@ -2,6 +2,7 @@ class HTMLStateBoardOfElections
   require 'open-uri'
   require 'nokogiri'
   require 'json'
+  require_relative 'state_voting_information'
 
   def parse
     @doc = Nokogiri::HTML(open("http://www.rockthevote.com/get-informed/elections/contact-sos/"))
