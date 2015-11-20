@@ -37,7 +37,8 @@ sos.save_data
 all_states = sos.data
 
 all_states.each do |state| 
-  state = StateVotingInformation.find_by(name: sos.state_name)
+  p state
+  state = StateVotingInformation.find_by(name: state.state_name)
   state.sos_url = sos.url
   p state.sos_url
 end
