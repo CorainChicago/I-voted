@@ -1,6 +1,6 @@
-class CreateStateElectionsData < ActiveRecord::Migration
+class CreateStateElectionInfos < ActiveRecord::Migration
   def change
-    create_table :state_elections_data do |t|
+    create_table :state_election_infos do |t|
       t.string :election_title
       t.string :election_date
       t.string :voter_registration
