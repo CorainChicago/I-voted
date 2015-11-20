@@ -1,2 +1,2 @@
-class StateElectionDatum < ActiveRecord::Base
+class StateElectionsDatum < ActiveRecord::Base
 end
