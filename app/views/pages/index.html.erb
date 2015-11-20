@@ -8,14 +8,11 @@
   <section class="top-bar-section">
     <ul class="right">
       <li class="has-form"><a href="/" class="button">Home</a></li>
-      <li class="divider"></li>
       <% if logged_in? %>
         <li class="has-form"><a href="sessions/logout" class="button">Logout</a></li>
       <% else %>
         <li class="has-form"><a href="users/new" class="button">Register</a></li>
-        <li class="divider"></li>
         <li class="has-form"><a href="sessions/login" class="button" id="login">Login</a></li>
-        <li class="divider"></li>
       <% end %>
     </ul>
   </section>
@@ -26,7 +23,7 @@
 <div class="image-carousel">
   <div class="image-carousel-slide">
     <div class="image-carousel-media">
-  <%= image_tag("vintage-buttons.jpeg") %>
+  <%= image_tag("vintage-buttons.jpg") %>
     </div>
   </div>
 
