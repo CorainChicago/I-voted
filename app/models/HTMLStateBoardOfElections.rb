@@ -6,27 +6,21 @@ class HTMLStateBoardOfElections
   def parse
     @doc = Nokogiri::HTML(open("http://www.rockthevote.com/get-informed/elections/contact-sos/"))
 
-    @table = @doc.search("table.election-dates")
+    @table = @doc.search("table")
     @rows = @table.search("tr")
     @data = []
     counter = 1
-    55.times do 
+    51.times do 
       state = Hash.new
-      state["name"] = @rows[counter].search("td").first.text.strip
-      state["Early In-Person Voting"] = @row
-s[counter].search("td:nth-child(2)").text.strip
-      state["No Excuse Absentee Voting"] = @rows[counter].search("td:nth-child(3)").text.strip
-      state["Absentee Voting with Excuse"] = @rows[counter].search("td:nth-child(4)").text.strip
-      state["Same Day Voter Registration"] = @rows[counter].search("td:nth-child(5)").text.strip
-      state["All-Mail Voting"] = @rows[counter].search("td:nth-child(6)").text.strip
-      state["Voter ID on Election Day"] = @rows[counter].search("td:nth-child(7)").text.strip
+      state["state_name"] = @rows[counter].search("td").first.text.strip
+      state["url"] = @rows[counter].search("td:nth-child(3)").text
       @data << state
       counter += 1
     end
   end
 
   def save_data
-    File.open("public/state_data.json","w") do |f|
+    File.open("public/us_secretary_of_states","w") do |f|
       f.write(@data.to_json)
     end
   end

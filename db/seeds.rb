@@ -53,11 +53,6 @@ records.each do |record|
 end
 
 
-# StateWebsite.create([
-#   {name: "Ohio", initial: "OH", url: "http://voterlookup.sos.state.oh.us/voterlookup.aspx"},
-#   ])
-
-
 require 'csv'
 
 zip_files = ['db/zipcodes/us_postal_codes.csv', 'db/zipcodes/us_postal_codes_two.csv', 'db/zipcodes/us_postal_codes_three.csv', 'db/zipcodes/us_postal_codes_four.csv', 'db/zipcodes/us_postal_codes_five.csv', 'db/zipcodes/us_postal_codes_six.csv']
