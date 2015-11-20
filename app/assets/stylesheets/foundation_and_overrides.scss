@@ -88,7 +88,7 @@ $column-gutter: rem-calc(30);
 
 // We use these to define default font stacks
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-$font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+$font-family-serif:  "Arvo", Georgia, serif;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
 // We use these to define default font weights
@@ -116,17 +116,17 @@ $jet         : #222222;
 $black       : #000000;
 
 // We use these as default colors throughout
-$primary-color: $oil;
-$secondary-color: $charcoal;
+$primary-color: $white-smoke;
+$secondary-color: $oil;
 $alert-color: #f04124;
 $success-color: #43AC6A;
 $warning-color: #78382F;
 $info-color: #a0d3e8;
 
 // We use these to control various global styles
-$body-bg: $white-smoke;
+$body-bg: $primary-color;
 $body-font-color: $jet;
-$body-font-family: $font-family-sans-serif;
+$body-font-family: $font-family-serif;
 $body-font-weight: $font-weight-normal;
 $body-font-style: normal;
 
@@ -270,7 +270,7 @@ $code-padding: rem-calc(2) rem-calc(5) rem-calc(1);
 // We use these to style anchors
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
-$anchor-font-color: $primary-color;
+$anchor-font-color: $secondary-color;
 $anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%);
 
 // We use these to style the <hr> element
@@ -371,7 +371,7 @@ $alert-border-color: scale-color($primary-color, $lightness: $alert-function-fac
 $alert-bottom-margin: rem-calc(20);
 
 // We use these to style the close buttons
-$alert-close-color: $oil;
+$alert-close-color: $white-smoke;
 $alert-close-top: 50%;
 $alert-close-position: rem-calc(4);
 $alert-close-font-size: rem-calc(22);
@@ -423,7 +423,7 @@ $crumb-radius: $global-radius;
 
 // We use these to set various text styles for breadcrumbs.
 $crumb-font-size: rem-calc(11);
-$crumb-font-color: $primary-color;
+$crumb-font-color: $secondary-color;
 $crumb-font-color-current: $oil;
 $crumb-font-color-unavailable: $aluminum;
 $crumb-font-transform: uppercase;
@@ -451,8 +451,8 @@ $button-margin-bottom: rem-calc(20);
 
 // We use these to control button text styles.
 $button-font-family: $body-font-family;
-$button-font-color: $white;
-$button-font-color-alt: $oil;
+$button-font-color: $secondary-color;
+$button-font-color-alt: $secondary-color;
 $button-font-tny: rem-calc(11);
 $button-font-sml: rem-calc(13);
 $button-font-med: rem-calc(16);
@@ -466,10 +466,10 @@ $button-function-factor: -20%;
 // We use these to control button border styles.
 $button-border-width: 0;
 $button-border-style: solid;
-$button-bg-color: $primary-color;
+$button-bg-color: $white-smoke;
 $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
 $button-border-color: $button-bg-hover;
-$secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
+$secondary-button-bg-hover: scale-color($white, $lightness: $button-function-factor);
 $secondary-button-border-color: $secondary-button-bg-hover;
 $success-button-bg-hover: scale-color($success-color, $lightness: $button-function-factor);
 $success-button-border-color: $success-button-bg-hover;
@@ -584,8 +584,8 @@ $f-dropdown-radius: $global-radius;
 $include-html-button-classes: $include-html-classes;
 
 // We use these to set the color of the pip in dropdown buttons
-$dropdown-button-pip-color: $white;
-$dropdown-button-pip-color-alt: $oil;
+$dropdown-button-pip-color: $primary-color;
+$dropdown-button-pip-color-alt: $secondary-color;
 
 // We use these to set the size of the pip in dropdown buttons
 $button-pip-tny: rem-calc(6);
@@ -717,13 +717,13 @@ $icon-bar-bg: $oil;
 $icon-bar-font-color: $white;
 $icon-bar-font-color-hover: $icon-bar-font-color;
 $icon-bar-font-size: 1rem;
-$icon-bar-hover-color: $primary-color;
+$icon-bar-hover-color: $white-smoke;
 $icon-bar-icon-color: $white;
 $icon-bar-icon-color-hover: $icon-bar-icon-color;
 $icon-bar-icon-size: 1.875rem;
 $icon-bar-image-width: 1.875rem;
 $icon-bar-image-height: 1.875rem;
-$icon-bar-active-color: $primary-color;
+$icon-bar-active-color: $white-smoke;
 $icon-bar-item-padding: 1.25rem;
 
 // We use this to set default opacity and cursor for disabled icons.
@@ -1203,9 +1203,9 @@ $include-html-button-classes: $include-html-classes;
 
 // We use these to control different shared styles for Split Buttons
 $split-button-function-factor: 10%;
-$split-button-pip-color: $white;
+$split-button-pip-color: $primary-color;
 $split-button-span-border-color: rgba(255,255,255,0.5);
-$split-button-pip-color-alt: $oil;
+$split-button-pip-color-alt: $secondary-color;
 $split-button-active-bg-tint: rgba(0,0,0,0.1);
 
 // We use these to control tiny split buttons
@@ -1259,7 +1259,7 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 // We use these to control the active item styles
 
 $sub-nav-active-font-weight: $font-weight-normal;
-$sub-nav-active-bg: $primary-color;
+$sub-nav-active-bg: $white-smoke;
 $sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%);
 $sub-nav-active-color: $white;
 $sub-nav-active-padding: $sub-nav-padding;
@@ -1403,28 +1403,28 @@ $tooltip-max-width: 300px;
 $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $oil;
+$topbar-bg-color: $primary-color;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: rem-calc(45);
-$topbar-margin-bottom: 0;
+$topbar-height: rem-calc(65);
+$topbar-margin-bottom: 45px;
 
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: $font-weight-normal;
-$topbar-title-font-size: rem-calc(17);
+$topbar-title-font-size: rem-calc(30);
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: $white;
-$topbar-link-color-hover: $white;
-$topbar-link-color-active: $white;
-$topbar-link-color-active-hover: $white;
+$topbar-link-color: $secondary-color;
+$topbar-link-color-hover: $silver;
+$topbar-link-color-active: $secondary-color;
+$topbar-link-color-active-hover: $silver;
 $topbar-link-weight: $font-weight-normal;
-$topbar-link-font-size: rem-calc(13);
+$topbar-link-font-size: rem-calc(17);
 $topbar-link-hover-lightness: -10%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-hover: $jet;
-$topbar-link-bg-color-hover: $charcoal;
+$topbar-link-bg-hover: $secondary-color;
+$topbar-link-bg-color-hover: $silver;
 $topbar-link-bg-active: #333333;
 $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 $topbar-link-font-family: $body-font-family;
@@ -1436,10 +1436,10 @@ $topbar-button-font-size: .75rem;
 $topbar-button-top: 7px;
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: $oil;
-$topbar-dropdown-link-color: $white;
+$topbar-dropdown-bg: $white-smoke;
+$topbar-dropdown-link-color: $oil;
 $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
-$topbar-dropdown-link-bg: $oil;
+$topbar-dropdown-link-bg: $white-smoke;
 $topbar-dropdown-link-bg-hover: $jet;
 $topbar-dropdown-link-weight: $font-weight-normal;
 $topbar-dropdown-toggle-size: 5px;
