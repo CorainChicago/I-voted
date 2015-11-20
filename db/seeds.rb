@@ -12,7 +12,8 @@ Electioninfo.create([
   {title: "Voting Rights Matter", subtitle: "A historical overview of voting rights and restrictions in the US. This site is funded by the Democratic Party.", url: "http://www.votingrightsmatter.com/"}, 
   {title: "U.S. Election Assistance Commission", subtitle: "The U.S. Election Assistance Commission (EAC) was established by the Help America Vote Act of 2002 (HAVA).", url: "http://www.eac.gov/voter_resources/contact_your_state.aspx"}, 
   {title: "US lectoral College", subtitle: "The National Archives site with information about the electoral college and history. ", url: "http://www.archives.gov/federal-register/electoral-college/index.html"},
-  {title: "Rock The Vote", subtitle: "Rock the Vote is the largest nonprofit and nonpartisan organization in the United States driving the youth vote to the polls.", url: "http://www.rockthevote.com/"}
+  {title: "Rock The Vote", subtitle: "Rock the Vote is the largest nonprofit and nonpartisan organization in the United States driving the youth vote to the polls.", url: "http://www.rockthevote.com/"},
+  {title: "Elections & Voting", subtitle: "The White House website for voting", url: "https://www.whitehouse.gov/1600/elections-and-voting"}
   ])
 
 records = JSON.parse(File.read('public/state_data.json'))
