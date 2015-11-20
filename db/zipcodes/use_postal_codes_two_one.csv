@@ -4461,8 +4461,6 @@
 13839,Sidney Center,New York,NY,Delaware,42.2441,-75.2871,
 13840,Smithboro,New York,NY,Tioga,42.0395,-76.4004,
 13841,Smithville Flats,New York,NY,Chenango,42.3989,-75.8237,
-<<<<<<< HEAD:db/zipcodes/use_postal_codes_two_one.csv
-=======
 13842,South Kortright,New York,NY,Delaware,42.377,-74.7259,
 13843,South New Berlin,New York,NY,Chenango,42.5306,-75.3525,
 13844,South Plymouth,New York,NY,Chenango,42.6053,-75.633,
@@ -7999,4 +7997,3 @@
 02175,Arlington Heights,Massachusetts,MA,Middlesex,42.4464,-71.4594,
 02176,Melrose,Massachusetts,MA,Middlesex,42.4581,-71.0632,
 02177,Melrose,Massachusetts,MA,Middlesex,42.4464,-71.4594,
->>>>>>> 2b7401dd60616faa7f387ed2e01b6fc2d723ddc5:db/zipcodes/us_postal_codes_two.csv
