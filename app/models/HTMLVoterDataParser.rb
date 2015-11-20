@@ -1,4 +1,3 @@
-
 class HTMLVoterDataParser
   require 'open-uri'
   require 'nokogiri'
@@ -14,7 +13,8 @@ class HTMLVoterDataParser
     55.times do 
       state = Hash.new
       state["name"] = @rows[counter].search("td").first.text.strip
-      state["Early In-Person Voting"] = @rows[counter].search("td:nth-child(2)").text.strip
+      state["Early In-Person Voting"] = @row
+s[counter].search("td:nth-child(2)").text.strip
       state["No Excuse Absentee Voting"] = @rows[counter].search("td:nth-child(3)").text.strip
       state["Absentee Voting with Excuse"] = @rows[counter].search("td:nth-child(4)").text.strip
       state["Same Day Voter Registration"] = @rows[counter].search("td:nth-child(5)").text.strip

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'dotenv-rails', :groups => [:development, :test]
  gem 'foundation-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -54,3 +54,6 @@ group :development do
 end
 
 gem 'rails_12factor', group: :production
+
+
+  gem 'responders', '~> 2.0'
