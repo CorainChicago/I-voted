@@ -2,6 +2,7 @@ class HTMLStateBoardOfElections
   require 'open-uri'
   require 'nokogiri'
   require 'json'
+ 
 
   def parse
     @doc = Nokogiri::HTML(open("http://www.rockthevote.com/get-informed/elections/contact-sos/"))
@@ -19,6 +20,10 @@ class HTMLStateBoardOfElections
     end
   end
 
+  def data
+    @data
+  end
+
   def save_data
     File.open("public/us_secretary_of_states","w") do |f|
       f.write(@data.to_json)
@@ -27,11 +32,14 @@ class HTMLStateBoardOfElections
 
 end
 
-p = HTMLStateBoardOfElections.new
-p.parse
-p.save_data
+# sos = HTMLStateBoardOfElections.new
+# sos.parse
+# sos.save_data
+# all_states = sos.data
 
-50.times do 
-  state = State_voting_information.find_by(name: p.state_name)
-  state.sos_url = p.url
-end
+# all_states.each do |state| 
+#   p state
+#   state = StateVotingInformation.find_by(name: state["state_name"])
+#   state.sos_url = sos.url
+#   p state.sos_url
+# end
