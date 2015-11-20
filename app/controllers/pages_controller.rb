@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
     @address = ' '
 
-    load_zip_codes
+    # load_zip_codes
   end
 
   def show
