@@ -9,12 +9,12 @@
     <ul class="right">
       <li class="has-form"><a href="/" class="button">Home</a></li>
       <li class="divider"></li>
-      <% if logged_in? %> 
+      <% if logged_in? %>
         <li class="has-form"><a href="sessions/logout" class="button">Logout</a></li>
       <% else %>
         <li class="has-form"><a href="users/new" class="button">Register</a></li>
         <li class="divider"></li>
-        <li class="has-form"><a href="sessions/login" class="button">Login</a></li>
+        <li class="has-form"><a href="sessions/login" class="button" id="login">Login</a></li>
         <li class="divider"></li>
       <% end %>
     </ul>
@@ -22,11 +22,11 @@
   </nav>
 </div>
 
+
 <div class="image-carousel">
   <div class="image-carousel-slide">
     <div class="image-carousel-media">
   <%= image_tag("vintage-buttons.jpeg") %>
-  <!-- <%= image_tag("flagsmlr.jpg") %> -->
     </div>
   </div>
 
@@ -38,11 +38,8 @@
 
 </div>
 
-  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
-    <li><a href='#'>A much much longer string to test</a></li>
-    <li><a href='#'>A much much longer string to test</a></li>
-    <li><a href='#'>An even longer much much longer string to test</a></li>
-    <li><a href='#'>Such a much much longer string to test</a></li>
-    <li><a href='#'>This is a String to Test</a></li>
-    <li><a href='#'>This is yet another is a String to Test</a></li>
-  </ul>
+  <div class="zipcode-form">
+    <%= render "zipcodes/form" %>
+  </div>
+
+  <%= render "pages/general_voting_info_partial" %>
