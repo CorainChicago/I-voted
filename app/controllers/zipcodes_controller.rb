@@ -6,9 +6,9 @@ class ZipcodesController < ApplicationController
     @zipcode = session[:zip]
     @polling_place = get_polling_place(@zipcode)
   end
-  def get_polling_place(zipcode)
-    uri = URI.parse('https://www.googleapis.com/civicinfo/v2/elections?key=AIzaSyDkn2kz-xb9COWfsqSVkSePa2G7yHbXnxY')
+  def self.get_polling_place(address)
+    uri = URI.parse("https://www.googleapis.com/civicinfo/v2/voterinfo?key=#{ENV['API_KEY']}&address=#{address.gsub(' ', '%20')}&electionId=2000")
     @response = JSON.parse(Net::HTTP.get(uri))
-    puts @response
+    @response['pollingLocations']
   end
 end

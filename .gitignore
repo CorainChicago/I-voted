@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+#ignore api key file
+/config/local_env.yml
