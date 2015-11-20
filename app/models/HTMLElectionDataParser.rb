@@ -31,6 +31,6 @@ class HTMLElectionDataParser
 
 end
 
-parsed = HTMLElectionDataParser.new
-parsed.parse
-parsed.save_data
+# parsed = HTMLElectionDataParser.new
+# parsed.parse
+# parsed.save_data
