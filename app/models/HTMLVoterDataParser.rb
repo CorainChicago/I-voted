@@ -32,6 +32,6 @@ class HTMLVoterDataParser
 
 end
 
-p = HTMLVoterDataParser.new
-p.parse
-p.save_data
+# p = HTMLVoterDataParser.new
+# p.parse
+# p.save_data

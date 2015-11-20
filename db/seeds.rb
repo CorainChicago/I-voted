@@ -58,7 +58,11 @@ end
 
 records1 = JSON.parse(File.read('public/election_data.json'))
 records1.each do |record|
-  StateElectionDatum.create!(election_title: record["Election Title"],election_date: record["Election Date"], voter_registration: record["Voter Registration"], absentee_ballot_request: record["Absentee Ballot Request"], absentee_ballot_return: record["Absentee Ballot Return"], early_in_person_voting: record["Early in Person Voting"]  )
+  StateElectionDatum.create!(election_title: record["Election Title"],election_date: record["Election Date"], 
+    voter_registration: record["Voter Registration"], 
+    absentee_ballot_request: record["Absentee Ballot Request"], 
+    absentee_ballot_return: record["Absentee Ballot Return"], 
+    early_in_person_voting: record["Early in Person Voting"]  )
 end
 
 
