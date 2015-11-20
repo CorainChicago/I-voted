@@ -4,7 +4,7 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "GET #create" do
 
-    context "not valid without credentials" do 
+    context "not valid without credentials" do
       controller do
         def create
           render :text => "index called", :status => :bad_gateway
@@ -15,7 +15,7 @@ RSpec.describe SessionsController, type: :controller do
         expect(response).to have_http_status("502")
       end
     end
-    
+
     context "with valid credentials" do
       let :credentials do
         { email: "cat@cat.com", street_address: "1246 Adams", city: "Atlanta", state: "Alabama", zip: 34543 }
@@ -24,7 +24,7 @@ RSpec.describe SessionsController, type: :controller do
         FactoryGirl.create(:user, credentials)
 
       get :create
-      expect(response).to have_http_status(:success)
+        expect(response).to have_http_status(:success)
       end
     end
 
