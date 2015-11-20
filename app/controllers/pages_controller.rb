@@ -1,13 +1,8 @@
 class PagesController < ApplicationController
 
   def index
-
-    @address = ' '
-
-    # load_zip_codes
+    @general_voting_info = Electioninfo.all
   end
 
-  def show
-  end
 
 end

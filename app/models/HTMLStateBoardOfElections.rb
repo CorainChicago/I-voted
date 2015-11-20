@@ -1,10 +1,10 @@
-class HTMLVoterDataParser
+class HTMLStateBoardOfElections
   require 'open-uri'
   require 'nokogiri'
   require 'json'
 
   def parse
-    @doc = Nokogiri::HTML(open("https://www.usvotefoundation.org/vote/state-elections/state-voting-laws-requirements.htm"))
+    @doc = Nokogiri::HTML(open("http://www.rockthevote.com/get-informed/elections/contact-sos/"))
 
     @table = @doc.search("table.election-dates")
     @rows = @table.search("tr")
@@ -33,6 +33,6 @@ s[counter].search("td:nth-child(2)").text.strip
 
 end
 
-p = HTMLVoterDataParser.new
+p = HTMLStateBoardOfElections.new
 p.parse
 p.save_data
