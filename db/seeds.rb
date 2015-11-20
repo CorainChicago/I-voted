@@ -68,7 +68,7 @@ end
 
 require 'csv'
 
-zip_files = ['db/us_postal_codes_all_zips.csv']
+zip_files = ['db/zipcodes/us_postal_codes_all_zips.csv']
 
 zip_files.each do |file|
 
