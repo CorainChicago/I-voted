@@ -20,7 +20,7 @@ class HTMLVoterDataParser
       state["Same Day Voter Registration"] = @rows[counter].search("td:nth-child(5)").text.strip
       state["All-Mail Voting"] = @rows[counter].search("td:nth-child(6)").text.strip
       state["Voter ID on Election Day"] = @rows[counter].search("td:nth-child(7)").text.strip
-      @data << state 
+      @data << state
       counter += 1
     end
   end
@@ -30,10 +30,9 @@ class HTMLVoterDataParser
       f.write(@data.to_json)
     end
   end
-  
+
 end
 
 p = HTMLVoterDataParser.new
 p.parse
 p.save_data
-

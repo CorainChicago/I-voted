@@ -14,7 +14,7 @@
       <% else %>
         <li class="has-form"><a href="users/new" class="button">Register</a></li>
         <li class="divider"></li>
-        <li class="has-form"><a href="sessions/login" class="button">Login</a></li>
+        <li class="has-form"><a href="sessions/login" class="button" id="login">Login</a></li>
         <li class="divider"></li>
       <% end %>
     </ul>
@@ -22,12 +22,11 @@
   </nav>
 </div>
 
-<div class="single-item">
+
 <div class="image-carousel">
   <div class="image-carousel-slide">
     <div class="image-carousel-media">
   <%= image_tag("vintage-buttons.jpeg") %>
-  <!-- <%= image_tag("flagsmlr.jpg") %> -->
     </div>
   </div>
 
@@ -39,8 +38,12 @@
 
 </div>
 
+  <div class="zipcode-form">
+    <%= render "zipcodes/form" %>
+  </div>
 
-  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
+  <ul class="resource-link-block-grid small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
+
     <li><a href='#'>A much much longer string to test</a></li>
     <li><a href='#'>A much much longer string to test</a></li>
     <li><a href='#'>An even longer much much longer string to test</a></li>

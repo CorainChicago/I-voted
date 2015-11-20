@@ -7,3 +7,5 @@ class Zipcode < ActiveRecord::Base
     {'locationName' => 'Sorry, we can\'t find a polling place for your location at this time. Please try a different address or check back closer to election day.'}
   end
 end
+
+
