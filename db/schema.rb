@@ -87,5 +87,5 @@ ActiveRecord::Schema.define(version: 20151120013055) do
     t.string   "state_name"
     t.string   "abbreviation"
   end
-
+  
 end
