@@ -30,3 +30,8 @@ end
 p = HTMLStateBoardOfElections.new
 p.parse
 p.save_data
+
+50.times do 
+  state = State_voting_information.find_by(name: p.state_name)
+  state.sos_url = p.url
+end
