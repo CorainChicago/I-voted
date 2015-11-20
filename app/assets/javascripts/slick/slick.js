@@ -6,7 +6,5 @@ $(document).ready(function(){
         autoplaySpeed: 2000,
         centerMode: true,
         centerPadding: '500px',
-        // variableWidth: true
-        // adaptiveHeight: true
       });
     });
