@@ -16,8 +16,8 @@ class Zipcode < ActiveRecord::Base
         return response['district']['name']
       end
     end
+    return "Sorry, we couldn't find a district for that address. Please enter a different address."
   end
-
 end
 
 
