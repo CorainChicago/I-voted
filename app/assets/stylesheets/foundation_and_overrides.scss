@@ -275,7 +275,7 @@ $anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%);
 
 // We use these to style the <hr> element
 $hr-border-width: 1px;
-$hr-border-style: solid;
+$hr-border-style: none;
 $hr-border-color: $gainsboro;
 $hr-margin: rem-calc(20);
 
@@ -296,7 +296,7 @@ $definition-list-margin-bottom: rem-calc(12);
 // We use these to style blockquotes
 $blockquote-font-color: scale-color($header-font-color, $lightness: 35%);
 $blockquote-padding: rem-calc(9 20 0 19);
-$blockquote-border: 1px solid $gainsboro;
+$blockquote-border: 1px solid $primary-color;
 $blockquote-cite-font-size: rem-calc(13);
 $blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%);
 $blockquote-cite-link-color: $blockquote-cite-font-color;
@@ -310,8 +310,8 @@ $microformat-margin: rem-calc(0 0 20 0);
 
 // We use these to control the border styles
 $microformat-border-width: 1px;
-$microformat-border-style: solid;
-$microformat-border-color: $gainsboro;
+$microformat-border-style: none;
+$microformat-border-color: $primary-color;
 
 // We use these to control full name font styles
 $microformat-fullname-font-weight: $font-weight-bold;
@@ -365,7 +365,7 @@ $alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
 $alert-function-factor: -14%;
 
 // We use these to control border styles.
-$alert-border-style: solid;
+$alert-border-style: none;
 $alert-border-width: 1px;
 $alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor);
 $alert-bottom-margin: rem-calc(20);
@@ -417,7 +417,7 @@ $crumb-side-padding: rem-calc(12);
 // We use these to control border styles.
 $crumb-function-factor: -10%;
 $crumb-border-size: 1px;
-$crumb-border-style: solid;
+$crumb-border-style: none;
 $crumb-border-color: scale-color($crumb-bg, $lightness: $crumb-function-factor);
 $crumb-radius: $global-radius;
 
@@ -465,7 +465,7 @@ $button-function-factor: -20%;
 
 // We use these to control button border styles.
 $button-border-width: 0;
-$button-border-style: solid;
+$button-border-style: none;
 $button-bg-color: $white-smoke;
 $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
 $button-border-color: $button-bg-hover;
@@ -651,21 +651,21 @@ $input-font-color: rgba(0,0,0,0.75);
 $input-font-size: rem-calc(14);
 $input-placeholder-font-color: #cccccc;
 $input-bg-color: $white;
-$input-focus-bg-color: scale-color($white, $lightness: -2%);
-$input-border-color: scale-color($white, $lightness: -20%);
-$input-focus-border-color: scale-color($white, $lightness: -40%);
-$input-border-style: solid;
-$input-border-width: 1px;
-$input-border-radius: $global-radius;
+$input-focus-bg-color: scale-color($primary-color, $lightness: -2%);
+// $input-border-color: scale-color($primary-color, $lightness: -20%);
+// $input-focus-border-color: scale-color($primary-color, $lightness: -40%);
+// $input-border-style: none;
+// $input-border-width: 0px;
+// $input-border-radius: $global-radius;
 $input-disabled-bg: $gainsboro;
 $input-disabled-cursor: $cursor-default-value;
-$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+// $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 $input-include-glowing-effect: false;
 
 // We use these to style the fieldset border and spacing.
-$fieldset-border-style: solid;
-$fieldset-border-width: 1px;
-$fieldset-border-color: $gainsboro;
+// $fieldset-border-style: none;
+// $fieldset-border-width: 0px;
+$fieldset-border-color: $primary-color;
 $fieldset-padding: rem-calc(20);
 $fieldset-margin: rem-calc(18 0);
 
@@ -677,11 +677,11 @@ $legend-padding: rem-calc(0 3);
 // We use these to style the prefix and postfix input elements
 $input-prefix-bg: scale-color($white, $lightness: -5%);
 $input-prefix-border-color: scale-color($white, $lightness: -20%);
-$input-prefix-border-size: 1px;
-$input-prefix-border-type: solid;
+$input-prefix-border-size: 0px;
+$input-prefix-border-type: none;
 $input-prefix-overflow: hidden;
 $input-prefix-font-color: $oil;
-$input-prefix-font-color-alt: $white;
+$input-prefix-font-color-alt: $secondary-color;
 
 // We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
 $input-number-spinners: true;
@@ -698,7 +698,7 @@ $input-error-message-font-color-alt: $oil;
 
 // We use this to style the glowing effect of inputs when focused
 $glowing-effect-fade-time: .45s;
-$glowing-effect-color: $input-focus-border-color;
+// $glowing-effect-color: $input-focus-border-color;
 
 // We use this to style the transition when inputs are focused and when the glowing effect is disabled.
 $input-transition-fade-time: 0.15s;
@@ -803,7 +803,7 @@ $keystroke-padding: rem-calc(2 4 0);
 
 // We use these to control background and border styles.
 $keystroke-bg: scale-color($white, $lightness: $keystroke-function-factor);
-$keystroke-border-style: solid;
+$keystroke-border-style: none;
 $keystroke-border-width: 1px;
 $keystroke-border-color: scale-color($keystroke-bg, $lightness: $keystroke-function-factor);
 $keystroke-radius: $global-radius;
@@ -990,7 +990,7 @@ $include-html-panel-classes: $include-html-classes;
 
 // We use these to control the background and border styles
 $panel-bg: scale-color($white, $lightness: -5%);
-$panel-border-style: solid;
+$panel-border-style: none;
 $panel-border-size: 1px;
 $callout-panel-bg: scale-color($primary-color, $lightness: 94%);
 
@@ -1015,7 +1015,7 @@ $callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightne
 $include-html-pricing-classes: $include-html-classes;
 
 // We use this to control the border color
-$price-table-border: solid 1px $gainsboro;
+$price-table-border: solid 1px $primary-color;
 
 // We use this to control the bottom margin of the pricing table
 $price-table-margin-bottom: rem-calc(20);
@@ -1047,7 +1047,7 @@ $price-desc-align: center;
 $price-desc-font-size: rem-calc(12);
 $price-desc-weight: $font-weight-normal;
 $price-desc-line-height: 1.4;
-$price-desc-bottom-border: dotted 1px $gainsboro;
+$price-desc-bottom-border: dotted 1px $primary-color;
 
 // We use these to control the list item styles
 $price-item-color: $oil;
@@ -1299,9 +1299,9 @@ $table-bg: $white;
 $table-even-row-bg: $snow;
 
 // These control the table cell border style
-$table-border-style: solid;
+$table-border-style: none;
 $table-border-size: 1px;
-$table-border-color: $gainsboro;
+$table-border-color: $primary-color;
 
 // These control the table head styles
 $table-head-bg: $white-smoke;
@@ -1360,7 +1360,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem;
 $include-html-media-classes: $include-html-classes;
 
 // We use these to control border styles
-$thumb-border-style: solid;
+$thumb-border-style: none;
 $thumb-border-width: 4px;
 $thumb-border-color: $white;
 $thumb-box-shadow: 0 0 0 1px rgba($black,.2);
