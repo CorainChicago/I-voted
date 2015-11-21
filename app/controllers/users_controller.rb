@@ -8,11 +8,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save
-      redirect_to "/"
+      redirect_to "/users/#{@user.id}"
     else
       @errors = @user.errors.full_messages
       render "new"
     end
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+    @zip = session[:zip]
+    @candidates = Candidate.where(zip: @zip).where()
   end
 
   private

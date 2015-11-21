@@ -1,0 +1,6 @@
+Welcome <%=@user.email%>
+<ul>
+  <%@candidates.each do |candidate|%>
+    <%=render partial: 'zipcodes/candidates_info', locals: {candidate: candidate}%>
+  <%end%>
+</ul>
