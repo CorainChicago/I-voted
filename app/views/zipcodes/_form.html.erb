@@ -1,6 +1,6 @@
 <div>
   <%= form_tag "/zipcode", method: "get" do %>
-      <%= text_field_tag :zip %>
+      <%= text_field_tag :zip, nil, :placeholder => "Enter 5-digit zip"%>
       <%= submit_tag 'Find Voting Info' %>
     <% end %>
 </div>
