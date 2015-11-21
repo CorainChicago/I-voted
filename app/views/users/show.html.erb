@@ -1,4 +1,7 @@
 Welcome <%=@user.email%>
+<h3>Polling place</h3>
+<%=@polling_place%>
+<h3>Candidates running</h3>
 <ul>
   <%@candidates.each do |candidate|%>
     <%=render partial: 'zipcodes/candidates_info', locals: {candidate: candidate}%>
