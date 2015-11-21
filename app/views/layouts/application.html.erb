@@ -14,10 +14,11 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.8/slick.min.js"></script>
 </head>
 <body>
-  <%= render "pages/navbar" %>
+  <div class="container">
+    <%= render "pages/navbar" %>
 
-<%= yield %>
-<%= render "pages/footer" %>
-
+    <%= yield %>
+    <%= render "pages/footer" %>
+  </div>
 </body>
 </html>
