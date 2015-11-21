@@ -24,6 +24,8 @@ class UsersController < ApplicationController
     else
       @candidates = Candidate.where(zip: @zip).where("name != ?", "Barack Obama II")
       @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
+
+      @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
       polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20"))['address']
       if polling_place['locationName']
         @polling_place = polling_place['locationName'] + ', ' + polling_place['line1'] + '. ' +  polling_place['city'] + ', ' + polling_place['state'] + " " + polling_place['zip']
