@@ -1,6 +1,8 @@
 Welcome <%=@user.email%>. You reside in <b><%=@district%></b>
 <h3>Polling place</h3>
 <%=@polling_place%>
+<h3>State voting information</h3>
+<%= render "zipcodes/state_voter_info" %>
 <h3>Candidates running</h3>
 <ul>
   <%@candidates.each do |candidate|%>
