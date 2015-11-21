@@ -636,19 +636,19 @@ $flex-video-widescreen-padding-bottom: 56.34%;
 $include-html-form-classes: $include-html-classes;
 
 // We use this to set the base for lots of form spacing and positioning styles
-$form-spacing: rem-calc(16);
+$form-spacing: rem-calc(18);
 
 // We use these to style the labels in different ways
 $form-label-pointer: pointer;
-$form-label-font-size: rem-calc(14);
+$form-label-font-size: rem-calc(16);
 $form-label-font-weight: $font-weight-normal;
-$form-label-line-height: 1.5;
+$form-label-line-height: 2;
 $form-label-font-color: $secondary-color;
 $form-label-small-transform: capitalize;
 $form-label-bottom-margin: 0;
 $input-font-family: inherit;
 $input-font-color: rgba(0,0,0,0.75);
-$input-font-size: rem-calc(14);
+$input-font-size: rem-calc(16);
 $input-placeholder-font-color: #cccccc;
 $input-bg-color: $white;
 $input-focus-bg-color: scale-color($primary-color, $lightness: 70%);
