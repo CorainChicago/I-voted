@@ -1,3 +1,18 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.new-user-form {
+  align-content: center;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+}
+
+#new_user form{
+  align-content: center;
+}
+   body > div > div > h2 {
+    color: #F5F5F5;
+  }
+  .new_user {
+    border-style: none;
+  }

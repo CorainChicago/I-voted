@@ -116,8 +116,8 @@ $jet         : #222222;
 $black       : #000000;
 
 // We use these as default colors throughout
-$primary-color: $white-smoke;
-$secondary-color: $oil;
+$primary-color: $tuatara;
+$secondary-color: $white-smoke;
 $alert-color: #f04124;
 $success-color: #43AC6A;
 $warning-color: #78382F;
@@ -125,7 +125,7 @@ $info-color: #a0d3e8;
 
 // We use these to control various global styles
 $body-bg: $primary-color;
-$body-font-color: $jet;
+$body-font-color: $secondary-color;
 $body-font-family: $font-family-serif;
 $body-font-weight: $font-weight-normal;
 $body-font-style: normal;
@@ -643,7 +643,7 @@ $form-label-pointer: pointer;
 $form-label-font-size: rem-calc(14);
 $form-label-font-weight: $font-weight-normal;
 $form-label-line-height: 1.5;
-$form-label-font-color: scale-color($black, $lightness: 30%);
+$form-label-font-color: $secondary-color;
 $form-label-small-transform: capitalize;
 $form-label-bottom-margin: 0;
 $input-font-family: inherit;
@@ -651,7 +651,7 @@ $input-font-color: rgba(0,0,0,0.75);
 $input-font-size: rem-calc(14);
 $input-placeholder-font-color: #cccccc;
 $input-bg-color: $white;
-$input-focus-bg-color: scale-color($primary-color, $lightness: -2%);
+$input-focus-bg-color: scale-color($primary-color, $lightness: 70%);
 // $input-border-color: scale-color($primary-color, $lightness: -20%);
 // $input-focus-border-color: scale-color($primary-color, $lightness: -40%);
 // $input-border-style: none;
