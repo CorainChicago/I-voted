@@ -1,10 +1,10 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body > div > div.grid-block.new-user-form > div {
+div.grid-block.new-user-form > div {
   margin: auto;
 }
-      div.grid-block.new-user-form > div > h2 {
+      div.grid-block.new-user-form > div > h1 {
     color: #F5F5F5;
   }
   .new_user {
