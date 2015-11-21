@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @zip = session[:zip]
-    @candidates = Candidate.where(zip: @zip).where()
+    @candidates = Candidate.where(zip: @zip).where("name != ?", "Barack Obama II")
   end
 
   private
