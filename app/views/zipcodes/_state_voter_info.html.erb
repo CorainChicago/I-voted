@@ -30,4 +30,19 @@
       <%= @voter_registration_data.voter_id_on_election_day %>
     </div>
   </li>
+
+  <li class="accordion-navigation">
+    <a href="#panel5">Candidates</a>
+      <% @offices.each do |office| %>
+    <div id="panel5" class="content">
+      <h4>Running For: <%= office %>:</h4>
+        <% @candidates.where("office = ?", office).each do |candidate|%>
+
+          <p><%=candidate.name%></p>
+
+        <%end%>
+
+    </div>
+      <%end%>
+  </li>
 </ul>

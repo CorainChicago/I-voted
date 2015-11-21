@@ -6,26 +6,10 @@ Welcome <%=@user.email%>. You reside in <b><%=@district%></b>
 <%=@polling_place%>
 <h3>State voting information</h3>
 <%= render "zipcodes/state_voter_info" %>
-<h3>Candidates</h3>
-
-
-
-
-
+<!-- <h3>Candidates</h3>
 
 
 
 <ul>
-  <%panel_number = 1 %>
-  <% @offices.each do |office| %>
 
-  <h4>Running For: <%= office%>:</h4>
-    <li >
-
-      <div >
-         <p>name of candidate </p>
-      </div>
-  <%panel_number += 1%>
-    </li>
-  <%end%>
-</ul>
+</ul> -->
