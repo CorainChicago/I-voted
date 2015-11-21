@@ -15,23 +15,15 @@
  *= require foundation_and_overrides
 
 //  */
-
 .new-user-form {
   align-content: center;
 }
+  .sign-up-header h2 {
+    color: #F5F5F5;
+  }
   .new_user {
     border-style: none;
   }
 
-.voting-info {
-  align-content: space-around;
-}
-  .resource-link-block-grid {
-    list-style-type: none;
-  }
-
-  .slick-track {
-    position: fixed;
-  }
 
 @import "foundation_and_overrides"
