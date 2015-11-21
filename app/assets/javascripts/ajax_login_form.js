@@ -12,6 +12,7 @@ $(document).ready(function(){
         $(".slick-list").append(response);
         $("div.zipcode-form").hide();
       }
+
     })
 
   })
