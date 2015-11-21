@@ -1,9 +1,15 @@
-<div >
-  <%= form_tag  sessions_create_path do %>
-  <p><%= label_tag "Email:" %>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  <%= text_field_tag "user[email]" %></p>
-  <p><%= label_tag "Password:" %> &nbsp;
-  <%= password_field_tag "user[password]" %></p>
-  <p id ="login_button"><%= submit_tag "Login" %>
-  <%end%>
-</div>
+    <%= form_tag  sessions_create_path do %>
+    <div class="row collapse">
+      <div class="large-10 columns">
+      <%= label_tag "Email:" %>
+      <%= text_field_tag "user[email]" %>
+      </div>
+    </div>
+    <div class="row collapse">
+      <div class="small-6 medium-8 large-10 columns">
+      <%= label_tag "Password:" %>
+      <%= password_field_tag "user[password]" %>
+      </div>
+    </div>
+    <p id="login_button"><%= submit_tag "Login" %></p>
+    <%end%>
