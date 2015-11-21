@@ -5,24 +5,22 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
-  def scraper(zip_numbers, zip_code)
+  def scraper(zip_code, zip_code_formatted)
 
     $browser = Watir::Browser.new
-    $browser.goto "http://www.rockthevote.com/get-informed/elections/find-your-polling-place/?myaddress=" + zip_code.to_s + "#koqg"
+    $browser.goto "http://www.rockthevote.com/get-informed/elections/find-your-polling-place/?myaddress=" + zip_code_formatted.to_s + "#koqg"
     at_exit { $browser.close if $browser}
     candidate_html = Nokogiri::HTML($browser.html)
 
     candidates = {}
 
-    @zip = Zipcode.create(zip: zip_numbers)
+    # @zip = Zipcode.create(zip: zip_code)
     candidate_html.css('.candidate-list-item').each do |candidate_list|
       candidates[candidate_list.css('.office-title').inner_text] = []
 
       candidate_list.css('.candidate-name').each do |candidate|
           array = candidate.inner_text.split("|")
-          Candidate.create(name: array[0].strip, office: candidate_list.css('.office-title').inner_text, party_affiliation: array[1].strip, zip_id: @zip.id)
-          #formats data into hashy hash*****************************
-          # candidates[candidate_list.css('.office-title').inner_text] << {"name" => array[0].strip, "party" => array[1].strip}
+          Candidate.create(name: array[0].strip, office: candidate_list.css('.office-title').inner_text, party_affiliation: array[1].strip, zip: zip_code)
       end
     end
     candidates
