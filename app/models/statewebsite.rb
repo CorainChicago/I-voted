@@ -1,2 +1,2 @@
-class Statewebsite < ActiveRecord::Base
+class StateWebsite < ActiveRecord::Base
 end
