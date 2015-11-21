@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
 respond_to :html, :js
 
   def login
+    if request.xhr?
+      render :layout => false
+    end
   end
 
   def create_zip
