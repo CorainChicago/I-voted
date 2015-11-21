@@ -1412,7 +1412,7 @@ $topbar-margin-bottom: 45px;
 
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: $font-weight-normal;
-$topbar-title-font-size: rem-calc(30);
+$topbar-title-font-size: rem-calc(65);
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $secondary-color;
@@ -1420,7 +1420,7 @@ $topbar-link-color-hover: $silver;
 $topbar-link-color-active: $secondary-color;
 $topbar-link-color-active-hover: $silver;
 $topbar-link-weight: $font-weight-normal;
-$topbar-link-font-size: rem-calc(17);
+$topbar-link-font-size: rem-calc(27);
 $topbar-link-hover-lightness: -10%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
 $topbar-link-bg-hover: $secondary-color;
