@@ -33,11 +33,6 @@ ActiveRecord::Schema.define(version: 20151121213030) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "state_election_infos", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "state_elections_infos", force: :cascade do |t|
     t.string   "election_title"
     t.string   "election_date"
