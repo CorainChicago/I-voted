@@ -333,16 +333,16 @@ $microformat-abbr-font-decoration: none;
 $include-html-accordion-classes: $include-html-classes;
 
 $accordion-navigation-padding: rem-calc(16);
-$accordion-navigation-bg-color: $silver;
-$accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%);
+$accordion-navigation-bg-color: $primary-color;
+$accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: 15%);
 $accordion-navigation-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -3%);
-$accordion-navigation-active-font-color: $jet;
-$accordion-navigation-font-color: $jet;
+$accordion-navigation-active-font-color: $secondary-color;
+$accordion-navigation-font-color: $secondary-color;
 $accordion-navigation-font-size: rem-calc(16);
 $accordion-navigation-font-family: $body-font-family;
 
 $accordion-content-padding: ($column-gutter/2);
-$accordion-content-active-bg-color: $white;
+$accordion-content-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: 25%);
 
 // 02. Alert Boxes
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -636,19 +636,19 @@ $flex-video-widescreen-padding-bottom: 56.34%;
 $include-html-form-classes: $include-html-classes;
 
 // We use this to set the base for lots of form spacing and positioning styles
-$form-spacing: rem-calc(16);
+$form-spacing: rem-calc(18);
 
 // We use these to style the labels in different ways
 $form-label-pointer: pointer;
-$form-label-font-size: rem-calc(14);
+$form-label-font-size: rem-calc(16);
 $form-label-font-weight: $font-weight-normal;
-$form-label-line-height: 1.5;
+$form-label-line-height: 2;
 $form-label-font-color: $secondary-color;
 $form-label-small-transform: capitalize;
 $form-label-bottom-margin: 0;
 $input-font-family: inherit;
 $input-font-color: rgba(0,0,0,0.75);
-$input-font-size: rem-calc(14);
+$input-font-size: rem-calc(16);
 $input-placeholder-font-color: #cccccc;
 $input-bg-color: $white;
 $input-focus-bg-color: scale-color($primary-color, $lightness: 70%);
@@ -1412,7 +1412,7 @@ $topbar-margin-bottom: 45px;
 
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: $font-weight-normal;
-$topbar-title-font-size: rem-calc(30);
+$topbar-title-font-size: rem-calc(73);
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $secondary-color;
@@ -1420,7 +1420,7 @@ $topbar-link-color-hover: $silver;
 $topbar-link-color-active: $secondary-color;
 $topbar-link-color-active-hover: $silver;
 $topbar-link-weight: $font-weight-normal;
-$topbar-link-font-size: rem-calc(17);
+$topbar-link-font-size: rem-calc(27);
 $topbar-link-hover-lightness: -10%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
 $topbar-link-bg-hover: $secondary-color;

@@ -6,14 +6,14 @@
 <% end %>
 
 <div class="grid-block new-user-form">
-  <div class="small-4 medium-8 large-10 grid-content">
-    <h2 class="sign-up-header">Sign Up</h2>
+  <div class="large-5 grid-content">
+    <h1 class="sign-up-header">Sign Up</h1><br><br>
   <%= form_for @user, :url => users_create_path, :method => 'post' do |f| %>
     <%=f.label 'Email:'%>
     <%=f.text_field :email %>
     <br>
     <%=f.label 'Password:'%>
-    <%=f.text_field :password%>
+    <%=f.password_field :password%>
     <br>
     <%=f.label 'Street Address:'%>
     <%=f.text_field :street_address %>
@@ -26,9 +26,6 @@
     <br>
     <%=f.label 'Zip:'%>
     <%=f.text_field :zip%>
-    <br>
-    <%=f.label 'password'%>
-    <%=f.password_field :password%>
     <br>
     <%=f.submit 'Register'%>
   <%end%>
