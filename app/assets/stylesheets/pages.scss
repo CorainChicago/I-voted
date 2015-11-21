@@ -16,7 +16,7 @@
   padding: 2%
 }
 
-        
+
 #zip{
   width: 10.0em;
 } 
@@ -35,4 +35,14 @@ div.zipcode-form > div > form > input[type="submit"]:nth-child(3) {
 div.sticky > nav > ul > li.name > h1 > a{
   margin-top: 8%;
   font-size: 3.0em;
+}
+
+footer{
+  margin-right: 3%;
+  margin-left: 3%;
+  padding-top: 2%;
+  padding-bottom: 3%;
+  padding-right: 10%;
+  padding-left: 10%;
+  border: 10px double grey;
 }
