@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20151120020347) do
     t.string   "name"
     t.string   "office"
     t.string   "party_affiliation"
-    t.integer  "zip_id"
+    t.integer  "zip"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
