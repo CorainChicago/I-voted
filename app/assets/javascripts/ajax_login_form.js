@@ -7,10 +7,11 @@ $(document).ready(function(){
       url: link,
       method: "GET"
     })
-
     request.done(function(response){
-      console.log(response)
-      $(".slick-list").append(response);
+      if ($("#login_button").length === 0){
+        $(".slick-list").append(response);
+        $("div.zipcode-form").hide();
+      }
     })
 
   })
