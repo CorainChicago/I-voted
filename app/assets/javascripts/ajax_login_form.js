@@ -3,14 +3,15 @@ $(document).ready(function(){
   $("#login").on("click", function(event){
     event.preventDefault();
     var link = $(this).attr("href");
-
     var request = $.ajax({
       url: link,
       method: "GET"
     })
-
     request.done(function(response){
-      $(".slick-list").append(response);
+      if ($("#login_button").length === 0){
+        $(".slick-list").append(response);
+        $("div.zipcode-form").hide();
+      }
     })
 
   })
