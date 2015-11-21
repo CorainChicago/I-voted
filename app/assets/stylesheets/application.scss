@@ -15,13 +15,15 @@
  *= require foundation_and_overrides
 
 //  */
-
-.new-user-form
-{
+.new-user-form {
   align-content: center;
 }
+  .sign-up-header h2 {
+    color: #F5F5F5;
+  }
   .new_user {
     border-style: none;
   }
+
 
 @import "foundation_and_overrides"

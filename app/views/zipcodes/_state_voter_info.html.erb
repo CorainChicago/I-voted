@@ -1,18 +1,33 @@
-<div>
-  <p>For: <%= @voter_registration_data.name %></p>
-  <p>Has Early In-Person Voting: </p>
-  <%= @voter_registration_data.early_in_person_voting %> 
-  <br>
-  <p>Has No Excuse Absentee Voting: </p>
-  <%= @voter_registration_data.no_excuse_absentee_voting %>
-  <br>
-  <p>Has Absentee Voting With Excuse:</p>
-  <%= @voter_registration_data.absentee_voting_with_excuse %>
-  <br>
-  <p>All Mail Voting</p>
-
-  <%= @voter_registration_data.all_mail_voting %>
-  <br>
-  <p>ID Requirements to Vote: </p>
-  <%= @voter_registration_data.voter_id_on_election_day %>
-</div>
+<ul class="accordion" data-accordion>
+<h2>For <%= @voter_registration_data.name %>:</h2>
+  <li class="accordion-navigation">
+    <a href="#panel1">Early Voting</a>
+    <div id="panel1" class="content">
+       <p>Has Early In-Person Voting: </p>
+       <%= @voter_registration_data.early_in_person_voting %>
+    </div>
+  </li>
+  <li class="accordion-navigation">
+    <a href="#panel2">Absentee Voting</a>
+    <div id="panel2" class="content">
+      <p>Has No Excuse Absentee Voting: </p>
+      <%= @voter_registration_data.no_excuse_absentee_voting %>
+      <p>Has Absentee Voting With Excuse:</p>
+      <%= @voter_registration_data.absentee_voting_with_excuse %>
+    </div>
+  </li>
+  <li class="accordion-navigation">
+    <a href="#panel3">Vote-by-mail</a>
+    <div id="panel3" class="content">
+      <p>All Mail Voting</p>
+      <%= @voter_registration_data.all_mail_voting %>
+    </div>
+  </li>
+  <li class="accordion-navigation">
+    <a href="#panel4">Voter ID Requirements</a>
+    <div id="panel4" class="content">
+      <p>ID Requirements to Vote: </p>
+      <%= @voter_registration_data.voter_id_on_election_day %>
+    </div>
+  </li>
+</ul>
