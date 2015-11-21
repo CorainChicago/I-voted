@@ -23,6 +23,12 @@ class UsersController < ApplicationController
       render "new"
     else
       @candidates = Candidate.where(zip: @zip).where("name != ?", "Barack Obama II")
+      @offices = []
+      @candidates.each do |candidate|
+        @offices << candidate.office
+      end
+      @offices.uniq!
+      p @offices.length
       @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
       polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20"))['address']
       if polling_place['locationName']
