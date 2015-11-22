@@ -3,7 +3,7 @@ require 'rails_helper'
 
 feature "User creates new account" do
   background do
-    User.new(:email => 'example@i-voted.com', :password => 'ivoted1', :street_address => '1600 Pennsylvania Ave', :city => 'Washington', :state => 'DC', :zip => '20500')
+    User.create(:email => 'example@i-voted.com', :password => 'ivoted1', :street_address => '1600 Pennsylvania Ave', :city => 'Washington', :state => 'DC', :zip => '20500')
   end
 
   scenario "page loads correctly" do
