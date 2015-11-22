@@ -6,8 +6,8 @@ Welcome <%=@user.email%>. You reside in <b><%=@district%></b>
 <%@state_elections.each do |election|%>
   <ul class="accordion" data-accordion>
     <li class="accordion-navigation">
-      <a href="#panel1"><%=election.election_title%></a>
-      <div id="panel1" class="content">
+      <a href="#panel0"><%=election.election_title%></a>
+      <div id="panel0" class="content">
          <p>Election date: <%=election.election_date%> </p>
          <p>Voter registration: <%=election.voter_registration%></p>
          <p>Absentee ballot request: <%=election.absentee_ballot_request%></p>
