@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
     def load_zip_codes
 
-      CSV.foreach("db/zipcodes/us_postal_codes.csv") do |row|
+      CSV.foreach("db/zipcodes/us_postal_codes_three_one.csv") do |row|
 
         scraper(row[0], ([row[0],row[1],row[2],row[3],row[4]]).join('+').gsub(' ', "+"))
         $browser.close
