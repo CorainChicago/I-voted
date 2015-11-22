@@ -1,5 +1,6 @@
 
 <%= render "zipcodes/state_voter_info" %>
 <div>
-  <h2><%= link_to @statewebsite, @statewebsite.url %></h2>
+  <h2><%= link_to "#{@statewebsite.name} Secretary of State", @statewebsite.url %></h2>
+  <h6>(Department responsible for the board of elections in each state)</h6>
 </div>
