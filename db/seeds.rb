@@ -6,9 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-#THIS IS SEEDED INTO THE HEROKU DATABASE!!!!!  MAKE A SEOCND SEED FILE AND FILL IT.  THIS FILE TAKES A LONG TIME TO RUN TO SEED THE DATABASE!!!
-
 Electioninfo.create([
   {title: "Open Secrets", subtitle: "...tracking money in U.S. politics and its effect on elections and public policy.", url: "http://www.opensecrets.org/"},
   {title: "League of Women Voters", subtitle: "'Formed from the movement that secured the right to vote for women, the centerpiece of the League’s efforts remain to expand participation and give a voice to all Americans'", url: "http://lwv.org/"},
@@ -69,13 +66,17 @@ end
 require 'csv'
 
 zip_files = ['db/zipcodes/us_postal_codes_all_zips.csv']
-
 zip_files.each do |file|
-
   CSV.foreach(file) do |row|
   Zipcode.create!(zip: row[0].to_s, state_name: row[2], abbreviation: row[3])
   end
 end
+
+records_state_websites = JSON.parse(File.read('public/us_secretary_of_states.json'))
+records_state_websites.each do |record|
+  StateWebsite.create!(name: record["state_name"], url: record["url"])
+end
+
 
 Candidate.create!(name: "Jeanne Shaheen", office: "United States Senator", party_affiliation: "Democratic", zip: "00212")
 Candidate.create!(name: "Scott P. Brown", office: "United States Senator", party_affiliation: "Republican", zip: "00212")
