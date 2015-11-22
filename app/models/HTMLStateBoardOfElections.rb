@@ -39,6 +39,5 @@ all_states = sos.data
 
 all_states.each do |state| 
   state_modified = StateVotingInformation.find_by(name: state["state_name"])
-  byebug
   state_modified.sos_url = state["url"]
 end
