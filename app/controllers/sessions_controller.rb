@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
 respond_to :html, :js
 
   def login
+    if request.xhr?
+      render :layout => false
+    end
   end
 
   def create_zip
@@ -19,14 +22,13 @@ respond_to :html, :js
     end
   end
 
-
-  def logout
+  def destroy
     session.delete(:user_id)
     redirect_to '/'
   end
 
 
-
+  private
   def user_params
     params.require(:user).permit(:email, :password)
   end
