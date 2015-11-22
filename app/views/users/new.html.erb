@@ -8,7 +8,7 @@
 <div class="grid-block new-user-form">
   <div class="large-5 grid-content">
     <h1 class="sign-up-header">Sign Up</h1><br><br>
-  <%= form_for @users, :method => 'post' do |f| %>
+  <%= form_for @user, :url => users_create_path, :method => 'post' do |f| %>
     <%=f.label 'Email:'%>
     <%=f.text_field :email %>
     <br>
