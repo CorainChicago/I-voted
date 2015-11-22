@@ -21,31 +21,31 @@ Electioninfo.create([
 
 records = JSON.parse(File.read('public/state_data.json'))
 records.each do |record|
-  if record["Early In-Person Voting"] == "✓" || record["Early In-Person Voting"] == "✓ "
+  if record["Early In-Person Voting"].include?("✓") || record["Early In-Person Voting"].include?("✓ ")
     record["Early In-Person Voting"] = true
   else
     record["Early In-Person Voting"] = false
   end
 
-  if record["No Excuse Absentee Voting"] == "✓" || record["No Excuse Absentee Voting"] == "✓ "
+  if record["No Excuse Absentee Voting"].include?("✓") || record["No Excuse Absentee Voting"].include?("✓ ")
     record["No Excuse Absentee Voting"] = true
   else
     record["No Excuse Absentee Voting"] = false
   end
 
-  if record["Absentee Voting with Excuse"] == "✓" || record["Absentee Voting with Excuse"] == "✓ "
+  if record["Absentee Voting with Excuse"].include?("✓") || record["Absentee Voting with Excuse"].include?("✓ ")
     record["Absentee Voting with Excuse"] = true
   else
     record["Absentee Voting with Excuse"] = false
   end
 
-  if record["Same Day Voter Registration"] == "✓" || record["Same Day Voter Registration"] == "✓ "
+  if record["Same Day Voter Registration"].include?("✓") || record["Same Day Voter Registration"].include?("✓ ")
     record["Same Day Voter Registration"] = true
   else
     record["Same Day Voter Registration"] = false
   end
 
-  if record["All-Mail Voting"] == "✓" || record["All-Mail Voting"] == "✓ "
+  if record["All-Mail Voting"].include?("✓") || record["All-Mail Voting"].include?("✓ ")
     record["All-Mail Voting"] = true
   else
     record["All-Mail Voting"] = false
