@@ -14,3 +14,4 @@
 
 #ignore api key file
 /config/local_env.yml
+/db/schema.rb
