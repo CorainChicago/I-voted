@@ -1,3 +1,7 @@
+.container{
+  width: 100%;
+}
+
 .voting-info {
   color: #F5F5F5;
 }
@@ -21,10 +25,11 @@
   width: 10.0em;
 }
 
-div.zipcode-form{
+body > div.zipcode-form > div > form{
+  margin-left: 50%;
   margin-right: auto;
-  margin-left: 40%;
 }
+
 
 div.zipcode-form > div > form > input[type="submit"]:nth-child(3) {
   width: 11.5em;
