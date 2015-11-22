@@ -29,25 +29,32 @@ RSpec.describe SessionsController, type: :controller do
     end
 
   end
-end
 
 
- describe "destroy"  do
-
-    context "when valid params are passed" do
-      it "creates a new Game" do
-        expect {
-        post :create, {game: {user_throw: "paper-plane"}}
-      }.to change(Game, :count).by(+1)
-      end
-
-      it "assigns a newly created game as @game" do
-        post :create, {game: {user_throw: "paper-plane"}}
-        expect(assigns(:game)).to be_instance_of(Game)
-      end
-
-      it "redirects to the created game"  do
-        post :create, {game: {user_throw: "paper-plane"}}
-        expect(response).to redirect_to game_path(Game.last.id)
+ describe "logout"  do
+    context "redirects home" do
+      it "redirects to root" do
+        get :destroy
+        expect(response).to redirect_to root_path
       end
     end
+  end
+
+  describe "create_zip"  do
+    context "to not render" do
+      it "new" do
+        get :create_zip
+        expect(response).not_to render_template(:new)
+      end
+    end
+  end
+
+   describe "login"  do
+    context "ajax" do
+      it "render form" do
+        get :login
+        expect(response).not_to render_template(:_form)
+      end
+    end
+  end
+end

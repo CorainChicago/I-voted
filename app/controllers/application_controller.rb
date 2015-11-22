@@ -13,8 +13,6 @@ class ApplicationController < ActionController::Base
     candidate_html = Nokogiri::HTML($browser.html)
 
     candidates = {}
-
-    # @zip = Zipcode.create(zip: zip_code)
     candidate_html.css('.candidate-list-item').each do |candidate_list|
       candidates[candidate_list.css('.office-title').inner_text] = []
 
