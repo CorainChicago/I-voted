@@ -1,14 +1,14 @@
 <ul class="accordion" data-accordion>
 <h1>For <%= @voter_registration_data.name %>:</h1>
   <li class="accordion-navigation">
-    <h4><a href="#panel1">Early Voting</a></h4>
+    <a href="#panel1">Early Voting</a>
     <div id="panel1" class="content">
        <p>Has Early In-Person Voting: </p>
        <%= @user_friendly_display[(@voter_registration_data.early_in_person_voting).to_s.to_sym] %>
     </div>
   </li>
   <li class="accordion-navigation">
-    <h4><a href="#panel2">Absentee Voting</a></h4>
+    <a href="#panel2">Absentee Voting</a>
     <div id="panel2" class="content">
       <p>Has No Excuse Absentee Voting: </p>
       <%= @user_friendly_display[(@voter_registration_data.no_excuse_absentee_voting).to_s.to_sym] %>
@@ -17,14 +17,14 @@
     </div>
   </li>
   <li class="accordion-navigation">
-    <h4><a href="#panel3">Vote-by-mail</a></h4>
+    <a href="#panel3">Vote-by-mail</a>
     <div id="panel3" class="content">
       <p>All Mail Voting</p>
       <%= @voter_registration_data.all_mail_voting %>
     </div>
   </li>
   <li class="accordion-navigation">
-    <h4><a href="#panel4">Voter ID Requirements</a></h4>
+    <a href="#panel4">Voter ID Requirements</a>
     <div id="panel4" class="content">
       <p>ID Requirements to Vote: </p>
       <%= @voter_registration_data.voter_id_on_election_day %>
