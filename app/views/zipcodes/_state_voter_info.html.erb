@@ -41,7 +41,7 @@
         </a>
         <div class="candite-name-list-div" style="display: none;">
           <% @candidates.where("office = ?", office).each do |candidate|%>
-            <p>----<%=candidate.name%></p>
+            <p>-<%=candidate.name%></p>
           <%end%>
         </div>
         <% @index += 1%>
@@ -50,3 +50,4 @@
     <%end%>
   </li>
 </ul>
+
