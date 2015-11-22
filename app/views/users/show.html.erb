@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 Welcome <%=@user.email%>. You reside in <b><%=@district%></b>
-=======
 
-
-Welcome <%= @user.email %>. You reside in <b><%= @district %></b>
->>>>>>> 89154083dc1949ec6f324df098997767bd79db7e
-
-<h3>Polling place near: <%=@user.street_address%> <%=@user.city%></h3>
+<h3>Your polling place</h3>
 <%=@polling_place%>
 <h3>Upcoming elections</h3>
 <%@state_elections.each do |election|%>
