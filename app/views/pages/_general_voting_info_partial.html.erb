@@ -1,10 +1,13 @@
 
-<ul class="resource-link-block-grid small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
+<ul class="small-block-grid-1 large-block-grid-2 resource-link-block-grid">
 
   <% @general_voting_info.each do |link| %>
-    <h4><%= link.title %><h4>
-    <p><%= link.subtitle %><p>
-    <% link_to link.url %>
+    <li class="general-voting-info">
+      <div>
+      <h3><a href=<%= link.url %>><%= link.title %><h3>
+      <p><%= link.subtitle %></p></a>
+      <div>
+    </li>
   <% end %>
 
   </ul>
