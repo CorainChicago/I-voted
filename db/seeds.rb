@@ -62,7 +62,7 @@ election_records.each do |record|
     voter_registration: record["Voter Registration"],
     absentee_ballot_request: record["Absentee Ballot Request"],
     absentee_ballot_return: record["Absentee Ballot Return"],
-    early_in_person_voting: record["Early in Person Voting"]  )
+    early_in_person_voting: record["Early In-Person Voting"]  )
 end
 
 
