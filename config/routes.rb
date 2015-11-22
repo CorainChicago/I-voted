@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :users
 
-  get 'users/new' => 'users#new'
+  # get 'users/new' => 'users#new'
 
-  post 'users/create' => 'users#create'
+  # get 'users/:id' => 'users#show'
+
+  # get 'users/:id/edit' => 'users#update'
+
+  # patch 'users/:id/edit' => 'users#update'
+
+  # post 'users/create' => 'users#create'
 
   get 'sessions/login' => 'sessions#login'
 
@@ -11,7 +18,8 @@ Rails.application.routes.draw do
 
   post 'sessions/create_zip' => 'sessions#create_zip'
 
-  get 'sessions/logout' => 'sessions#logout'
+  get '/logout' => 'sessions#destroy'
+  # get 'sessions/logout' => 'sessions#logout'
 
   post 'candidates/create' => 'candidates#create'
 

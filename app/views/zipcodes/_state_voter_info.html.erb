@@ -1,18 +1,53 @@
-<div>
-  <p>For: <%= @voter_registration_data.name %></p>
-  <p>Has Early In-Person Voting: </p>
-  <%= @voter_registration_data.early_in_person_voting %> 
-  <br>
-  <p>Has No Excuse Absentee Voting: </p>
-  <%= @voter_registration_data.no_excuse_absentee_voting %>
-  <br>
-  <p>Has Absentee Voting With Excuse:</p>
-  <%= @voter_registration_data.absentee_voting_with_excuse %>
-  <br>
-  <p>All Mail Voting</p>
+<ul class="accordion" data-accordion>
+<h3>For <%= @voter_registration_data.name %>:</h3>
+  <li class="accordion-navigation">
+    <a href="#panel1">Early Voting</a>
+    <div id="panel1" class="content">
+       <p>Has Early In-Person Voting: </p>
+       <%= @user_friendly_display[(@voter_registration_data.early_in_person_voting).to_s.to_sym] %>
+    </div>
+  </li>
+  <li class="accordion-navigation">
+    <a href="#panel2">Absentee Voting</a>
+    <div id="panel2" class="content">
+      <p>Has No Excuse Absentee Voting: </p>
+      <%= @user_friendly_display[(@voter_registration_data.no_excuse_absentee_voting).to_s.to_sym] %>
+      <p>Has Absentee Voting With Excuse:</p>
+      <%= @user_friendly_display[(@voter_registration_data.absentee_voting_with_excuse).to_s.to_sym] %>
+    </div>
+  </li>
+  <li class="accordion-navigation">
+    <a href="#panel3">Vote-by-mail</a>
+    <div id="panel3" class="content">
+      <p>All Mail Voting</p>
+      <%= @voter_registration_data.all_mail_voting %>
+    </div>
+  </li>
+  <li class="accordion-navigation">
+    <a href="#panel4">Voter ID Requirements</a>
+    <div id="panel4" class="content">
+      <p>ID Requirements to Vote: </p>
+      <%= @voter_registration_data.voter_id_on_election_day %>
+    </div>
+  </li>
 
-  <%= @voter_registration_data.all_mail_voting %>
-  <br>
-  <p>ID Requirements to Vote: </p>
-  <%= @voter_registration_data.voter_id_on_election_day %>
-</div>
+  <li class="accordion-navigation">
+    <%if @offices%>
+    <a href="#panel5">Candidates</a>
+    <% @offices.each do |office| %>
+      <div id="panel5" class="content">
+
+        <a class="candidate-name-list" id="<%=@index%>">Running For <%= office %>:
+        </a>
+        <div class="candite-name-list-div" style="display: none;">
+          <% @candidates.where("office = ?", office).each do |candidate|%>
+            <p>-<%=candidate.name%></p>
+          <%end%>
+        </div>
+        <% @index += 1%>
+      </div>
+    <%end%>
+    <%end%>
+  </li>
+</ul>
+
