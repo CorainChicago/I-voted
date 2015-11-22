@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
     @zip = session[:zip]
     @index = 1
     @user = User.find_by(id: params[:id])
@@ -34,12 +35,11 @@ class UsersController < ApplicationController
         @offices << candidate.office
       end
       @offices.uniq!
-      @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
+      @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
 
-
       @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
-      @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")#.select(:election_title).distinct
-      polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20"))['address']
+      @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
+      polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20"))['address']
       if polling_place['locationName']
         @polling_place = polling_place['locationName'] + ', ' + polling_place['line1'] + '. ' +  polling_place['city'] + ', ' + polling_place['state'] + " " + polling_place['zip']
       else
