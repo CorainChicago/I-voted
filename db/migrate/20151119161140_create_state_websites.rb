@@ -1,6 +1,6 @@
-class CreateStatewebsites < ActiveRecord::Migration
+class CreateStateWebsites < ActiveRecord::Migration
   def change
-    create_table :statewebsites do |t|
+    create_table :state_websites do |t|
       t.string :name
       t.string :initials
       t.string :url

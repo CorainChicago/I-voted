@@ -1,4 +1,4 @@
-# I-voted
+# IVoted
 
 This is the group project for Dev Bootcamp to increase the availability of information for voters. The app is mobile-first.
 
