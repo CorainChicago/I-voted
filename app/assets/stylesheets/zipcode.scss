@@ -1,7 +1,7 @@
 .zipcode_show{
     text-align: center;
     width: 55%;
-    border: 2px ridge grey;
+    border: 0.5em double grey;
     margin: 10% 20% 5% 20%;
     padding: 5% 8% 5% 8%; 
 }
@@ -13,8 +13,13 @@
 .zipcode_show a:hover {
   background-color: grey;
 }
+.absentee_voting h2{
+  padding-top: 2%;
+}
 
-.absentee_voting li{
-  list-style: none;
-  padding-top: 5%;
+.absentee_voting h4{
+  padding-top: 3%;
+  a:hover{
+    background-color: grey;
+  }
 }
