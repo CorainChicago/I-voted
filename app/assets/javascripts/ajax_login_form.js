@@ -12,10 +12,12 @@ $(document).ready(function(){
       })
       request.done(function(response){
         if ($("#login_button").length === 0){
-          $(".slick-list").append(response);
-          $("div.zipcode-form").hide();
+          $("div.zipcode-form").append(response);
+          $("div.zipcode-form div form").hide();
         }
       })
     })
   }
 })
+
+
