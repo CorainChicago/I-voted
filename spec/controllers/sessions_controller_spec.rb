@@ -30,3 +30,24 @@ RSpec.describe SessionsController, type: :controller do
 
   end
 end
+
+
+ describe "destroy"  do
+
+    context "when valid params are passed" do
+      it "creates a new Game" do
+        expect {
+        post :create, {game: {user_throw: "paper-plane"}}
+      }.to change(Game, :count).by(+1)
+      end
+
+      it "assigns a newly created game as @game" do
+        post :create, {game: {user_throw: "paper-plane"}}
+        expect(assigns(:game)).to be_instance_of(Game)
+      end
+
+      it "redirects to the created game"  do
+        post :create, {game: {user_throw: "paper-plane"}}
+        expect(response).to redirect_to game_path(Game.last.id)
+      end
+    end
