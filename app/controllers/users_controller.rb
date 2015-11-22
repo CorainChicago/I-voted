@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @zip = session[:zip]
+    @index = 1
     @user = User.find_by(id: params[:id])
     if !Zipcode.find_by(zip: @zip)
       @errors = ['Please enter a valid zipcode']

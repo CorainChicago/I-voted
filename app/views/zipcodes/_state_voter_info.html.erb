@@ -36,10 +36,15 @@
     <a href="#panel5">Candidates</a>
     <% @offices.each do |office| %>
       <div id="panel5" class="content">
-        <h4>Running For: <%= office %>:</h4>
-        <% @candidates.where("office = ?", office).each do |candidate|%>
-          <p><%=candidate.name%></p>
-        <%end%>
+
+        <a class="candite-name-list" id="<%=@index%>">Running For <%= office %>:
+        </a>
+        <div style="display: none;">
+          <% @candidates.where("office = ?", office).each do |candidate|%>
+            <p><%=candidate.name%></p>
+          <%end%>
+        </div>
+        <% @index += 1%>
       </div>
     <%end%>
     <%end%>
