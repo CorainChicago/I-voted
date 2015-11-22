@@ -1,5 +1,6 @@
 
-<div class="image-carousel">
+
+<div class="image-carousel" id="index">
   <div class="image-carousel-slide">
     <div class="image-carousel-media">
   <%= image_tag("vintage-buttons.jpg") %>
@@ -21,7 +22,13 @@
 </div>
 
   <div class="zipcode-form">
+    <%= flash[:error] %> <br><br>
     <%= render "zipcodes/form" %>
   </div>
 
+
+<div class="grid-block voting-info">
+  <div class="small-6 medium-10 large-12 grid-content">
   <%= render "pages/general_voting_info_partial" %>
+  </div>
+</div>
