@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       @errors = ['Please enter a valid zipcode']
       render "new"
     else
-      @candidates = Candidate.where(zip: @zip).where("name != ?", "Barack Obama II")
+      @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
       @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
 
       @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
