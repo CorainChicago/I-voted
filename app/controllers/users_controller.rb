@@ -24,7 +24,10 @@ class UsersController < ApplicationController
       @errors = ['Please enter a valid zipcode']
       render "new"
     else
-      @candidates = Candidate.where(zip: @zip).where("name != ?", "Barack Obama II")
+
+      Candidate.remove_appointed_politicians(@zip)
+      @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
+
 
       @offices = []
       @candidates.each do |candidate|
@@ -33,7 +36,9 @@ class UsersController < ApplicationController
       @offices.uniq!
       @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
 
-      @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
+
+      @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
+      @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")#.select(:election_title).distinct
       polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20"))['address']
       if polling_place['locationName']
         @polling_place = polling_place['locationName'] + ', ' + polling_place['line1'] + '. ' +  polling_place['city'] + ', ' + polling_place['state'] + " " + polling_place['zip']
@@ -42,6 +47,8 @@ class UsersController < ApplicationController
       end
       @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
     end
+    @zipforwebsite = Zipcode.find_by(zip: @zip)
+    @statewebsite = StateWebsite.find_by(name: @zipforwebsite.state_name)
   end
 
   def update

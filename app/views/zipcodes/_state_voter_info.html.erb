@@ -1,19 +1,19 @@
 <ul class="accordion" data-accordion>
-<h2>For <%= @voter_registration_data.name %>:</h2>
+<h3>For <%= @voter_registration_data.name %>:</h3>
   <li class="accordion-navigation">
     <a href="#panel1">Early Voting</a>
     <div id="panel1" class="content">
        <p>Has Early In-Person Voting: </p>
-       <%= @voter_registration_data.early_in_person_voting %>
+       <%= @user_friendly_display[(@voter_registration_data.early_in_person_voting).to_s.to_sym] %>
     </div>
   </li>
   <li class="accordion-navigation">
     <a href="#panel2">Absentee Voting</a>
     <div id="panel2" class="content">
       <p>Has No Excuse Absentee Voting: </p>
-      <%= @voter_registration_data.no_excuse_absentee_voting %>
+      <%= @user_friendly_display[(@voter_registration_data.no_excuse_absentee_voting).to_s.to_sym] %>
       <p>Has Absentee Voting With Excuse:</p>
-      <%= @voter_registration_data.absentee_voting_with_excuse %>
+      <%= @user_friendly_display[(@voter_registration_data.absentee_voting_with_excuse).to_s.to_sym] %>
     </div>
   </li>
   <li class="accordion-navigation">
