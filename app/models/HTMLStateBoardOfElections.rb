@@ -32,12 +32,12 @@ class HTMLStateBoardOfElections
 
 end
 
-sos = HTMLStateBoardOfElections.new
-sos.parse
-sos.save_data
-all_states = sos.data
+# sos = HTMLStateBoardOfElections.new
+# sos.parse
+# sos.save_data
+# all_states = sos.data
 
-all_states.each do |state| 
-  state_modified = StateVotingInformation.find_by(name: state["state_name"])
-  state_modified.sos_url = state["url"]
-end
+# all_states.each do |state| 
+#   state_modified = StateVotingInformation.find_by(name: state["state_name"])
+#   state_modified.sos_url = state["url"]
+# end
