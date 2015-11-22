@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save
+      session[:user_id] = @user.id
       redirect_to "/users/#{@user.id}"
     else
       @errors = @user.errors.full_messages
@@ -17,13 +18,24 @@ class UsersController < ApplicationController
 
   def show
     @zip = session[:zip]
+    @index = 1
     @user = User.find_by(id: params[:id])
     if !Zipcode.find_by(zip: @zip)
       @errors = ['Please enter a valid zipcode']
       render "new"
     else
+
       Candidate.remove_appointed_politicians(@zip)
       @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
+
+
+      @offices = []
+      @candidates.each do |candidate|
+        @offices << candidate.office
+      end
+      @offices.uniq!
+      @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
+
 
       @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
       @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
@@ -35,6 +47,10 @@ class UsersController < ApplicationController
       end
       @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
     end
+  end
+
+  def update
+    @user = current_user
   end
 
   private
