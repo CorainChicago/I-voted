@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save
+      session[:user_id] = @user.id
       redirect_to "/users/#{@user.id}"
     else
       @errors = @user.errors.full_messages
@@ -32,6 +33,10 @@ class UsersController < ApplicationController
       end
       @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
     end
+  end
+
+  def update
+    @user = current_user
   end
 
   private
