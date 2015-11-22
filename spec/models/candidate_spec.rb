@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-
 describe Candidate do
-  it "should belong to Zipcode" do
-    candidate = Candidate.reflect_on_association(:zipcode)
-    expect(candidate.macro).to eq(:belongs_to)
+  let (:candidate) {Candidate.new(:name => 'John Smith', :office => 'Governor of Virginia', :party_affiliation => 'Whig')}
+  it "should have a name" do
+    expect(candidate.name).to be('John Smith')
   end
 end
