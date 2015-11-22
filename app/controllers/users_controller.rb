@@ -35,6 +35,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = current_user
+  end
+
   private
   def user_params
     params.require(:user).permit(:email, :street_address, :city, :state, :zip, :password)
