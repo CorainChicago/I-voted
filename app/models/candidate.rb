@@ -5,7 +5,13 @@ class Candidate < ActiveRecord::Base
   def self.current_president
     CURRENT_PRESIDENT
   end
-  def self.appointed_offices
-    APPOINTED_OFFICES
+
+  def self.remove_appointed_politicians(zip)
+    APPOINTED_OFFICES.each do |office|
+
+      Candidate.where(zip: zip).  where('office LIKE ?', "%#{office}%").destroy_all
+
+    end
   end
 end
+
