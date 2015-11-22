@@ -4,6 +4,7 @@ require 'json'
 class ZipcodesController < ApplicationController
 
   def show
+    @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
     @zipcode = params["zip"]
     @zip = Zipcode.find_by(zip: @zipcode)
     if @zip.present?
