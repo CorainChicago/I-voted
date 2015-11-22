@@ -47,6 +47,8 @@ class UsersController < ApplicationController
       end
       @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
     end
+    @zipforwebsite = Zipcode.find_by(zip: @zip)
+    @statewebsite = StateWebsite.find_by(name: @zipforwebsite.state_name)
   end
 
   def update
