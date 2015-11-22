@@ -1,0 +1,24 @@
+Welcome <%=@user.email%>. You reside in <b><%=@district%></b>
+
+<h3>Your polling place</h3>
+<%=@polling_place%>
+<h3>Upcoming elections</h3>
+<%@state_elections.each do |election|%>
+  <ul class="accordion" data-accordion>
+    <li class="accordion-navigation">
+      <a href="#panel0"><%=election.election_title%></a>
+      <div id="panel0" class="content">
+         <p>Election date: <%=election.election_date%> </p>
+         <p>Voter registration: <%=election.voter_registration%></p>
+         <p>Absentee ballot request: <%=election.absentee_ballot_request%></p>
+         <p>Early in-person voting: <%=election.absentee_ballot_return%></p>
+         <p>Voter registration: <%=election.early_in_person_voting%></p>
+         <p><%= @voter_registration_data.early_in_person_voting %></p>
+      </div>
+    </li>
+  </ul>
+<%end%>
+
+<h3>State voting information</h3>
+<%= render "zipcodes/state_voter_info" %>
+<%= render "zipcodes/soswebsite" %>

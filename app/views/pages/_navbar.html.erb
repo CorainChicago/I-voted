@@ -1,0 +1,27 @@
+<div class="contain to grid">
+  <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">IVoted</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+    <section class="top-bar-section">
+      <div class="logo-wrapper hide-for-small-only">
+           <div class="logo">
+             <%= image_tag("logo2.png") %>
+           </div>
+         </div>
+      <ul class="right">
+        <li class="has-form"><a href="/" class="button">Home</a></li>
+        <% if logged_in? %>
+          <li class="has-form"><a href="/users/<%=current_user.id %>" class="button">Voter Information</a></li>
+          <li class="has-form"><a href="/users/<%=current_user.id %>/edit" class="button">User Profile</a></li>
+          <li class="has-form button"><%= link_to "Logout", logout_path %></li>
+        <% else %>
+          <li class="has-form"><a href="users/new" class="button">Register</a></li>
+          <li class="has-form"><a href="/sessions/login" class="button" id="login">Login</a></li>
+        <% end %>
+      </ul>
+    </section>
+  </nav>
+</div>
