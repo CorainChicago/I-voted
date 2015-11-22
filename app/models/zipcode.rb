@@ -11,7 +11,7 @@ class Zipcode < ActiveRecord::Base
   def self.get_district(address)
     uri = URI.parse("https://www.googleapis.com/civicinfo/v2/voterinfo?key=#{ENV['API_KEY']}&address=#{address.gsub(' ', '%20')}&electionId=2000")
     response = JSON.parse(Net::HTTP.get(uri))
-    if response['contests']
+    if response['contests'] && response['office']
       response['contests'].each do |response|
         if response['office'].include?('US House of Representatives')
           return response['district']['name']

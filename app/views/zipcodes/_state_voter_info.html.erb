@@ -32,6 +32,7 @@
   </li>
 
   <li class="accordion-navigation">
+    <%if @offices%>
     <a href="#panel5">Candidates</a>
     <% @offices.each do |office| %>
       <div id="panel5" class="content">
@@ -40,6 +41,7 @@
           <p><%=candidate.name%></p>
         <%end%>
       </div>
+    <%end%>
     <%end%>
   </li>
 </ul>
