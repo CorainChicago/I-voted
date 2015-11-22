@@ -18,12 +18,19 @@ class UsersController < ApplicationController
 
   def show
     @zip = session[:zip]
+    @index = 1
     @user = User.find_by(id: params[:id])
     if !Zipcode.find_by(zip: @zip)
       @errors = ['Please enter a valid zipcode']
       render "new"
     else
       @candidates = Candidate.where(zip: @zip).where("name != ?", "Barack Obama II")
+
+      @offices = []
+      @candidates.each do |candidate|
+        @offices << candidate.office
+      end
+      @offices.uniq!
       @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
 
       @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
