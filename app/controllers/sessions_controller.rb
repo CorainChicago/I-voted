@@ -22,8 +22,7 @@ respond_to :html, :js
     end
   end
 
-
-  def logout
+  def destroy
     session.delete(:user_id)
     redirect_to '/'
   end

@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe "User" do
   describe "validations" do
-    it "is not valid without email " do
+    it "is not valid without email" do
       user = User.create
       user.valid?
       expect(user.errors).to_not be_empty

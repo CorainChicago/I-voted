@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save
+      session[:user_id] = @user.id
       redirect_to "/users/#{@user.id}"
     else
       @errors = @user.errors.full_messages
@@ -16,15 +17,29 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
     @zip = session[:zip]
+    @index = 1
     @user = User.find_by(id: params[:id])
     if !Zipcode.find_by(zip: @zip)
       @errors = ['Please enter a valid zipcode']
       render "new"
     else
-      @candidates = Candidate.where(zip: @zip).where("name != ?", "Barack Obama II")
+
+      Candidate.remove_appointed_politicians(@zip)
+      @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
+
+
+      @offices = []
+      @candidates.each do |candidate|
+        @offices << candidate.office
+      end
+      @offices.uniq!
+      @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
+
       @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
-      polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20"))['address']
+      @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
+      polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20"))['address']
       if polling_place['locationName']
         @polling_place = polling_place['locationName'] + ', ' + polling_place['line1'] + '. ' +  polling_place['city'] + ', ' + polling_place['state'] + " " + polling_place['zip']
       else
@@ -32,6 +47,12 @@ class UsersController < ApplicationController
       end
       @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
     end
+    @zipforwebsite = Zipcode.find_by(zip: @zip)
+    @statewebsite = StateWebsite.find_by(name: @zipforwebsite.state_name)
+  end
+
+  def update
+    @user = current_user
   end
 
   private

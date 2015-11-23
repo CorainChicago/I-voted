@@ -1,3 +1,7 @@
+.container{
+  width: 100%;
+}
+
 .voting-info {
   color: #F5F5F5;
 }
@@ -19,12 +23,13 @@
 
 #zip{
   width: 10.0em;
-} 
-
-div.zipcode-form{
-  margin-right: auto;
-  margin-left: 40%;
 }
+
+.zipcode-form > div > form{
+  margin-left: 70%;
+  margin-right: auto;
+}
+
 
 div.zipcode-form > div > form > input[type="submit"]:nth-child(3) {
   width: 11.5em;
@@ -46,3 +51,20 @@ footer{
   padding-left: 10%;
   border: 10px double grey;
 }
+
+.logo-wrapper {
+       position: relative;
+   }
+
+   .logo-wrapper .logo {
+       width: 80px;
+       height: 80px;
+
+
+       position: absolute;
+       left: 50%;
+       right: 50%;
+       top: 5px;
+       margin-left: -46px;
+       z-index: 2;
+   }
