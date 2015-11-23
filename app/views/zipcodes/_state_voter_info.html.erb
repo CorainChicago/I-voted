@@ -3,31 +3,41 @@
   <li class="accordion-navigation">
     <a href="#panel1">Early Voting</a>
     <div id="panel1" class="content">
-       <p>Has Early In-Person Voting: </p>
+       <em><p>Is Early In-Person Voting Available?</p></em>
        <%= @user_friendly_display[(@voter_registration_data.early_in_person_voting).to_s.to_sym] %>
     </div>
   </li>
   <li class="accordion-navigation">
     <a href="#panel2">Absentee Voting</a>
     <div id="panel2" class="content">
-      <p>Has No Excuse Absentee Voting: </p>
+      <% if @voter_registration_data.no_excuse_absentee_voting == true %>
+      <em><p>Voter Can Absentee Vote Without Providing a Reason/Excuse:</p></em>
       <%= @user_friendly_display[(@voter_registration_data.no_excuse_absentee_voting).to_s.to_sym] %>
-      <p>Has Absentee Voting With Excuse:</p>
+      <% else %>
+      <em><p>Voter Must Provide Reason/Excuse for Absentee Vote:</p></em>
       <%= @user_friendly_display[(@voter_registration_data.absentee_voting_with_excuse).to_s.to_sym] %>
+      <% end %>
     </div>
   </li>
   <li class="accordion-navigation">
-    <a href="#panel3">Vote-by-mail</a>
+    <a href="#panel3">Vote-by-Mail</a>
     <div id="panel3" class="content">
-      <p>All Mail Voting</p>
+      <em><p>Does this state offer all-mail voting?</p></em>
+      <% if @voter_registration_data.all_mail_voting == true %>
       <%= @voter_registration_data.all_mail_voting %>
+      <% else %>
+      <em><p>This state does not offer all-mail voting. You'll need to visit the polls in person to vote, unless you cast an absentee ballot!</p></em>
+      <% end %>
     </div>
   </li>
   <li class="accordion-navigation">
     <a href="#panel4">Voter ID Requirements</a>
     <div id="panel4" class="content">
-      <p>ID Requirements to Vote: </p>
-      <%= @voter_registration_data.voter_id_on_election_day %>
+      <em><p>ID Requirements to Vote:</p></em>
+      <% if @voter_registration_data.voter_id_on_election_day != "" %>
+      <% else %>
+      <em><p>No voter ID laws in this state! Isn't democracy great?</p></em>
+      <% end %>
     </div>
   </li>
 
@@ -50,4 +60,3 @@
     <%end%>
   </li>
 </ul>
-
