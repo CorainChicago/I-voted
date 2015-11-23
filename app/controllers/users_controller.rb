@@ -51,9 +51,13 @@ class UsersController < ApplicationController
     @statewebsite = StateWebsite.find_by(name: @zipforwebsite.state_name)
   end
 
-  def edit
+  def update
     @user = current_user
   end
+
+  # def patch
+  #   @user = User.find(current_user.id)
+  # end
 
   private
   def user_params

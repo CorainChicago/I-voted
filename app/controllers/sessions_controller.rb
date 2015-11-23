@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 respond_to :html, :js
 
-  def login
+  def new
     if request.xhr?
       render :layout => false
     end

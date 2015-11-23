@@ -20,8 +20,8 @@
           <li class="has-form"><a href="/users/<%=current_user.id %>/edit" class="button">User Profile</a></li>
           <li class="has-form button"><%= link_to "Logout", logout_path %></li>
         <% else %>
-          <li class="has-form"><a href="users/new" class="button">Register</a></li>
-          <li class="has-form"><a href="/sessions/login" class="button" id="login">Login</a></li>
+          <li class="has-form button"><%= link_to "Register", new_user_path %></li>
+          <li class="has-form button"><%= link_to "Login", login_path %></li>
         <% end %>
       </ul>
     </section>
