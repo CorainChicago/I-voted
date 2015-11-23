@@ -1,7 +1,8 @@
 <div class="microformat-padding zipcode_show">
-  <h2>Welcome <%=@user.email%>. You reside in <span id="state_name"><%=@district%></span></h2>
+  <h2>Welcome <%=@user.email%>. You reside in <span id="state_name"><%=@district%></span></h2><br>
   <h3>Your polling place</h3>
   <%=@polling_place%>
+  <br>
   <h3>Upcoming elections</h3>
   <% @state_elections.each do |election| %>
     <ul class="accordion" data-accordion>
