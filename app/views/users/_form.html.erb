@@ -5,7 +5,7 @@
     <p><%= error %></p>
   <% end %>
 <% end %>
-
+<h1>hello</h1>
 
 <div class="grid-block new-user-form">
   <div class="large-5 grid-content">
@@ -32,6 +32,8 @@
     <%=f.label 'Zip:'%>
     <%=f.text_field :zip%>
     <br>
+    <p><%= check_box_tag(:subscribe) %>
+    <%= label_tag(:subscribe, "I'd like to receive email reminders") %></p>
     <%=f.submit 'Register'%>
   <%end%>
   </div>

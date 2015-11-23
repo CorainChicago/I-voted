@@ -14,12 +14,8 @@ respond_to :html, :js
       set_sessions
       redirect_to '/'
     else
-<<<<<<< HEAD
       @error = "Please enter valid credentials"
-      render :login
-=======
       render :new
->>>>>>> b4e9fc75d66cfa4dce82189cf05fcd557cf30041
     end
   end
 
