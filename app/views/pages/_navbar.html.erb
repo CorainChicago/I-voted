@@ -17,8 +17,8 @@
         <li class="has-form button"><%= link_to "Home", root_path %></li>
         <% if logged_in? %>
           <li class="has-form"><a href="/users/<%=current_user.id %>" class="button">Voter Information</a></li>
-          <li class="has-form button"><%= link_to "User Profile", new_user_path %></li>
-          <li class="has-form button"><%= link_to "Logout", logout_path %></li>
+          <li class="has-form button"><%= link_to "User Profile", edit_user_path(current_user) %></li>
+          <li class="has-form button"><%= link_to "Logout", logout_path, method: :delete %></li>
         <% else %>
           <li class="has-form button"><%= link_to "Register", new_user_path %></li>
           <li class="has-form button"><%= link_to "Login", login_path %></li>
