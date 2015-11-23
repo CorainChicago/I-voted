@@ -4,5 +4,8 @@ class PagesController < ApplicationController
     @general_voting_info = Electioninfo.all
   end
 
+  def show
+  end
+
 
 end
