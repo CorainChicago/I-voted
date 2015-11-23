@@ -14,14 +14,14 @@
            </div>
          </div>
       <ul class="right">
-        <li class="has-form button"><%= link_to "Home", root_path,  class: "button" %></li>
+        <li class="has-form"><%= link_to "Home", root_path, class: "button" %></li>
         <% if logged_in? %>
-          <li class="has-form button"><%= link_to "Voter Information", user_path(current_user),  class: "button"%></li>
-          <li class="has-form button"><%= link_to "User Profile", edit_user_path(current_user), class: "button" %></li>
-          <li class="has-form button"><%= link_to "Logout", logout_path, method: :delete,  class: "button" %></li>
+          <li class="has-form"><%= link_to "Voter Information", user_path(current_user), class: "button" %></li>
+          <li class="has-form"><%= link_to "User Profile", edit_user_path(current_user), class: "button" %></li>
+          <li class="has-form"><%= link_to "Logout", logout_path, method: :delete, class: "button" %></li>
         <% else %>
-          <li class="has-form button"><%= link_to "Register", new_user_path,  class: "button" %></li>
-          <li class="has-form button" id="login"><%= link_to "Login", login_path,  class: "button" %></li>
+          <li class="has-form"><%= link_to "Register", new_user_path, class: "button" %></li>
+          <li class="has-form" id="login"><%= link_to "Login", login_path, class: "button" %></li>
         <% end %>
       </ul>
     </section>
