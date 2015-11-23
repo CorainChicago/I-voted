@@ -2,7 +2,7 @@ $(document).ready(function(){
   $('form').on('submit', function(event){
     if (checkForm() == true) {
       event.preventDefault();
-      setZipSession($('#user_zip').val());
+      // setZipSession($('#user_zip').val());
       insertComma();
       getCandidates($(this));
     }
