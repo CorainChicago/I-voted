@@ -43,8 +43,8 @@ RSpec.describe SessionsController, type: :controller do
    describe "login"  do
     context "ajax" do
       it "render form" do
-        get :login
-        expect(response).not_to render_template(:_form)
+        get :new, format: :xhr
+        expect(response).to have_http_status(:success)
       end
     end
   end
