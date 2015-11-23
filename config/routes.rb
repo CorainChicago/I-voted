@@ -7,27 +7,9 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete '/logout'  => 'sessions#destroy'
 
-  # get 'users/new' => 'users#new'
-
-  # post 'users' => 'users#create'
-  
-  # get 'users/:id' => 'users#show'
-  
-  # get 'users/:id/edit' => 'users#update'
-
-  # patch 'users/:id/edit' => 'users#update'
-
-  # get '/sessions/login' => 'sessions#login'
-
-  # post '/sessions/create' => 'sessions#create'
-
-  # post '/sessions/create_zip' => 'sessions#create_zip'
-
-  # get '/logout' => 'sessions#destroy'
-
   post '/candidates/create' => 'candidates#create'
 
-  # get '/zipcodes/:id' => 'zipcodes#show' #show voting info for a zipcode
+  get '/zipcode' => 'zipcodes#show' #show voting info for a zipcode
 
   get '/about' => 'pages#show'
 
