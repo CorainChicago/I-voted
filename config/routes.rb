@@ -12,11 +12,11 @@ Rails.application.routes.draw do
 
   # post 'users/create' => 'users#create'
 
-  get 'sessions/login' => 'sessions#login'
+  get '/sessions/login' => 'sessions#login'
 
-  post 'sessions/create' => 'sessions#create'
+  post '/sessions/create' => 'sessions#create'
 
-  post 'sessions/create_zip' => 'sessions#create_zip'
+  post '/sessions/create_zip' => 'sessions#create_zip'
 
   get '/logout' => 'sessions#destroy'
   # get 'sessions/logout' => 'sessions#logout'
