@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     @statewebsite = StateWebsite.find_by(name: @zipforwebsite.state_name)
   end
 
-  def update
+  def edit
     @user = current_user
   end
 
