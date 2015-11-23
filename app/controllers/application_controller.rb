@@ -41,6 +41,13 @@ class ApplicationController < ActionController::Base
     session[:user_id] != nil
   end
 
+  def set_sessions
+    session[:zip] = current_user.zip
+    session[:user_id] = current_user.id
+  end
+
+
+  helper_method :set_sessions
   helper_method :current_user
   helper_method :logged_in?
 end
