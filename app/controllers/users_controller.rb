@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
+      session[:zip] = @user.zip
       redirect_to "/users/#{@user.id}"
     else
       @errors = @user.errors.full_messages
