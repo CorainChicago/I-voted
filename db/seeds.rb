@@ -13,7 +13,15 @@ Electioninfo.create([
   {title: "U.S. Election Assistance Commission", subtitle: "The U.S. Election Assistance Commission (EAC) was established by the Help America Vote Act of 2002 (HAVA).", url: "http://www.eac.gov/voter_resources/contact_your_state.aspx"},
   {title: "US Electoral College", subtitle: "The National Archives site with information about the electoral college and history. ", url: "http://www.archives.gov/federal-register/electoral-college/index.html"},
   {title: "Rock The Vote", subtitle: "Rock the Vote is the largest nonprofit and nonpartisan organization in the United States driving the youth vote to the polls.", url: "http://www.rockthevote.com/"},
-  {title: "Elections & Voting", subtitle: "The White House website for voting", url: "https://www.whitehouse.gov/1600/elections-and-voting"}
+  {title: "Elections & Voting", subtitle: "The White House website for voting", url: "https://www.whitehouse.gov/1600/elections-and-voting"},
+  {title: "Republican Party", subtitle: "", url: "https://www.gop.com/"},
+  {title: "Democratic Party", subtitle: "", url: "https://www.democrats.org/"},
+  {title: "Green Party", subtitle: "", url: "http://www.gp.org/"},
+  {title: "Green Party", subtitle: "", url: "http://www.gp.org/"},
+  {title: "19th Amendment", subtitle: "Women's Right to Vote", url: "http://www.archives.gov/historical-docs/document.html?doc=13&title.raw=19th+Amendment+to+the+U.S.+Constitution:+Women%27s+Right+to+Vote"},
+  {title: "19th Amendment", subtitle: "Women's Right to Vote", url: "http://www.archives.gov/historical-docs/document.html?doc=13&title.raw=19th+Amendment+to+the+U.S.+Constitution:+Women%27s+Right+to+Vote"},
+  {title: "Becoming a Poll Worker", subtitle: "Poll workers are essential to ensuring that elections are a success...", url: "http://www.eac.gov/voter_resources/become_a_poll_worker.aspx"},
+  {title: "Learn about the Electoral College", subtitle: "", url: "https://www.khanacademy.org/humanities/history/american-civics-parent/american-civics/v/electoral-college"}
   ])
 
 records = JSON.parse(File.read('public/state_data.json'))
