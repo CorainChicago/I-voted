@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   # get 'sessions/logout' => 'sessions#logout'
 
-  post 'candidates/create' => 'candidates#create'
+  post '/candidates/create' => 'candidates#create'
 
   get '/zipcode' => 'zipcodes#show'
 
