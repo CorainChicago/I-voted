@@ -26,11 +26,8 @@ class UsersController < ApplicationController
       @errors = ['Please enter a valid zipcode']
       render "new"
     else
-
       Candidate.remove_appointed_politicians(@zip)
       @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
-
-
       @offices = []
       @candidates.each do |candidate|
         @offices << candidate.office
