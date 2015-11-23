@@ -2,15 +2,25 @@ Rails.application.routes.draw do
 
   resources :users
 
-  get 'sessions/login' => 'sessions#login'
+  # get 'users/new' => 'users#new'
 
-  post 'sessions/create' => 'sessions#create'
+  # get 'users/:id' => 'users#show'
 
-  post 'sessions/create_zip' => 'sessions#create_zip'
+  # get 'users/:id/edit' => 'users#update'
+
+  # patch 'users/:id/edit' => 'users#update'
+
+  # post 'users/create' => 'users#create'
+
+  get '/sessions/login' => 'sessions#login'
+
+  post '/sessions/create' => 'sessions#create'
+
+  post '/sessions/create_zip' => 'sessions#create_zip'
 
   get '/logout' => 'sessions#destroy'
 
-  post 'candidates/create' => 'candidates#create'
+  post '/candidates/create' => 'candidates#create'
 
   get '/zipcode' => 'zipcodes#show'
 
