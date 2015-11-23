@@ -16,3 +16,4 @@
 /config/local_env.yml
 /db/schema.rb
 coverage
+.byebug_history

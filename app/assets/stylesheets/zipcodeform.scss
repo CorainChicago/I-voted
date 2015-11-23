@@ -1,0 +1,15 @@
+#zip{
+  width: 10.0em;
+}
+
+.zipcode-form > div > form{
+  margin-left: 70%;
+  margin-right: auto;
+}
+
+
+div.zipcode-form > div > form > input[type="submit"]:nth-child(3) {
+  width: 11.5em;
+  height: 3.0em;
+  margin-bottom: 15%;
+}
