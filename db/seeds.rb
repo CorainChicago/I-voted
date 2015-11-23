@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Electioninfo.create([
+  {title: "Election Protection", subtitle: "Working 365 days to advance and defend your right to vote.", url: "http://www.866ourvote.org/"},
   {title: "Open Secrets", subtitle: "...tracking money in U.S. politics and its effect on elections and public policy.", url: "http://www.opensecrets.org/"},
   {title: "League of Women Voters", subtitle: "'Formed from the movement that secured the right to vote for women, the centerpiece of the League’s efforts remain to expand participation and give a voice to all Americans'", url: "http://lwv.org/"},
   {title: "Voting Rights Matter", subtitle: "A historical overview of voting rights and restrictions in the US. This site is funded by the Democratic Party.", url: "http://www.votingrightsmatter.com/"},
@@ -14,10 +15,7 @@ Electioninfo.create([
   {title: "US Electoral College", subtitle: "The National Archives site with information about the electoral college and history. ", url: "http://www.archives.gov/federal-register/electoral-college/index.html"},
   {title: "Rock The Vote", subtitle: "Rock the Vote is the largest nonprofit and nonpartisan organization in the United States driving the youth vote to the polls.", url: "http://www.rockthevote.com/"},
   {title: "Elections & Voting", subtitle: "The White House website for voting", url: "https://www.whitehouse.gov/1600/elections-and-voting"},
-  {title: "Republican Party", subtitle: "The Republican Party, commonly referred to as the GOP (abbreviation for Grand Old Party), is one of the two major contemporary political parties in the United States, the other being its historic rival, the Democratic Party.", url: "https://www.gop.com/"},
-  {title: "Democratic Party", subtitle: "Since 1848, the Democratic National Committee has been the home of the Democratic Party, the oldest continuing party in the United States.", url: "https://www.democrats.org/"},
-  {title: "Green Party", subtitle: "An independent political party that is connected to American social movements, and is part of a global Green movement that shares key values, including our Four Pillars: Peace and Non-Violence, Ecological Wisdom, Grassroots Democracy, and Social Justice, and our Ten Key Values.", url: "http://www.gp.org/"},
-  {title: "19th Amendment", subtitle: "Women's Right to Vote", url: "http://www.archives.gov/historical-docs/document.html?doc=13&title.raw=19th+Amendment+to+the+U.S.+Constitution:+Women%27s+Right+to+Vote"},
+  {title: "News Hour", subtitle: "Nonpartisan information on elections and politics from a public broadcaster.", url: "http://www.pbs.org/newshour/topic/politics/"},
   {title: "19th Amendment", subtitle: "Women's Right to Vote", url: "http://www.archives.gov/historical-docs/document.html?doc=13&title.raw=19th+Amendment+to+the+U.S.+Constitution:+Women%27s+Right+to+Vote"},
   {title: "Becoming a Poll Worker", subtitle: "Poll workers are essential to ensuring that elections are a success...", url: "http://www.eac.gov/voter_resources/become_a_poll_worker.aspx"},
   {title: "Learn about the Electoral College", subtitle: "", url: "https://www.khanacademy.org/humanities/history/american-civics-parent/american-civics/v/electoral-college"}
