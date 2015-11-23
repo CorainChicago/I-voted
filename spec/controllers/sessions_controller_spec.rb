@@ -29,4 +29,32 @@ RSpec.describe SessionsController, type: :controller do
     end
 
   end
+
+
+ describe "logout"  do
+    context "redirects home" do
+      it "redirects to root" do
+        get :destroy
+        expect(response).to redirect_to root_path
+      end
+    end
+  end
+
+  describe "create_zip"  do
+    context "to not render" do
+      it "new" do
+        get :create_zip
+        expect(response).not_to render_template(:new)
+      end
+    end
+  end
+
+   describe "login"  do
+    context "ajax" do
+      it "render form" do
+        get :login
+        expect(response).not_to render_template(:_form)
+      end
+    end
+  end
 end
