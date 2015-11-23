@@ -40,15 +40,6 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  describe "create_zip"  do
-    context "to not render" do
-      it "new" do
-        get :create_zip
-        expect(response).not_to render_template(:new)
-      end
-    end
-  end
-
    describe "login"  do
     context "ajax" do
       it "render form" do
