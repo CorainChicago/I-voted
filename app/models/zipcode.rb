@@ -13,8 +13,10 @@ class Zipcode < ActiveRecord::Base
     response = JSON.parse(Net::HTTP.get(uri))
     if response['contests']
       response['contests'].each do |response|
-        if response['office'].include?('US House of Representatives')
+        if response['office']
+          if response['office'].include?('US House of Representatives')
           return response['district']['name']
+          end
         end
       end
     end
