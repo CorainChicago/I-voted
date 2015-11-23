@@ -2,8 +2,7 @@
   <h2>Welcome <%=@user.email%>. You reside in <span id="state_name"><%=@district%></span></h2><br>
   <h3>Your polling place</h3>
   <%=@polling_place%>
-  <br>
-  <h3>Upcoming elections</h3>
+  <p><h3>Upcoming elections</h3></p>
   <% @state_elections.each do |election| %>
     <ul class="accordion" data-accordion>
       <li class="accordion-navigation">
@@ -20,7 +19,7 @@
     </ul>
   <% end %>
 
-  <h3>State voting information</h3>
+  <p><h3>State voting information</h3></p>
   <%= render "zipcodes/state_voter_info" %>
   <%= render "zipcodes/soswebsite" %>
 </div>
