@@ -18,6 +18,7 @@ respond_to :html, :js
       session[:user_id] = user.id
       redirect_to '/'
     else
+      @error = "Please enter valid credentials"
       render :login
     end
   end

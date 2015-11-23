@@ -1,5 +1,6 @@
 <%= form_tag  sessions_create_path do %>
   <div class="row collapse">
+    <h3>&nbsp; &nbsp;<%= @error %><h3>
     <div class="large-10 columns">
     <%= label_tag "Email:" %>
     <%= text_field_tag "user[email]" %>
