@@ -51,13 +51,21 @@ class UsersController < ApplicationController
     @statewebsite = StateWebsite.find_by(name: @zipforwebsite.state_name)
   end
 
-  def update
+  def edit
     @user = current_user
   end
 
-  # def patch
-  #   @user = User.find(current_user.id)
-  # end
+  def update
+    @user = User.find(current_user.id)
+    @user.update(user_params)
+    if @user.valid?
+      flash[:user_updated] = "Your profile was successfully updated"
+      redirect_to '/'
+    else
+      @errors = @user.errors.full_messages
+      render 'edit'
+    end
+  end
 
   private
   def user_params
