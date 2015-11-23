@@ -1,4 +1,4 @@
-<%= form_tag  sessions_create_path do %>
+<%= form_for :session, url: login_path do %>
   <div class="row collapse">
     <h3>&nbsp; &nbsp;<%= @error %><h3>
     <div class="large-10 columns">

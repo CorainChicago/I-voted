@@ -3,7 +3,7 @@ $(document).ready(function(){
 
   if (top.location.pathname === '/'){
 
-    $("#login").on("click", function(event){
+    $("#login").on("click", 'a', function(event){
       event.preventDefault();
       var link = $(this).attr("href");
       var request = $.ajax({
@@ -19,5 +19,6 @@ $(document).ready(function(){
     })
   }
 })
+
 
 

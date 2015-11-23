@@ -24,14 +24,13 @@ class ApplicationController < ActionController::Base
     candidates
   end
 
+  def load_zip_codes
+    CSV.foreach("db/zipcodes/us_postal_codes_two_one.csv") do |row|
 
-    def load_zip_codes
-      CSV.foreach("db/zipcodes/us_postal_codes_four_two.csv") do |row|
-        scraper(row[0], ([row[0],row[1],row[2],row[3],row[4]]).join('+').gsub(' ', "+"))
-        $browser.close
-      end
+      scraper(row[0], ([row[0],row[1],row[2],row[3],row[4]]).join('+').gsub(' ', "+"))
+      $browser.close
     end
-
+  end
 
   def current_user
     @current_user ||= User.find(session[:user_id])
@@ -41,6 +40,13 @@ class ApplicationController < ActionController::Base
     session[:user_id] != nil
   end
 
+  def set_sessions
+    session[:zip] = current_user.zip
+    session[:user_id] = current_user.id
+  end
+
+
+  helper_method :set_sessions
   helper_method :current_user
   helper_method :logged_in?
 end
