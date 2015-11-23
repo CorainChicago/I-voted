@@ -14,10 +14,10 @@
            </div>
          </div>
       <ul class="right">
-        <li class="has-form"><a href="/" class="button">Home</a></li>
+        <li class="has-form button"><%= link_to "Home", root_path %></li>
         <% if logged_in? %>
           <li class="has-form"><a href="/users/<%=current_user.id %>" class="button">Voter Information</a></li>
-          <li class="has-form"><a href="/users/<%=current_user.id %>/edit" class="button">User Profile</a></li>
+          <li class="has-form button"><%= link_to "User Profile", new_user_path %></li>
           <li class="has-form button"><%= link_to "Logout", logout_path %></li>
         <% else %>
           <li class="has-form button"><%= link_to "Register", new_user_path %></li>
