@@ -38,8 +38,6 @@ end
 # all_states = sos.data
 
 # all_states.each do |state| 
-#   p state
-#   state = StateVotingInformation.find_by(name: state["state_name"])
-#   state.sos_url = sos.url
-#   p state.sos_url
+#   state_modified = StateVotingInformation.find_by(name: state["state_name"])
+#   state_modified.sos_url = state["url"]
 # end
