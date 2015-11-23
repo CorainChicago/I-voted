@@ -2,16 +2,6 @@ Rails.application.routes.draw do
 
   resources :users
 
-  # get 'users/new' => 'users#new'
-
-  # get 'users/:id' => 'users#show'
-
-  # get 'users/:id/edit' => 'users#update'
-
-  # patch 'users/:id/edit' => 'users#update'
-
-  # post 'users/create' => 'users#create'
-
   get 'sessions/login' => 'sessions#login'
 
   post 'sessions/create' => 'sessions#create'
@@ -19,11 +9,12 @@ Rails.application.routes.draw do
   post 'sessions/create_zip' => 'sessions#create_zip'
 
   get '/logout' => 'sessions#destroy'
-  # get 'sessions/logout' => 'sessions#logout'
 
   post 'candidates/create' => 'candidates#create'
 
   get '/zipcode' => 'zipcodes#show'
+
+  get '/about' => 'pages#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

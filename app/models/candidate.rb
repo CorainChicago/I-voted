@@ -14,4 +14,3 @@ class Candidate < ActiveRecord::Base
     end
   end
 end
-
