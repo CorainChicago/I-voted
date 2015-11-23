@@ -16,7 +16,7 @@
         <% if logged_in? %>
           <li class="has-form"><a href="/users/<%=current_user.id %>" class="button">Voter Information</a></li>
           <li class="has-form"><a href="/users/<%=current_user.id %>/edit" class="button">User Profile</a></li>
-          <li class="has-form button"><%= link_to "Logout", logout_path %></li>
+          <li class="has-form"><a href="/logout" class="button">Logout</a></li>
         <% else %>
           <li class="has-form"><a href="users/new" class="button">Register</a></li>
           <li class="has-form"><a href="/sessions/login" class="button" id="login">Login</a></li>
