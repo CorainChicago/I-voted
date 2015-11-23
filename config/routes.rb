@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   get '/zipcode' => 'zipcodes#show'
 
+  get '/about' => 'pages#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
