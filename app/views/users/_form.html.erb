@@ -39,24 +39,32 @@ function initAutocomplete() {
 function fillInAddress() {
   // Get the place details from the autocomplete object.
   var place = autocomplete.getPlace();
-console.log(place.address_components);
-  for (var component in componentForm) {
-    // console.log(component.value);
-    // console.log(component);
-    // document.getElementById(component).value = '';
-    // document.getElementById(component).disabled = false;
-  }
+$('#user_street_address').val($('#autocomplete').val().split(', United States')[0].split(',')[0]);
+$('#user_city').val($('#autocomplete').val().split(', United States')[0].split(',')[1]);
+$('#user_state').val($('#autocomplete').val().split(', United States')[0].split(',')[2]);
+// $('#user_state').val($('#autocomplete').val().split(', United States')[0].split(',')[3]);
+
+
+  // $('#autocomplete').val().split(', United States')[0].split(',')[0]
+
+// console.log(place.address_components);
+  // for (var component in componentForm) {
+  //   // console.log(component.value);
+  //   // console.log(component);
+  //   // document.getElementById(component).value = '';
+  //   // document.getElementById(component).disabled = false;
+  // }
 // console.log('--------');
   // Get each component of the address from the place details
   // and fill the corresponding field on the form.
-  for (var i = 0; i < place.address_components.length; i++) {
-    var addressType = place.address_components[i].types[0];
-    if (componentForm[addressType]) {
-      var val = place.address_components[i][componentForm[addressType]];
-      // document.getElementById(addressType).value = val;
-      // console.log(val);
-    }
-  }
+  // for (var i = 0; i < place.address_components.length; i++) {
+  //   var addressType = place.address_components[i].types[0];
+  //   if (componentForm[addressType]) {
+  //     var val = place.address_components[i][componentForm[addressType]];
+  //     // document.getElementById(addressType).value = val;
+  //     // console.log(val);
+  //   }
+  // }
 }
 // [END region_fillform]
 
