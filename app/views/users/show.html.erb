@@ -1,8 +1,8 @@
 <div class="microformat-padding zipcode_show">
-  <h2>Welcome <%=@user.email%>. You reside in <span id="state_name"><%=@district%></span></h2>
+  <h2>Welcome <%=@user.email%>. You reside in <span id="state_name"><%=@district%></span></h2><br>
   <h3>Your polling place</h3>
   <%=@polling_place%>
-  <h3>Upcoming elections</h3>
+  <p><h3>Upcoming elections</h3></p>
   <% @state_elections.each do |election| %>
     <ul class="accordion" data-accordion>
       <li class="accordion-navigation">
@@ -13,13 +13,12 @@
            <p>Absentee ballot request: <%=election.absentee_ballot_request%></p>
            <p>Early in-person voting: <%=election.absentee_ballot_return%></p>
            <p>Voter registration: <%=election.early_in_person_voting%></p>
-           <p><%= @voter_registration_data.early_in_person_voting %></p>
         </div>
       </li>
     </ul>
   <% end %>
 
-  <h3>State voting information</h3>
+  <p><h3>State voting information</h3></p>
   <%= render "zipcodes/state_voter_info" %>
   <%= render "zipcodes/soswebsite" %>
 </div>
