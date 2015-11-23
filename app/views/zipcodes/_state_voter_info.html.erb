@@ -41,7 +41,7 @@
         </a>
         <div class="candite-name-list-div" style="display: none;">
           <% @candidates.where("office = ?", office).each do |candidate|%>
-          <a href=https://www.google.com/#q=<%=candidate.name.gsub(' ', '+')%>><%=candidate.name%></a> (<%=candidate.party_affiliation%>)
+          <a href=https://www.google.com/#q=<%=candidate.name.gsub(' ', '+')%>><%=candidate.name%></a> <%if candidate.party_affiliation.length > 1%>(<%end%><%=candidate.party_affiliation%><%if candidate.party_affiliation.length > 1%>)<%end%>
           <%end%>
         </div>
         <% @index += 1%>
