@@ -42,7 +42,7 @@ var setZipSession = function(zip){
 };
 
 var insertComma = function() {
-   $('#user_city').val($('#user_city').val() + ',');
+   $('#user_city').val($('#user_city').val() + '');
 }
 
 var getCandidates = function(form) {
