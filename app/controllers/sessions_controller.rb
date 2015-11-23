@@ -1,24 +1,20 @@
 class SessionsController < ApplicationController
 respond_to :html, :js
 
-  def login
+  def new
     if request.xhr?
       render :layout => false
     end
-  end
-
-  def create_zip
-    session[:zip] = params[:zip]
-    render :nothing => true, :status => :ok
   end
 
   def create
     user = User.find_by(email: user_params[:email])
     if user && user.authenticate(user_params[:password])
       session[:user_id] = user.id
+      set_sessions
       redirect_to '/'
     else
-      render :login
+      render :new
     end
   end
 
