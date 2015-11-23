@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
     candidates
   end
 
-
   def load_zip_codes
     CSV.foreach("db/zipcodes/us_postal_codes_two_one.csv") do |row|
 

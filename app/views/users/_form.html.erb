@@ -1,8 +1,11 @@
+
+
 <% if @errors%>
   <% @errors.each do |error| %>
     <p><%= error %></p>
   <% end %>
 <% end %>
+
 
 <div class="grid-block new-user-form">
   <div class="large-5 grid-content">
@@ -14,15 +17,18 @@
     <%=f.label 'Password:'%>
     <%=f.password_field :password%>
     <br>
-    <%=f.label 'Street Address:'%>
-    <%=f.text_field :street_address %>
-    <br>
-    <%=f.label 'City:'%>
-    <%=f.text_field :city%>
-    <br>
-    <%=f.label 'State:'%>
-    <%=f.text_field :state%>
-    <br>
+    <%=f.label 'Address:'%>
+ <div id="locationField">
+      <input id="autocomplete"
+             onFocus="geolocate()" type="text"></input>
+    </div>
+    <%=f.hidden_field :street_address %>
+
+
+    <%=f.hidden_field :city%>
+
+    <%=f.hidden_field :state%>
+
     <%=f.label 'Zip:'%>
     <%=f.text_field :zip%>
     <br>
@@ -30,3 +36,5 @@
   <%end%>
   </div>
 </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>&signed_in=true&libraries=places&callback=initAutocomplete"
+        async defer></script>
