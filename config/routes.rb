@@ -1,28 +1,15 @@
 Rails.application.routes.draw do
 
+  root 'pages#index'
   resources :users
 
-  # get 'users/new' => 'users#new'
-
-  # get 'users/:id' => 'users#show'
-
-  # get 'users/:id/edit' => 'users#update'
-
-  # patch 'users/:id/edit' => 'users#update'
-
-  # post 'users/create' => 'users#create'
-
-  get '/sessions/login' => 'sessions#login'
-
-  post '/sessions/create' => 'sessions#create'
-
-  post '/sessions/create_zip' => 'sessions#create_zip'
-
-  get '/logout' => 'sessions#destroy'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete '/logout'  => 'sessions#destroy'
 
   post '/candidates/create' => 'candidates#create'
 
-  get '/zipcode' => 'zipcodes#show'
+  get '/zipcode' => 'zipcodes#show' #show voting info for a zipcode
 
   get '/about' => 'pages#show'
 
@@ -30,7 +17,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

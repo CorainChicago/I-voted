@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
+      session[:zip] = @user.zip
       redirect_to "/users/#{@user.id}"
     else
       @errors = @user.errors.full_messages
@@ -25,11 +26,8 @@ class UsersController < ApplicationController
       @errors = ['Please enter a valid zipcode']
       render "new"
     else
-
       Candidate.remove_appointed_politicians(@zip)
       @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
-
-
       @offices = []
       @candidates.each do |candidate|
         @offices << candidate.office
@@ -51,8 +49,20 @@ class UsersController < ApplicationController
     @statewebsite = StateWebsite.find_by(name: @zipforwebsite.state_name)
   end
 
-  def update
+  def edit
     @user = current_user
+  end
+
+  def update
+    @user = User.find(current_user.id)
+    @user.update(user_params)
+    if @user.valid?
+      flash[:user_updated] = "Your profile was successfully updated"
+      redirect_to '/'
+    else
+      @errors = @user.errors.full_messages
+      render 'edit'
+    end
   end
 
   private
