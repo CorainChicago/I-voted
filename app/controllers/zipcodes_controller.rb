@@ -1,7 +1,7 @@
+class ZipcodesController < ApplicationController
 require 'net/http'
 require 'json'
 
-class ZipcodesController < ApplicationController
 
   def show
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
