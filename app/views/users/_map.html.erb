@@ -3,20 +3,6 @@
         async defer></script>
 
 <script type="text/javascript">
-  // var geocoder = new google.maps.Geocoder();
-  // var address = "2050 W PENSACOLA AVE. CHICAGO, IL 60618";
-  // var latitude;
-  // var longitude;
-  // geocoder.geocode( { 'address': address}, function(results, status) {
-  //   if (status == google.maps.GeocoderStatus.OK) {
-  //     latitude = results[0].geometry.location.lat();
-  //     longitude = results[0].geometry.location.lng();
-  //   }
-  // })
-
-  var latitudeT = 47.6097;
-  var longitudeT = -122.3331;
-
   var polling_info = $.ajax({
     url: '/users/get_polling_info',
     method: 'get'
@@ -25,19 +11,10 @@
     var response = response.split('&quot;');
     var polling_place_address = (response[7] + " " + response[11] + ", " + response[15] + " " + response[19])
     console.log(lat_long(polling_place_address).longitude);
-
   });
 
-
-
-
-
-
-
 lat_long = function(address){
-
   var geocoder = new google.maps.Geocoder();
-
   var latitude;
   var longitude;
   geocoder.geocode( { 'address': address}, function(results, status) {
@@ -49,46 +26,29 @@ lat_long = function(address){
     console.log('now lat long is:');
     console.log(lat_long);
     initMap(lat_long);
- // console.log('latlong is:');
- // console.log(lat_long);
     return lat_long;
   });
 };
 
 
-
-
-
-
 function initMap(latLong) {
-
-
-
-  // var myLatlng = {lat: 38.8833, lng: -77.0167};
-   var myLatlng = latLong;
-   console.log('and now it is');
-   console.log(latLong);
-   console.log('hello!!!!!!!!');
+  var myLatlng = latLong;
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 9,
+    zoom: 14,
     center: latLong
   });
 
 var polling_place = latLong;
-
 var newmarker = new google.maps.Marker({
     position: polling_place,
-    title:"Hello World!"
  });
-
   map.addListener('click', function() {
     map.setZoom(8);
     map.setCenter(newmarker.getPosition());
   });
 }
-// To add the marker to the map, call setMap();
-$('div').on("click", function(){
 
+$('div').on("click", function(){
   newmarker.setMap(map);
 })
  var onMapMouseleaveHandler = function (event) {
@@ -98,18 +58,12 @@ $('div').on("click", function(){
     that.off('mouseleave', onMapMouseleaveHandler);
     that.find('iframe').css("pointer-events", "none");
   }
-
   var onMapClickHandler = function (event) {
     var that = $(this);
-
-    // Disable the click handler until the user leaves the map area
     that.off('click', onMapClickHandler);
-
-    // Handle the mouse leave event
     that.on('mouseleave', onMapMouseleaveHandler);
   }
 
-  // Enable map zooming with mouse scroll when the user clicks the map
   $('.maps.embed-container').on('click', onMapClickHandler);
 </script>
 
