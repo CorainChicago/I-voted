@@ -1,5 +1,6 @@
 
 class ApplicationController < ActionController::Base
+  helper_method :send_reminders_email, :set_sessions, :current_user, :logged_in?
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -25,15 +26,12 @@ class ApplicationController < ActionController::Base
   end
 
 
-    def load_zip_codes
-
-      CSV.foreach("db/zipcodes/us_postal_codes_three_one.csv") do |row|
-        scraper(row[0], ([row[0],row[1],row[2],row[3],row[4]]).join('+').gsub(' ', "+"))
-        $browser.close
-      end
-
+  def load_zip_codes
+    CSV.foreach("db/zipcodes/us_postal_codes_three_one.csv") do |row|
+      scraper(row[0], ([row[0],row[1],row[2],row[3],row[4]]).join('+').gsub(' ', "+"))
+      $browser.close
     end
-  end
+
 
   def current_user
     @current_user ||= User.find(session[:user_id])
@@ -60,10 +58,3 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
-
-  helper_method :send_reminders_email
-  helper_method :set_sessions
-  helper_method :current_user
-  helper_method :logged_in?
-end
