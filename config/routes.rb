@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   get '/about' => 'pages#show'
 
+  #This is my attempt at ajaxing to get the map on the page
+  get 'map' =>'zipcodes#new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
