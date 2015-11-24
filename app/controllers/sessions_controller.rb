@@ -13,7 +13,10 @@ respond_to :html, :js
       session[:user_id] = user.id
       set_sessions
       redirect_to '/'
+
     else
+      flash[:login_error] = "Invalid credentials. Please try again."
+
       render :new
     end
   end
@@ -21,6 +24,13 @@ respond_to :html, :js
   def destroy
     session.delete(:user_id)
     redirect_to '/'
+  end
+
+  def unsubscribe
+    user = User.find_by(id: user_params[:id])
+    user.subcribe = false
+    user.save
+    redirect_to "/"
   end
 
 

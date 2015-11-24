@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'pages#index'
   resources :users
+  get    '/users/:id/unsubscribe'   => 'users#unsubscribe'
+
 
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -9,12 +11,12 @@ Rails.application.routes.draw do
 
   post '/candidates/create' => 'candidates#create'
 
-  get '/zipcode' => 'zipcodes#show' #show voting info for a zipcode
+  get '/zipcode' => 'zipcodes#show  ' #show voting info for a zipcode
 
   get '/about' => 'pages#show'
 
-  #This is my attempt at ajaxing to get the map on the page
-  get 'map' =>'zipcodes#new'
+  get '/fb_key' => 'pages#fb'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

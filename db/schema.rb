@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121213030) do
+ActiveRecord::Schema.define(version: 20151124004449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20151121213030) do
     t.string   "url",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reminder_emails", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "subject"
   end
 
   create_table "state_election_infos", force: :cascade do |t|
@@ -69,11 +76,12 @@ ActiveRecord::Schema.define(version: 20151121213030) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "street_address"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "city"
     t.string   "state"
-    t.integer  "zip"
+    t.string   "zip"
+    t.boolean  "subscribe",       default: true
   end
 
   create_table "zipcodes", force: :cascade do |t|

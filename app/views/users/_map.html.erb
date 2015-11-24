@@ -11,14 +11,15 @@
     if (status == google.maps.GeocoderStatus.OK) {
       latitude = results[0].geometry.location.lat();
       longitude = results[0].geometry.location.lng();
-    alert(latitude);
-    alert(longitude);
     } 
   })
 
+  var latitudeT = 38.8833;
+  var longitudeT = -77.0167
+
 function initMap() {
   // var myLatlng = {lat: 38.8833, lng: -77.0167};
-   var myLatlng = {lat: 38.8833, lng: -77.0167};
+   var myLatlng = {lat: latitudeT, lng: longitudeT};
 
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 3,
