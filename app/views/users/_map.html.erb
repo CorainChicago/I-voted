@@ -1,46 +1,55 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>&"></script></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>&callback=initMap"
-        async defer></script> 
+        async defer></script>
 
 <script type="text/javascript">
-  // var geocoder = new google.maps.Geocoder();
-  // var address = "2050 W PENSACOLA AVE. CHICAGO, IL 60618";
-  // var latitude;
-  // var longitude;
-  // geocoder.geocode( { 'address': address}, function(results, status) {
-  //   if (status == google.maps.GeocoderStatus.OK) {
-  //     latitude = results[0].geometry.location.lat();
-  //     longitude = results[0].geometry.location.lng();
-  //   } 
-  // })
-
-  var latitudeT = 47.6097;
-  var longitudeT = -122.3331;
-
-function initMap() {
-  // var myLatlng = {lat: 38.8833, lng: -77.0167};
-   var myLatlng = {lat: latitudeT, lng: longitudeT};
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 9,
-    center: myLatlng
+  var polling_info = $.ajax({
+    url: '/users/get_polling_info',
+    method: 'get'
+  })
+  polling_info.done(function(response){
+    var response = response.split('&quot;');
+    var polling_place_address = (response[7] + " " + response[11] + ", " + response[15] + " " + response[19])
+    console.log(lat_long(polling_place_address).longitude);
   });
 
-var polling_place = {lat: 33.7550, lng: -84.3900};
+lat_long = function(address){
+  var geocoder = new google.maps.Geocoder();
+  var latitude;
+  var longitude;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      latitude = results[0].geometry.location.lat();
+      longitude = results[0].geometry.location.lng();
+    }
+    var lat_long = {lat: latitude, lng: longitude};
+    initMap(lat_long);
+    return lat_long;
+  });
+};
 
-var newmarker = new google.maps.Marker({
-    position: polling_place,
-    title:"Hello World!"
- });
+
+function initMap(latLong) {
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: latLong
+  });
+  var marker = new google.maps.Marker({
+      position: latLong,
+      map: map,
+      draggable: true,
+      animation: google.maps.Animation.DROP,
+      title: 'My polling place'
+  });
 
   map.addListener('click', function() {
     map.setZoom(8);
     map.setCenter(newmarker.getPosition());
   });
 }
-// To add the marker to the map, call setMap();
+
 $('div').on("click", function(){
-  console.log("hi");
   newmarker.setMap(map);
 })
  var onMapMouseleaveHandler = function (event) {
@@ -50,18 +59,12 @@ $('div').on("click", function(){
     that.off('mouseleave', onMapMouseleaveHandler);
     that.find('iframe').css("pointer-events", "none");
   }
-
   var onMapClickHandler = function (event) {
     var that = $(this);
-
-    // Disable the click handler until the user leaves the map area
     that.off('click', onMapClickHandler);
-
-    // Handle the mouse leave event
     that.on('mouseleave', onMapMouseleaveHandler);
   }
 
-  // Enable map zooming with mouse scroll when the user clicks the map
   $('.maps.embed-container').on('click', onMapClickHandler);
 </script>
 
