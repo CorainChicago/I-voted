@@ -1,5 +1,6 @@
 
 class ApplicationController < ActionController::Base
+  helper_method :send_reminders_email, :set_sessions, :current_user, :logged_in?
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -60,10 +61,3 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
-
-  helper_method :send_reminders_email
-  helper_method :set_sessions
-  helper_method :current_user
-  helper_method :logged_in?
-end
