@@ -5,17 +5,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :set_locale
  
-  def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
-  end
-
-  def default_url_options(options = {})
-  { locale: I18n.locale }.merge options
-  end
-
-
   def scraper(zip_code, zip_code_formatted)
 
     $browser = Watir::Browser.new
