@@ -14,14 +14,26 @@ h2#link-header{
       }
     }
 
+
+#general-title {
+  text-decoration: underline;
+}
+
+#general-subtitle {
+  text-decoration: none;
+}
+
 .general-voting-info div {
   height: 12.0em;
   width: auto;
-  border: 12px double #a6a6a6;
   margin: 0% 15% 5% 15%;
   padding: 2%;
   overflow: auto;
 }
+    .link-container {
+      background-color: #5d5d5d;
+      border-radius: 1%;
+    }
 
 #link-header {
   clear: both;
