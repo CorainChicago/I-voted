@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-
+ 
   def scraper(zip_code, zip_code_formatted)
 
     $browser = Watir::Browser.new
@@ -33,7 +33,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def current_user
     @current_user ||= User.find(session[:user_id])
   end
@@ -59,5 +58,4 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  
 end
