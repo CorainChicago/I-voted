@@ -4,6 +4,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def get_polling_info
+    user = User.find_by(id: session[:user_id])
+    @polling_place = Zipcode.get_polling_place(("#{user.street_address} #{user.city} #{user.state}").gsub(' ', "%20"))['address']
+
+    render partial: 'users/get_polling_info', layout: false
+  end
+
   def create
     @user = User.new(user_params)
     @user.token = (0...20).map { (1..100).to_a[rand(26)] }.join
@@ -32,6 +39,7 @@ class UsersController < ApplicationController
   end
 
   def show
+
     if !session[:user_id].nil?
       @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
       @zip = session[:zip]
@@ -40,6 +48,7 @@ class UsersController < ApplicationController
       if !Zipcode.find_by(zip: @zip)
         @errors = ['Please enter a valid zipcode']
         render "new"
+
       else
         Candidate.remove_appointed_politicians(@zip)
         @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
