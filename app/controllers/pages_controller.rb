@@ -7,5 +7,9 @@ class PagesController < ApplicationController
   def show
   end
 
+  def fb
+    render partial: "<%=ENV['FB_KEY']%>".html_safe
+  end
+
 
 end

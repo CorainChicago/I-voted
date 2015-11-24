@@ -18,9 +18,9 @@ class UsersController < ApplicationController
 
   def show
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
-    @zip = session[:zip]
     @index = 1
     @user = User.find_by(id: params[:id])
+    @zip = @user.zip
     if !Zipcode.find_by(zip: @zip)
       @errors = ['Please enter a valid zipcode']
       render "new"
