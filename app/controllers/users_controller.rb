@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     user = User.find_by(id: session[:user_id])
     @polling_place = Zipcode.get_polling_place(("#{user.street_address} #{user.city} #{user.state}").gsub(' ', "%20"))['address']
 
+
     render partial: 'users/get_polling_info', layout: false
   end
 
