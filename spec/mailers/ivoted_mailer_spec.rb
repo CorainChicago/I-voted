@@ -11,7 +11,7 @@ RSpec.describe IvotedMailer, type: :mailer do
     end
 
     it "renders the body" do
-      expect(mail.body.shoud include("Thank you for signing up with I-Voted.")
+      expect(mail.body.should include("Thank you for signing up with I-Voted.")
     end
   end
 
