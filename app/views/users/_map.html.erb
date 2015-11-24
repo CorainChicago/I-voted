@@ -1,0 +1,48 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>&"></script></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>&callback=initMap"
+        async defer></script> 
+<script type="text/javascript">
+  var geocoder = new google.maps.Geocoder();
+  var address = "2050 W PENSACOLA AVE. CHICAGO, IL 60618";
+  var latitude;
+  var longitude;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      latitude = results[0].geometry.location.lat();
+      longitude = results[0].geometry.location.lng();
+    } 
+  })
+
+  var latitudeT = 38.8833;
+  var longitudeT = -77.0167
+
+function initMap() {
+  // var myLatlng = {lat: 38.8833, lng: -77.0167};
+   var myLatlng = {lat: latitudeT, lng: longitudeT};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 3,
+    center: myLatlng
+  });
+
+var polling_place = {lat: 33.7550, lng: -84.3900};
+
+var newmarker = new google.maps.Marker({
+    position: polling_place,
+    title:"Hello World!"
+ });
+
+  map.addListener('click', function() {
+    map.setZoom(8);
+    map.setCenter(newmarker.getPosition());
+  });
+}
+// // To add the marker to the map, call setMap();
+$('div').on("click", function(){
+  console.log("hi");
+  newmarker.setMap(map);
+})
+</script>
+
+
+ <div id="map"></div>
