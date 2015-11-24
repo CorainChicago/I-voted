@@ -1,6 +1,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>&"></script></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>&callback=initMap"
-        async defer></script> 
+        async defer></script>
 <script type="text/javascript">
   var geocoder = new google.maps.Geocoder();
   var address = "2050 W PENSACOLA AVE. CHICAGO, IL 60618";
@@ -10,7 +10,7 @@
     if (status == google.maps.GeocoderStatus.OK) {
       latitude = results[0].geometry.location.lat();
       longitude = results[0].geometry.location.lng();
-    } 
+    }
   })
 
   var latitudeT = 38.8833;
@@ -45,4 +45,4 @@ $('div').on("click", function(){
 </script>
 
 
- <div id="map"></div>
+ <div class="hide-for-small-only" id="map"></div>
