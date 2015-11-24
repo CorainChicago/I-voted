@@ -1,4 +1,5 @@
 <div class="zipcode_show">
+  <h2>Welcome <%=@user.email%> You reside in <span id="state_name"><%=@district%></span></h2><br>
   <h2>Welcome <%=@user.email%>.
   <% unless @district.include? "Sorry" %>
     You reside in <span id="state_name"><%=@district%></span><br>
