@@ -3,7 +3,7 @@
   <p><em>(Address incorrect? Edit your profile <%= link_to "here", edit_user_path, class: "edit-profile-reminder" %>.)</em></p><br>
   <h3>Your polling place</h3>
   <%=@polling_place%>
-  <p><h3>Upcoming elections</h3></p>
+  <p><h3>Upcoming Elections</h3></p>
   <% @state_elections.each do |election| %>
     <ul class="accordion" data-accordion>
       <li class="accordion-navigation">
@@ -19,7 +19,7 @@
     </ul>
   <% end %>
 
-  <p><h3>State voting information</h3></p>
+  <p><h3>State Voting Information</h3></p>
   <%= render "zipcodes/state_voter_info" %>
   <%= render "zipcodes/soswebsite" %>
 </div>
