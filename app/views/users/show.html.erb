@@ -3,8 +3,8 @@
   <p><em>(Address incorrect? Edit your profile <%= link_to "here", edit_user_path, class: "edit-profile-reminder" %>.)</em></p><br>
   <h3>Your polling place</h3>
   <%=@polling_place%>
-  <%= render 'users/map' %>
-  <h3>Upcoming elections</h3>
+  <%= render "users/map" %>
+  <p><h3>Upcoming elections</h3></p>
   <% @state_elections.each do |election| %>
     <ul class="accordion" data-accordion>
       <li class="accordion-navigation">
