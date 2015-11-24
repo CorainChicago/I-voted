@@ -4,11 +4,18 @@
         <li class="name">
           <h1><a href="/">IVoted</a></h1>
 
+    <script>
+    $(document).ready(function(){
+      var getKey = $.ajax({
+        url: '/fb_key',
+        method: 'get'
+      });
+      getKey.done(function(response){
+        var key = response;
 
-          <script>
             window.fbAsyncInit = function() {
               FB.init({
-                appId      : '1659385067652225',
+                appId      : key,
                 xfbml      : true,
                 version    : 'v2.5'
               });
@@ -21,16 +28,7 @@
                js.src = "//connect.facebook.net/en_US/sdk.js";
                fjs.parentNode.insertBefore(js, fjs);
              }(document, 'script', 'facebook-jssdk'));
-          </script>
 
-    <script>
-    $(document).ready(function(){
-      var getKey = $.ajax({
-        url: '/fb_key',
-        method: 'get'
-      });
-      getKey.done(function(response){
-        var key = response;
         window.fbAsyncInit = function() {
           FB.init({
             appId      : key,
@@ -47,16 +45,11 @@
            fjs.parentNode.insertBefore(js, fjs);
          }(document, 'script', 'facebook-jssdk'));
           });
-
-
-
-
         });
 
     </script>
 
 <div class="fb-like" data-href="http://i-voted.herokuapp.com" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-
 
           <a href="https://twitter.com/share" class="twitter-share-button"{count} data-text="Set a reminder to do you're civic duty. Every vote counts!">Tweet</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
