@@ -1,7 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
 
   include Resque::Mailer
-  default from: "ivoted@reminder.com"
+  default from: "reminder@ivoted.com"
   layout 'mailer'
 
 
