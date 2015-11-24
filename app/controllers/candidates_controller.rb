@@ -7,9 +7,11 @@ class CandidatesController < ApplicationController
     end
     render :nothing => true, :status => :ok
   end
+
   def post_params
     params.require(:results).permit!
   end
+  
   def zip_params
     params.permit(:zip)
   end
