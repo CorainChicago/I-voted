@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'pages#index'
   resources :users
-  get    '/users/:id/unsubscribe'   => 'users#unsubscribe'
+  get    '/users/:id/unsubscribe/:token'   => 'users#unsubscribe'
 
 
   get    'login'   => 'sessions#new'

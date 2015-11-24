@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.token = (0...20).map { (1..100).to_a[rand(26)] }.join
     if @user.save
       ReminderEmail.create(user_id: @user.id, subject: "welcome")
       IvotedMailer.welcome(@user).deliver
@@ -18,11 +19,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def unsubscribe
+    user = User.find_by(id: params[:id])
+    if user.token == params[:token]
+      puts "token is the same as params[token]"
+      user.subscribe = false
+      user.token = (0...20).map { (1..100).to_a[rand(26)] }.join
+      user.save
+      redirect_to "/"
+    end
+  end
+
   def show
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
+    @zip = session[:zip]
     @index = 1
     @user = User.find_by(id: params[:id])
-    @zip = @user.zip
     if !Zipcode.find_by(zip: @zip)
       @errors = ['Please enter a valid zipcode']
       render "new"
