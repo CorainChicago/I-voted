@@ -1,13 +1,11 @@
-
-<ul class="small-block-grid-1 large-block-grid-2 resource-link-block-grid">
-
+<ul class="small-block-grid-1 large-block-grid-2 text-center resource-link-block-grid">
+  <h2 id="link-header">General Voting Info & Resources</h2>
   <% @general_voting_info.each do |link| %>
     <li class="general-voting-info">
       <div>
       <h3><a href=<%= link.url %>><%= link.title %><h3>
-      <p><%= link.subtitle %></p></a>
+      <p class="hide-for-small-only"><%= link.subtitle %></p></a>
       <div>
     </li>
   <% end %>
-
-  </ul>
+</ul>

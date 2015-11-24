@@ -1,2 +1,10 @@
+<div>
+  <h4 id="registration-reminder">Want information specific to your address?<br> <%= link_to "Register", new_user_path %> to see information about your polling place & congressional district.
+  </h4>
+</div>
 
-<%= render "zipcodes/state_voter_info" %>
+<div class="microformat-padding zipcode_show ">
+  <%= render "zipcodes/state_voter_info" %>
+  <%= render "zipcodes/soswebsite" %>
+  <%= render "zipcodes/absentee_voting" %>
+</div>

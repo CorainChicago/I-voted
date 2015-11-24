@@ -1,29 +1,26 @@
 Rails.application.routes.draw do
 
+  root 'pages#index'
+  resources :users
+  get    '/users/:id/unsubscribe'   => 'users#unsubscribe'
 
-  get 'users/new' => 'users#new'
 
-  get 'users/:id' => 'users#show'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete '/logout'  => 'sessions#destroy'
 
-  post 'users/create' => 'users#create'
+  post '/candidates/create' => 'candidates#create'
 
-  get 'sessions/login' => 'sessions#login'
+  get '/zipcode' => 'zipcodes#show  ' #show voting info for a zipcode
 
-  post 'sessions/create' => 'sessions#create'
+  get '/about' => 'pages#show'
 
-  post 'sessions/create_zip' => 'sessions#create_zip'
-
-  get 'sessions/logout' => 'sessions#logout'
-
-  post 'candidates/create' => 'candidates#create'
-
-  get '/zipcode' => 'zipcodes#show'
+  get '/fb_key' => 'pages#fb'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

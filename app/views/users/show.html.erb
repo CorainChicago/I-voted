@@ -1,14 +1,25 @@
+<div class="microformat-padding zipcode_show">
+  <h2>Welcome <%=@user.email%>. You reside in <span id="state_name"><%=@district%></span></h2><br>
+  <p><em>(Address incorrect? Edit your profile <%= link_to "here", edit_user_path, class: "edit-profile-reminder" %>.)</em></p><br>
+  <h3>Your polling place</h3>
+  <%=@polling_place%>
+  <p><h3>Upcoming elections</h3></p>
+  <% @state_elections.each do |election| %>
+    <ul class="accordion" data-accordion>
+      <li class="accordion-navigation">
+        <a href="#panel0"><%=election.election_title%></a>
+        <div id="panel0" class="content">
+           <p>Election date: <%=election.election_date%> </p>
+           <p>Voter registration: <%=election.voter_registration%></p>
+           <p>Absentee ballot request: <%=election.absentee_ballot_request%></p>
+           <p>Early in-person voting: <%=election.absentee_ballot_return%></p>
+           <p>Voter registration: <%=election.early_in_person_voting%></p>
+        </div>
+      </li>
+    </ul>
+  <% end %>
 
-
-Welcome <%=@user.email%>. You reside in <b><%=@district%></b>
-
-<h3>Polling place near <%=@user.street_address%>, <%=@user.city%></h3>
-<%=@polling_place%>
-<h3>State voting information</h3>
-<%= render "zipcodes/state_voter_info" %>
-<h3>Candidates running</h3>
-<ul>
-  <%@candidates.each do |candidate|%>
-    <%=render partial: 'zipcodes/candidates_info', locals: {candidate: candidate}%>
-  <%end%>
-</ul>
+  <p><h3>State voting information</h3></p>
+  <%= render "zipcodes/state_voter_info" %>
+  <%= render "zipcodes/soswebsite" %>
+</div>

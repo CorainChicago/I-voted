@@ -2,18 +2,49 @@
   <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="#">IVoted</a></h1>
+          <h1><a href="/">IVoted</a></h1>
+
+
+          <script>
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId      : '1659385067652225',
+                xfbml      : true,
+                version    : 'v2.5'
+              });
+            };
+
+            (function(d, s, id){
+               var js, fjs = d.getElementsByTagName(s)[0];
+               if (d.getElementById(id)) {return;}
+               js = d.createElement(s); js.id = id;
+               js.src = "//connect.facebook.net/en_US/sdk.js";
+               fjs.parentNode.insertBefore(js, fjs);
+             }(document, 'script', 'facebook-jssdk'));
+          </script>
+
+
+
+
+          <a href="https://twitter.com/share" class="twitter-share-button"{count} data-text="Set a reminder to do you're civic duty. Every vote counts!">Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
     <section class="top-bar-section">
+      <div class="logo-wrapper hide-for-small-only">
+           <div class="logo">
+             <%= image_tag("logoperfcir.png") %>
+           </div>
+         </div>
       <ul class="right">
-        <li class="has-form"><a href="/" class="button">Home</a></li>
+        <li class="has-form"><%= link_to "Home", root_path, class: "button" %></li>
         <% if logged_in? %>
-          <li class="has-form"><a href="zipcodes/<%=current_user.zip %>" class="button">Voter Information</a></li>
-          <li class="has-form"><a href="sessions/logout" class="button">Logout</a></li>
+          <li class="has-form"><%= link_to "Voter Information", user_path(current_user), class: "button" %></li>
+          <li class="has-form"><%= link_to "User Profile", edit_user_path(current_user), class: "button" %></li>
+          <li class="has-form"><%= link_to "Logout", logout_path, method: :delete, class: "button" %></li>
         <% else %>
-          <li class="has-form"><a href="/users/new" class="button">Register</a></li>
-          <li class="has-form"><a href="/sessions/login" class="button" id="login">Login</a></li>
+          <li class="has-form"><%= link_to "Register", new_user_path, class: "button" %></li>
+          <li class="has-form" id="login"><%= link_to "Login", login_path, class: "button" %></li>
         <% end %>
       </ul>
     </section>

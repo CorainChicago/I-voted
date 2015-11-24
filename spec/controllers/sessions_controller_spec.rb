@@ -29,4 +29,23 @@ RSpec.describe SessionsController, type: :controller do
     end
 
   end
+
+
+ describe "logout"  do
+    context "redirects home" do
+      it "redirects to root" do
+        get :destroy
+        expect(response).to redirect_to root_path
+      end
+    end
+  end
+
+   describe "login"  do
+    context "ajax" do
+      it "render form" do
+        get :new, format: :xhr
+        expect(response).to have_http_status(:success)
+      end
+    end
+  end
 end

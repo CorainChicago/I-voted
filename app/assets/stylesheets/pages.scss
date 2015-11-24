@@ -1,48 +1,15 @@
-.voting-info {
-  color: #F5F5F5;
-}
-  .resource-link-block-grid {
-    list-style-type: none;
-    }
-    .general-voting-info h3 {
-      color: #F5F5F5;
-    }
-        p {
-          color: #F5F5F5;
-        }
-
-.general-voting-info div{
-  margin: 0% 15% 5% 15%;
-  padding: 2%
+.container{
+  width: 100%;
 }
 
+ div.about-page {
+   text-align: center;
+ }
 
-#zip{
-  width: 10.0em;
-} 
+  div.about-page > h3 {
+       color: #F5F5F5;
+       }
 
-div.zipcode-form{
-  margin-right: auto;
-  margin-left: 40%;
-}
-
-div.zipcode-form > div > form > input[type="submit"]:nth-child(3) {
-  width: 11.5em;
-  height: 3.0em;
-  margin-bottom: 15%;
-}
-
-div.sticky > nav > ul > li.name > h1 > a{
-  margin-top: 8%;
-  font-size: 3.0em;
-}
-
-footer{
-  margin-right: 3%;
-  margin-left: 3%;
-  padding-top: 2%;
-  padding-bottom: 3%;
-  padding-right: 10%;
-  padding-left: 10%;
-  border: 10px double grey;
+.twitter-share-button{
+  margin-left: 9%;
 }

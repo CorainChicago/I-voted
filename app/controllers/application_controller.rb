@@ -28,13 +28,12 @@ class ApplicationController < ActionController::Base
     def load_zip_codes
 
       CSV.foreach("db/zipcodes/us_postal_codes_three_one.csv") do |row|
-
-
         scraper(row[0], ([row[0],row[1],row[2],row[3],row[4]]).join('+').gsub(' ', "+"))
         $browser.close
       end
-    end
 
+    end
+  end
 
   def current_user
     @current_user ||= User.find(session[:user_id])
@@ -44,6 +43,27 @@ class ApplicationController < ActionController::Base
     session[:user_id] != nil
   end
 
+  def set_sessions
+    session[:zip] = current_user.zip
+    session[:user_id] = current_user.id
+  end
+
+
+  def send_reminders_email
+    date = Date.parse("%#{DateTime.now.day} %#{DateTime.now.mon}")
+    if date.mon == 9 && date.day == 1
+      User.all.each do |user|
+        if  !user.reminder_emails.last.nil? && user.reminder_emails.last.subject != "elections coming up"
+          IvotedMailer.reminder(user).deliver
+          ReminderEmail.create(user_id: user.id, subject: "elections coming up")
+        end
+      end
+    end
+  end
+
+
+  helper_method :send_reminders_email
+  helper_method :set_sessions
   helper_method :current_user
   helper_method :logged_in?
 end
