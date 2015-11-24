@@ -46,6 +46,20 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def send_reminders_email
+    date = Date.parse("%#{DateTime.now.day} %#{DateTime.now.mon}")
+    if date.mon == 9 && date.day == 1
+      User.all.each do |user|
+        if  !user.reminder_emails.last.nil? && user.reminder_emails.last.subject != "elections coming up"
+          IvotedMailer.reminder(user).deliver
+          ReminderEmail.create(user_id: user.id, subject: "elections coming up")
+        end
+      end
+    end
+  end
+
+
+  helper_method :send_reminders_email
   helper_method :set_sessions
   helper_method :current_user
   helper_method :logged_in?

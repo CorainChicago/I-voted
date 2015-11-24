@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'pages#index'
   resources :users
+  get    '/users/:id/unsubscribe'   => 'users#unsubscribe'
+
 
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
