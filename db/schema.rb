@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121213030) do
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20151124003639) do
+=======
+ActiveRecord::Schema.define(version: 20151124004449) do
+>>>>>>> acc66fdd1efa7bb515fa92280db2b09e6cce52e4
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +35,13 @@ ActiveRecord::Schema.define(version: 20151121213030) do
     t.string   "url",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reminder_emails", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "subject"
   end
 
   create_table "state_election_infos", force: :cascade do |t|
@@ -69,11 +80,16 @@ ActiveRecord::Schema.define(version: 20151121213030) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "street_address"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "city"
     t.string   "state"
+<<<<<<< HEAD
     t.integer  "zip"
+    t.boolean  "subscribe",       default: true
+=======
+    t.string   "zip"
+>>>>>>> acc66fdd1efa7bb515fa92280db2b09e6cce52e4
   end
 
   create_table "zipcodes", force: :cascade do |t|

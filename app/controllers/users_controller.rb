@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      ReminderEmail.create(user_id: @user.id, subject: "welcome")
+      IvotedMailer.welcome(@user).deliver
       session[:user_id] = @user.id
       session[:zip] = @user.zip
       redirect_to "/users/#{@user.id}"
@@ -18,9 +20,9 @@ class UsersController < ApplicationController
 
   def show
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
-    @zip = session[:zip]
     @index = 1
     @user = User.find_by(id: params[:id])
+    @zip = @user.zip
     if !Zipcode.find_by(zip: @zip)
       @errors = ['Please enter a valid zipcode']
       render "new"
@@ -66,6 +68,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :street_address, :city, :state, :zip, :password)
+    params.require(:user).permit(:email, :street_address, :city, :state, :zip, :password, :subscribe)
   end
 end
