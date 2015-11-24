@@ -20,6 +20,7 @@
     <%= render "pages/navbar" %>
   </div>
 
+  <%= link_to("Deutsch", "#{APP_CONFIG[:deutsch_website_url]}#{request.env['REQUEST_URI']}") %>
     <%= yield %>
     <%= render "pages/footer" %>
   </div>
