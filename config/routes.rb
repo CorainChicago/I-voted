@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  get '/users/get_polling_info' => 'users#get_polling_info'
   root 'pages#index'
   resources :users
-  get    '/users/:id/unsubscribe/:token'   => 'users#unsubscribe'
+  get '/users/get_polling_info' => 'users#get_polling_info'
+  get  '/users/:id/unsubscribe/:token'   => 'users#unsubscribe'
 
 
   get    'login'   => 'sessions#new'
