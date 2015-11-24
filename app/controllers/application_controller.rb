@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
     date = Date.parse("%#{DateTime.now.day} %#{DateTime.now.mon}")
     if date.mon == 9 && date.day == 1
       User.all.each do |user|
-        if  !user.reminder_emails.last.nil? && user.reminder_emails.last.subject != "elections coming up"
+        if user.subscribe == true && !user.reminder_emails.last.nil? && user.reminder_emails.last.subject != "elections coming up"
           IvotedMailer.reminder(user).deliver
           ReminderEmail.create(user_id: user.id, subject: "elections coming up")
         end

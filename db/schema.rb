@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20151124142502) do
     t.string   "state"
     t.string   "zip"
     t.boolean  "subscribe",       default: true
-    t.integer  "token"
+    t.string   "token"
   end
 
   create_table "zipcodes", force: :cascade do |t|
