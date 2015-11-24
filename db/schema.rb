@@ -76,12 +76,12 @@ ActiveRecord::Schema.define(version: 20151124003639) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "street_address"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
-    t.boolean  "subscribe"
+    t.boolean  "subscribe",       default: true
   end
 
   create_table "zipcodes", force: :cascade do |t|

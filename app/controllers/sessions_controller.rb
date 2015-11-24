@@ -26,6 +26,13 @@ respond_to :html, :js
     redirect_to '/'
   end
 
+  def unsubscribe
+    user = User.find_by(id: user_params[:id])
+    user.subcribe = false
+    user.save
+    redirect_to "/"
+  end
+
 
   private
   def user_params
