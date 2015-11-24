@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
       scraper(row[0], ([row[0],row[1],row[2],row[3],row[4]]).join('+').gsub(' ', "+"))
       $browser.close
     end
+  end
 
 
   def current_user
@@ -58,3 +59,5 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  
+end
