@@ -15,10 +15,12 @@
     <%=f.label 'Password:'%>
     <%=f.password_field :password%>
     <br>
+    <%=f.label 'Zip:'%>
+    <%=f.text_field :zip%>
+
     <%=f.label 'Address:'%>
- <div id="locationField">
-      <input id="autocomplete"
-             onFocus="geolocate()" type="text"></input>
+    <div id="locationField">
+      <input id="autocomplete"onFocus="geolocate()" type="text"></input>
     </div>
     <%=f.hidden_field :street_address %>
 
@@ -27,8 +29,6 @@
 
     <%=f.hidden_field :state%>
 
-    <%=f.label 'Zip:'%>
-    <%=f.text_field :zip%>
     <br>
     <%=f.submit 'Register'%>
   <%end%>
