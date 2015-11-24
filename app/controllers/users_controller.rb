@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       redirect_to "/users/#{@user.id}"
     else
       @errors = @user.errors.full_messages
+      @user.destroy
       render "new"
     end
   end
