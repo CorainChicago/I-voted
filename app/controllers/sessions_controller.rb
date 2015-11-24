@@ -13,8 +13,10 @@ respond_to :html, :js
       session[:user_id] = user.id
       set_sessions
       redirect_to '/'
+
     else
-      @error = "Please enter valid credentials"
+      flash[:login_error] = "Invalid credentials. Please try again."
+
       render :new
     end
   end
