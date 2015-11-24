@@ -4,6 +4,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def get_polling_info
+    user = User.find_by(id: session[:user_id])
+    @polling_place = Zipcode.get_polling_place(("#{user.street_address} #{user.city} #{user.state}").gsub(' ', "%20"))['address']
+
+    render partial: 'users/get_polling_info', layout: false
+  end
+
   def create
     @user = User.new(user_params)
     @user.token = (0...20).map { (1..100).to_a[rand(26)] }.join
@@ -51,7 +58,7 @@ class UsersController < ApplicationController
 
       @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
       @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
-      polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20"))['address']
+      polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city} #{@user.state}").gsub(' ', "%20"))['address']
       if polling_place['locationName']
         @polling_place = polling_place['locationName'] + ', ' + polling_place['line1'] + '. ' +  polling_place['city'] + ', ' + polling_place['state'] + " " + polling_place['zip']
       else

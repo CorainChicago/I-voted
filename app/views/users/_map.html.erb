@@ -1,6 +1,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>&"></script></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>&callback=initMap"
-        async defer></script> 
+        async defer></script>
 
 <script type="text/javascript">
   // var geocoder = new google.maps.Geocoder();
@@ -11,22 +11,70 @@
   //   if (status == google.maps.GeocoderStatus.OK) {
   //     latitude = results[0].geometry.location.lat();
   //     longitude = results[0].geometry.location.lng();
-  //   } 
+  //   }
   // })
 
   var latitudeT = 47.6097;
   var longitudeT = -122.3331;
 
-function initMap() {
-  // var myLatlng = {lat: 38.8833, lng: -77.0167};
-   var myLatlng = {lat: latitudeT, lng: longitudeT};
+  var polling_info = $.ajax({
+    url: '/users/get_polling_info',
+    method: 'get'
+  })
+  polling_info.done(function(response){
+    var response = response.split('&quot;');
+    var polling_place_address = (response[7] + " " + response[11] + ", " + response[15] + " " + response[19])
+    console.log(lat_long(polling_place_address).longitude);
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 9,
-    center: myLatlng
   });
 
-var polling_place = {lat: 33.7550, lng: -84.3900};
+
+
+
+
+
+
+lat_long = function(address){
+
+  var geocoder = new google.maps.Geocoder();
+
+  var latitude;
+  var longitude;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      latitude = results[0].geometry.location.lat();
+      longitude = results[0].geometry.location.lng();
+    }
+    var lat_long = {lat: latitude, lng: longitude};
+    console.log('now lat long is:');
+    console.log(lat_long);
+    initMap(lat_long);
+ // console.log('latlong is:');
+ // console.log(lat_long);
+    return lat_long;
+  });
+};
+
+
+
+
+
+
+function initMap(latLong) {
+
+
+
+  // var myLatlng = {lat: 38.8833, lng: -77.0167};
+   var myLatlng = latLong;
+   console.log('and now it is');
+   console.log(latLong);
+   console.log('hello!!!!!!!!');
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 9,
+    center: latLong
+  });
+
+var polling_place = latLong;
 
 var newmarker = new google.maps.Marker({
     position: polling_place,
@@ -40,7 +88,7 @@ var newmarker = new google.maps.Marker({
 }
 // To add the marker to the map, call setMap();
 $('div').on("click", function(){
-  console.log("hi");
+
   newmarker.setMap(map);
 })
  var onMapMouseleaveHandler = function (event) {
