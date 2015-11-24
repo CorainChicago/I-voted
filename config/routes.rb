@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'pages#index'
   resources :users
-  get    '/users/:id/unsubscribe'   => 'users#unsubscribe'
+  get    '/users/:id/unsubscribe/:token'   => 'users#unsubscribe'
 
 
   get    'login'   => 'sessions#new'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/about' => 'pages#show'
 
   get '/fb_key' => 'pages#fb'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -22,7 +22,7 @@ function initMap() {
    var myLatlng = {lat: latitudeT, lng: longitudeT};
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 3,
+    zoom: 9,
     center: myLatlng
   });
 
@@ -38,12 +38,11 @@ var newmarker = new google.maps.Marker({
     map.setCenter(newmarker.getPosition());
   });
 }
-// // To add the marker to the map, call setMap();
+// To add the marker to the map, call setMap();
 $('div').on("click", function(){
   console.log("hi");
   newmarker.setMap(map);
 })
-
  var onMapMouseleaveHandler = function (event) {
     var that = $(this);
 
@@ -67,4 +66,4 @@ $('div').on("click", function(){
 </script>
 
 
- <div id="map"></div>
+<div class="hide-for-small-only" id="map"></div>
