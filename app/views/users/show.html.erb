@@ -2,7 +2,7 @@
   <h2>Welcome <%=@user.email%>. You reside in <span id="state_name"><%=@district%></span></h2><br>
   <p><em>(Address incorrect? Edit your profile <%= link_to "here", edit_user_path, class: "edit-profile-reminder" %>.)</em></p><br>
   <h3>Your polling place</h3>
-  <%=@polling_place%>  
+  <%=@polling_place%>
   <%= render 'users/map' %>
   <h3>Upcoming elections</h3>
   <% @state_elections.each do |election| %>
@@ -20,7 +20,7 @@
     </ul>
   <% end %>
 
-  <p><h3>State voting information</h3></p>
+  <p><h3>State Voting Information</h3></p>
   <%= render "zipcodes/state_voter_info" %>
   <%= render "zipcodes/soswebsite" %>
 </div>
