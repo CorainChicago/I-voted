@@ -1,5 +1,6 @@
 <%= form_for :session, url: login_path do %>
   <div class="row collapse">
+    <%= flash[:login_error] %>
     <div class="large-10 columns">
     <%= label_tag "Email:" %>
     <%= text_field_tag "user[email]" %>
