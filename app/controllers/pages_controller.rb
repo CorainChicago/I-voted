@@ -7,5 +7,9 @@ class PagesController < ApplicationController
   def show
   end
 
+  def fb
+    render partial: 'pages/fb', layout: false
+  end
+
 
 end
