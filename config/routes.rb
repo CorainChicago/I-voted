@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   post '/candidates/create' => 'candidates#create'
 
-  get '/zipcode' => 'zipcodes#show  ' #show voting info for a zipcode
+  get '/zipcode' => 'zipcodes#show' #show voting info for a zipcode
 
   get '/about' => 'pages#show'
 

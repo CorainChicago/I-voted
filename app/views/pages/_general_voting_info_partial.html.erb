@@ -2,10 +2,10 @@
   <h2 id="link-header">General Voting Info & Resources</h2>
   <% @general_voting_info.each do |link| %>
     <li class="general-voting-info">
-      <div>
-      <h3><a href=<%= link.url %>><%= link.title %><h3>
-      <p class="hide-for-small-only"><%= link.subtitle %></p></a>
-      <div>
+      <div class="link-container">
+      <h3 id="general-title"><a href=<%= link.url %>><%= link.title %></a><h3>
+      <p id="general-subtitle" class="hide-for-small-only"><a href=<%= link.url %>><%= link.subtitle %></p></a>
+      </div>
     </li>
   <% end %>
 </ul>
