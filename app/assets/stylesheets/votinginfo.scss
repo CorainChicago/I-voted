@@ -1,15 +1,10 @@
 .resource-link-block-grid li{
     list-style-type: none;
-    float: none;
-    display: inline-block;
-    width: 50%;
   }
-    @media only screen and (max-width: 64em){
-      .resource-link-block-grid li {
-        font-size: 0;
-        float: none;
-        display: inline-block;
-        width: 32.5%;
+    @media only screen and (max-width: 40.063em){
+      div.grid-block.voting-info > div > ul {
+        margin-left: 0;
+        margin-right: -99%;
       }
     }
 
@@ -22,9 +17,9 @@
   clear: both;
   color: #F5F5F5;
 }
-@media only screen and (max-width: 64em){
+@media only screen and (max-width: 40.063em){
   #link-header {
-    margin-left: 0;
-    margin-right: -70%;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
   }
 }
