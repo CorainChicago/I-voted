@@ -21,17 +21,11 @@ class UsersController < ApplicationController
 
   def unsubscribe
     user = User.find_by(id: params[:id])
-    puts "****************************"
-    puts "****************************"
-    puts "****************************"
-    p user
-    p params[:id]
-    p params[:token]
     if user.token == params[:token]
       puts "token is the same as params[token]"
-      p user.subscribe = false
+      user.subscribe = false
       user.token = (0...20).map { (1..100).to_a[rand(26)] }.join
-      p user.save
+      user.save
       redirect_to "/"
     end
   end
