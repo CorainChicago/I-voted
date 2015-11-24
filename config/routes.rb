@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
   post '/candidates/create' => 'candidates#create'
 
-  get '/zipcode' => 'zipcodes#show' #show voting info for a zipcode
+  get '/zipcode' => 'zipcodes#show  ' #show voting info for a zipcode
 
   get '/about' => 'pages#show'
+
+  get '/fb_key' => 'pages#fb'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
