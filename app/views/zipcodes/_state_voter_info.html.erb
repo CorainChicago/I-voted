@@ -15,10 +15,10 @@
     <a href="#panel2">Absentee Voting</a>
     <div id="panel2" class="content">
       <% if @voter_registration_data.no_excuse_absentee_voting == true %>
-      <em><p>Voter Can Absentee Vote Without Providing a Reason/Excuse:</p></em>
+      <em><p>Voter Can Absentee Vote Without Providing a Reason:</p></em>
       <p>You're in luck! No reason is required to absentee vote!</p>
       <% elsif @voter_registration_data.absentee_voting_with_excuse == true %>
-      <em><p>Voter Must Provide Reason/Excuse for Absentee Vote:</p></em>
+      <em><p>Voter Must Provide Reason for Absentee Vote:</p></em>
       <p>This state requires voters to provide a reason to absentee vote - hope you have a good one!</p>
       <% end %>
     </div>
@@ -37,7 +37,7 @@
   <li class="accordion-navigation">
     <a href="#panel4">Voter ID Requirements</a>
     <div id="panel4" class="content">
-      <em><p>ID Requirements to Vote:</p></em>
+      <em><p>ID Requirements:</p></em>
       <% if @voter_registration_data.voter_id_on_election_day != "" %>
       <%= @voter_registration_data.voter_id_on_election_day %>
       <% else %>
