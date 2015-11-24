@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'pages#index'
   resources :users
+  get    '/users/:id/unsubscribe'   => 'users#unsubscribe'
+
 
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
 
   post '/candidates/create' => 'candidates#create'
 
-  get '/zipcode' => 'zipcodes#show' #show voting info for a zipcode
+  get '/zipcode' => 'zipcodes#show  ' #show voting info for a zipcode
 
   get '/about' => 'pages#show'
 
