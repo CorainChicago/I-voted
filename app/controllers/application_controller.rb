@@ -26,15 +26,12 @@ class ApplicationController < ActionController::Base
   end
 
 
-    def load_zip_codes
-
-      CSV.foreach("db/zipcodes/us_postal_codes_three_one.csv") do |row|
-        scraper(row[0], ([row[0],row[1],row[2],row[3],row[4]]).join('+').gsub(' ', "+"))
-        $browser.close
-      end
-
+  def load_zip_codes
+    CSV.foreach("db/zipcodes/us_postal_codes_three_one.csv") do |row|
+      scraper(row[0], ([row[0],row[1],row[2],row[3],row[4]]).join('+').gsub(' ', "+"))
+      $browser.close
     end
-  end
+
 
   def current_user
     @current_user ||= User.find(session[:user_id])
