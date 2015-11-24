@@ -10,4 +10,9 @@ class IvotedMailer < ApplicationMailer
     mail(to: @user.email , subject: "Dont forget to vote")
   end
 
+  def welcome(user)
+    @user = user
+    mail(to: @user.email , subject: "Dont forget to vote")
+  end
+
 end

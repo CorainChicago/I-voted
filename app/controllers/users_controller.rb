@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      ReminderEmail.create(user_id: @user.id)
+      IvotedMailer.welcome(@user).deliver
       session[:user_id] = @user.id
       session[:zip] = @user.zip
       redirect_to "/users/#{@user.id}"

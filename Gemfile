@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'resque_mailer'
 gem 'resque'
 # gem 'spring'
+# gem 'date'
 
 gem 'csv'
 gem 'watir'
