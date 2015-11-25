@@ -28,7 +28,8 @@ end
 describe "#get_district" do
   it "returns a json object" do 
     address = "4432 N. Seeley, Chicago, IL"
-    uri = URI.parse("https://www.googleapis.com/civicinfo/v2/voterinfo?key=#{ENV['API_KEY']}&address=#{address.gsub(' ', '%20')}&electionId=2000")
-    expect(response).to be Object
+    response = Zipcode.get_district(address)
+    response.to_json
+    expect(response).to include(response['district']['name'])
   end
 end

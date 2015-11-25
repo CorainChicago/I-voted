@@ -25,7 +25,7 @@ describe UsersController do
     
       it "redirects to the user show page upon save" do
         post :create, user: { email: "cat@cat.com", street_address: "4434 N. Seeley", city: "Chicago", state: "IL", zip: 60625, password: "1234"}
-        response.should redirect_to 'users/:id'
+        response.should redirect_to 'http://test.host/users/#{user.id}'
       end
     end   
   end
