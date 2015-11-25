@@ -22,11 +22,10 @@ describe UsersController do
 
         expect(@polling_place).to be nil
       end
-      it "should render the success page on successful signup" do
-        post :create, :user => @params
-
-        response.should be_successful
-        response.should render_template("success")
+    
+      it "redirects to the user show page upon save" do
+        post :create, user: { email: "cat@cat.com", street_address: "4434 N. Seeley", city: "Chicago", state: "IL", zip: 60625, password: "1234"}
+        response.should redirect_to 'users/:id'
       end
     end   
   end

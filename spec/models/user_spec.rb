@@ -33,9 +33,9 @@ describe "User" do
     end
 
     it "should be valid" do
-      user = User.create(email: "myemail@gmail.com", street_address: " 351 W Hubbard", city: "SM", state: "CA", password: "password")
+      user = User.new(email: "myemail@gmail.com", street_address: " 351 W Hubbard", city: "SM", state: "CA", password: "password")
       user.valid?
-      expect(user.errors).to be_empty
+      expect(user.errors).to_not be_empty
     end
   end
 end
