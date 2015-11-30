@@ -5,3 +5,7 @@
 .login-form {
   border-style: none;
 }
+
+#login_button > input[type="submit"] {
+  padding: 6px 12px 6px;
+}

@@ -16,3 +16,7 @@ div.grid-block.new-user-form > div {
     padding-bottom: 10%;
     margin-bottom: 10%;
   }
+
+#new_user > input[type="submit"]:nth-child(17){
+  padding: 6px 12px 6px;
+}
