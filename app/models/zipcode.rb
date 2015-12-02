@@ -11,6 +11,12 @@ class Zipcode < ActiveRecord::Base
       {'address' => 'Sorry, we can\'t find a polling place for your location at this time. Please try a different address or check back closer to election day.'}
     end
   end
+  def self.get_zipcode(address)
+    uri = URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{address.gsub("%20", ' ')}")
+    response = JSON.parse(Net::HTTP.get(uri))
+    return response['results'][0]['address_components'][6]['short_name'] if response['status'] != 'ZERO_RESULTS'
+    nil
+  end
   def self.get_district(address)
     uri = URI.parse("https://www.googleapis.com/civicinfo/v2/voterinfo?key=#{ENV['API_KEY']}&address=#{address.gsub(' ', '%20')}&electionId=2000")
     response = JSON.parse(Net::HTTP.get(uri))
