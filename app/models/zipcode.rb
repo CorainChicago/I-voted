@@ -14,10 +14,6 @@ class Zipcode < ActiveRecord::Base
   def self.get_zipcode(address)
     uri = URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{address.gsub("%20", ' ')}")
     response = JSON.parse(Net::HTTP.get(uri))
-    puts "------------------"
-    puts "response"
-    puts response
-    puts "------------------"
     if response['status'] != 'ZERO_RESULTS'
       if response['results'][0]['address_components'][6]['short_name'].to_s.length == 5
         return response['results'][0]['address_components'][6]['short_name'] 
