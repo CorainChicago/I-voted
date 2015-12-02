@@ -18,7 +18,7 @@ gem 'resque_mailer'
 gem 'resque'
 # gem 'spring'
 
-gem 'csv', '~>2.7.2'
+# gem 'csv', '~>2.7.2'
 gem 'watir'
 
 # Use jquery as the JavaScript library
