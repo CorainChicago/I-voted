@@ -18,9 +18,19 @@ function initAutocomplete() {
 
 function fillInAddress() {
   var place = autocomplete.getPlace();
-$('#user_street_address').val($('#autocomplete').val().split(', United States')[0].split(',')[0]);
-$('#user_city').val($('#autocomplete').val().split(', United States')[0].split(',')[1] + ',');
-$('#user_state').val($('#autocomplete').val().split(', United States')[0].split(',')[2]);
+  $('#user_street_address').val($('#autocomplete').val().split(', United States')[0].split(',')[0]);
+  $('#user_city').val($('#autocomplete').val().split(', United States')[0].split(',')[1] + ',');
+  $('#user_state').val($('#autocomplete').val().split(', United States')[0].split(',')[2]);
+  var streetAddress = $('#user_street_address').val() + $('#user_city').val() + $('#user_state').val();
+  var zipCode = $.ajax({
+    method: 'post',
+    url: '/getzipcode',
+    data: {'address': streetAddress}
+  });
+  zipCode.done(function(response){
+    $('#zipcode').html('Zip: -' + response + '-');
+    $('#user_zip').val(response);
+  });
 }
 
 function geolocate() {
