@@ -24,7 +24,7 @@ function fillInAddress() {
   var streetAddress = $('#user_street_address').val() + $('#user_city').val() + $('#user_state').val();
   var zipCode = $.ajax({
     method: 'post',
-    url: '/getzipcode',
+    url: '/zipcode',
     data: {'address': streetAddress}
   });
   zipCode.done(function(response){

@@ -11,7 +11,9 @@ RSpec.describe IvotedMailer, type: :mailer do
     end
 
     it "renders the body" do
+
       expect(mail.body).to_not be nil
+
     end
   end
 
