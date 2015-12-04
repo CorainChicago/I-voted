@@ -16,15 +16,9 @@ feature "User creates new account" do
     expect(page).to have_content("State:")
     expect(page).to have_content("Zip:")
   end
-  scenario "user registers without password" do
+  it "user registers without password" do
     visit 'users/new'
-    within("#new_user") do
-      fill_in 'user_email', :with => 'example@i-voted.com'
-      fill_in 'user_street_address', :with => '1600 Pennsylvania Ave'
-      fill_in 'user_city', :with => 'Washington'
-      fill_in 'user_state', :with => 'DC'
-      fill_in 'user_zip', :with => '20500'
-    end
+      fill_in "user_zip", :with => '20500'
     click_button 'Register'
     expect(page).to have_content("Password can't be blank")
   end
