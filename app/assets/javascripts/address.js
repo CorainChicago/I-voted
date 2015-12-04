@@ -28,7 +28,7 @@ function fillInAddress() {
     data: {'address': streetAddress}
   });
   zipCode.done(function(response){
-    $('#zipcode').html('Zip: -' + response + '-');
+    $('#zipcode').html('Address (zipcode: ' + response + ')');
     $('#user_zip').val(response);
   });
 }
