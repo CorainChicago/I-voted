@@ -1,41 +1,19 @@
 # IVoted
-
 This is the group project for Dev Bootcamp to increase the availability of information for voters. The app is mobile-first.
 
+## Contributers:
+* Lucy Boone
+* Cora Hays-magan
+* Kyle Dolezal
+* Josue Aceves
 
 
-Here are the user stories:
-
-##MVP
-* User can see general information and resources about voting on a national level
-* Users can enter their zipcode to find information about voting locally
-* Users can register for email noifications
+## Description of project:
+i-Voted is a one-stop-shop for voters to get the information they need to register, get to the polls, and select candidates. This mobile-first web app is built in rails and is designed to organize relevant voting information from across the web for voters at the click of a button. Although it was necessary to scour the web, pulling together disparate sources of data to present each user with the information they need, the app presents data to the user in the form of a simple, user-friendly report
 
 
-##Stretch
-* Expand data set to the  whole US
-* User can find information about absentee voting
-* Show ballots for the next election
-* Link to candidates site for the next election
-* Add logic to the show page for the order of the information
-* Add link to federal "trouble voting" chat
-* Translate site into Spanish/Polish/other
-
-##Push Masters
-
-** Tuesday - Cora/Kyle
-** Wednesday - Lucy/Josue
-** Thursday- Cora/Kyle
-** Friday - Lucy/Josue
-** Saturday - Cora/Kyle
-** Sunday - Lucy/Josue
-** Monday - Cora/Kyle
-** Tuesday- Lucy/Josue
-** Wednesday - Cora/Kyle (Really, let's not need to push on that day)
+## Heroku App
+Visit site at:
+* http://i-voted.herokuapp.com/
 
 
-##Tests:  
-Rspec using Travis to monitor
-
-##Dependencies:
-rails g foundation:install to install Foundation.
