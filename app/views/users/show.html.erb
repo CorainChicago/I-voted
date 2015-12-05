@@ -14,7 +14,7 @@
       <%= render "users/map" %>
     <% end %>
   <p><h3>Upcoming elections</h3></p>
-  <% @state_elections.each do |election| %>
+  <% @user.state_elections.each do |election| %>
     <ul class="accordion" data-accordion>
       <li class="accordion-navigation">
         <a href="#panel0"><%=election.election_title%></a>

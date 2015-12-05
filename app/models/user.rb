@@ -14,12 +14,18 @@ class User < ActiveRecord::Base
   validates :state, presence: true
   validates :password, presence: true, :on => :create
 
-  attr_reader :district
-  after_initialize :get_district
+  attr_reader :district, :state_elections
+
+  after_initialize :post_initialize
+
+  def post_initialize
+    @district = get_district
+    @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: self.zip).try(:state_name)}%")
+  end
 
 
   def get_district
-    @district = Zipcode.get_district(("#{self.street_address} #{self.city}, #{self.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
+    Zipcode.get_district(("#{self.street_address} #{self.city}, #{self.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
   end
 
 
