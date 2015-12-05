@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   validates :state, presence: true
   validates :password, presence: true, :on => :create
 
+
 end

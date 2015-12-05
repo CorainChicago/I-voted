@@ -39,11 +39,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    if session[:user_id].nil?
+      redirect_to '../../public/407'
+    end
 
-    if !session[:user_id].nil?
+    # if !session[:user_id].nil?
       @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
       @zip = session[:zip]
-      @index = 1
       @user = User.find_by(id: session[:user_id])
       if !Zipcode.find_by(zip: @zip)
         @errors = ['Please enter a valid zipcode']
@@ -70,9 +72,9 @@ class UsersController < ApplicationController
       end
       @zipforwebsite = Zipcode.find_by(zip: @zip)
       @statewebsite = StateWebsite.find_by(name: @zipforwebsite.state_name)
-    else
-      render :'../../public/407'
-    end
+    # else
+    #   render :'../../public/407'
+    # end
   end
 
   def edit
