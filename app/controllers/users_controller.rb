@@ -41,9 +41,8 @@ class UsersController < ApplicationController
 
   def check_for_errors
     @errors = []
-    if session[:user_id].nil?
-      @errors = ['Please make a user or login first']
-    end
+    @errors = ['Please make a user or login first'] if session[:user_id].nil?
+    @errors = ['Please enter a valid zipcode'] if !Zipcode.find_by(zip: session[:zip])
     return @errors
   end
 
@@ -58,29 +57,34 @@ class UsersController < ApplicationController
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
     @zip = session[:zip]
     @user = User.find_by(id: session[:user_id])
-    if !Zipcode.find_by(zip: @zip)
-      @errors = ['Please enter a valid zipcode']
-      render "new"
-    else
-      Candidate.remove_appointed_politicians(@zip)
-      @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
-      @offices = []
-      @candidates.each do |candidate|
-        @offices << candidate.office
-      end
-      @offices.uniq!
-      @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
 
-      @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
-      @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
-      polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20"))['address']
-      if polling_place['locationName']
-        @polling_place = polling_place['locationName'] + ', ' + polling_place['line1'] + '. ' +  polling_place['city'] + ', ' + polling_place['state'] + " " + polling_place['zip']
-      else
-        @polling_place = polling_place
-      end
-      @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
+
+
+
+
+    Candidate.remove_appointed_politicians(@zip)
+    @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
+    @offices = []
+    @candidates.each do |candidate|
+      @offices << candidate.office
     end
+    @offices.uniq!
+    @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
+
+    @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
+    @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
+    polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20"))['address']
+    if polling_place['locationName']
+      @polling_place = polling_place['locationName'] + ', ' + polling_place['line1'] + '. ' +  polling_place['city'] + ', ' + polling_place['state'] + " " + polling_place['zip']
+    else
+      @polling_place = polling_place
+    end
+    @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
+
+
+
+
+
     @zipforwebsite = Zipcode.find_by(zip: @zip)
     @statewebsite = StateWebsite.find_by(name: @zipforwebsite.state_name)
 
