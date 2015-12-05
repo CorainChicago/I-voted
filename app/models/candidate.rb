@@ -6,6 +6,14 @@ class Candidate < ActiveRecord::Base
     CURRENT_PRESIDENT
   end
 
+  def self.get_offices(candidates)
+    offices = []
+    candidates.each do |candidate|
+      offices << candidate.office
+    end
+    offices.uniq
+  end
+
   def self.remove_appointed_politicians(zip)
     APPOINTED_OFFICES.each do |office|
 

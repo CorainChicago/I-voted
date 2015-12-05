@@ -64,11 +64,8 @@ class UsersController < ApplicationController
 
     Candidate.remove_appointed_politicians(@zip)
     @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
-    @offices = []
-    @candidates.each do |candidate|
-      @offices << candidate.office
-    end
-    @offices.uniq!
+    @offices = Candidate.get_offices(@candidates)
+
     @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
 
     @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
