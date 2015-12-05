@@ -40,7 +40,9 @@ class UsersController < ApplicationController
 
   def show
     if session[:user_id].nil?
-      redirect_to '../../public/407'
+      @errors = ['Please make a user or login first']
+      redirect_to '/users/new'
+      return
     end
 
     # if !session[:user_id].nil?
