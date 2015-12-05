@@ -1,3 +1,5 @@
+require_relative 'zipcode.rb'
+
 class User < ActiveRecord::Base
   has_many :reminder_emails
   has_secure_password
@@ -11,6 +13,14 @@ class User < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :password, presence: true, :on => :create
+
+  attr_reader :district
+  after_initialize :get_district
+
+
+  def get_district
+    @district = Zipcode.get_district(("#{self.street_address} #{self.city}, #{self.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
+  end
 
 
 end
