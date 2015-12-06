@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :state, presence: true
   validates :password, presence: true, :on => :create
 
-  attr_reader :district, :state_elections, :polling_place, :voter_registration_data
+  attr_reader :district, :state_elections, :polling_place, :voter_registration_data, :candidates, :offices
 
   after_initialize :post_initialize
 
@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
     @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: self.zip).try(:state_name)}%")
     @polling_place = get_polling_place
     @voter_registration_data = get_voter_registration_data
+    @candidates = get_candidates
+    @offices = get_offices
   end
 
   def get_polling_place
@@ -42,5 +44,13 @@ class User < ActiveRecord::Base
     Zipcode.get_district(("#{self.street_address} #{self.city}, #{self.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
   end
 
+  def get_candidates
+    Candidate.remove_appointed_politicians(@zip)
+    @candidates = Candidate.where(zip: self.zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
+  end
+
+  def get_offices
+    Candidate.get_offices(@candidates)
+  end
 
 end

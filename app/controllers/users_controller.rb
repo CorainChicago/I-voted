@@ -57,10 +57,6 @@ class UsersController < ApplicationController
     @zip = session[:zip]
     @user = User.find_by(id: session[:user_id])
 
-    Candidate.remove_appointed_politicians(@zip)
-    @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
-    @offices = Candidate.get_offices(@candidates)
-
   end
 
   def edit

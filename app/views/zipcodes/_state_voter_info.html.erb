@@ -47,16 +47,16 @@
   </li>
 
   <li class="accordion-navigation">
-    <%if @offices%>
+    <%if @user.offices.length > 1%>
     <a href="#panel5">Candidates</a>
     <%@index = 1%>
-    <% @offices.each do |office| %>
+    <% @user.offices.each do |office| %>
       <div id="panel5" class="content">
 
         <a class="candidate-name-list" id="<%=@index%>">Running For <%= office %>:
         </a>
         <div class="candite-name-list-div" style="display: none;">
-          <% @candidates.where("office = ?", office).each do |candidate|%>
+          <% @user.candidates.where("office = ?", office).each do |candidate|%>
           <a target="_blank" href=https://www.google.com/#q=<%=candidate.name.gsub(' ', '+')%>><%=candidate.name%> </a> <%if candidate.party_affiliation.length > 1%>(<%end%><%=candidate.party_affiliation%><%if candidate.party_affiliation.length > 1%>)<%end%>
           <%end%>
         </div>
