@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
     @offices = Candidate.get_offices(@candidates)
 
-    @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
+    # @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
 
 
   end

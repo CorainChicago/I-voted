@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :state, presence: true
   validates :password, presence: true, :on => :create
 
-  attr_reader :district, :state_elections, :polling_place
+  attr_reader :district, :state_elections, :polling_place, :voter_registration_data
 
   after_initialize :post_initialize
 
@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
     @district = get_district
     @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: self.zip).try(:state_name)}%")
     @polling_place = get_polling_place
+    @voter_registration_data = get_voter_registration_data
   end
 
   def get_polling_place
@@ -33,13 +34,9 @@ class User < ActiveRecord::Base
     end
   end
 
-   # polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20"))['address']
-   #  if polling_place['locationName']
-   #    @polling_place = polling_place['locationName'] + ', ' + polling_place['line1'] + '. ' +  polling_place['city'] + ', ' + polling_place['state'] + " " + polling_place['zip']
-   #  else
-   #    @polling_place = polling_place
-   #  end
-
+  def get_voter_registration_data
+    StateVotingInformation.find_by(name: Zipcode.find_by(zip: self.zip).try(:state_name))
+  end
 
   def get_district
     Zipcode.get_district(("#{self.street_address} #{self.city}, #{self.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
