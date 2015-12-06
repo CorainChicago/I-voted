@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def unsubscribe
     user = User.find_by(id: params[:id])
     if user.token == params[:token]
@@ -38,41 +39,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def check_for_errors
+    @errors = []
+    @errors = ['Please make a user or login first'] if session[:user_id].nil?
+    @errors = ['Please select a valid address'] if !Zipcode.find_by(zip: session[:zip])
+    return @errors
+  end
+
   def show
-
-    if !session[:user_id].nil?
-      @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
-      @zip = session[:zip]
-      @index = 1
-      @user = User.find_by(id: session[:user_id])
-      if !Zipcode.find_by(zip: @zip)
-        @errors = ['Please enter a valid zipcode']
-        render "new"
-      else
-        Candidate.remove_appointed_politicians(@zip)
-        @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
-        @offices = []
-        @candidates.each do |candidate|
-          @offices << candidate.office
-        end
-        @offices.uniq!
-        @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20")).gsub('s\'s', 's\'')
-
-        @district = Zipcode.get_district(("#{@user.street_address} #{@user.city}, #{@user.state} #{@zip}").gsub(' ', "%20")).gsub('s\'s', 's\'')
-        @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: @zip).state_name}%")
-        polling_place = Zipcode.get_polling_place(("#{@user.street_address} #{@user.city}, #{@user.state}").gsub(' ', "%20"))['address']
-        if polling_place['locationName']
-          @polling_place = polling_place['locationName'] + ', ' + polling_place['line1'] + '. ' +  polling_place['city'] + ', ' + polling_place['state'] + " " + polling_place['zip']
-        else
-          @polling_place = polling_place
-        end
-        @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
-      end
-      @zipforwebsite = Zipcode.find_by(zip: @zip)
-      @statewebsite = StateWebsite.find_by(name: @zipforwebsite.state_name)
-    else
-      render :'../../public/407'
+    if check_for_errors.length > 0
+      @user = User.new
+      render 'new'
+      return
     end
+
+    @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
+    @zip = session[:zip]
+    @user = User.find_by(id: session[:user_id])
+
   end
 
   def edit

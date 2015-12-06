@@ -4,19 +4,18 @@ require 'json'
 
 
   def show
+    puts "here's the params! #{params['zip']}"
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
-    @zipcode = params["zip"]
-    @zip = Zipcode.find_by(zip: @zipcode)
-    if @zip.present?
-      @voter_registration_data = StateVotingInformation.find_by(name: @zip.state_name)
-      @statewebsite = StateWebsite.find_by(name: @zip.state_name)
+    @zip = params["zip"]
+    @zipcode = Zipcode.find_by(zip: @zip)
+    if @zipcode.present?
+      @user = User.new(zip: @zip)
     else flash[:error] = "Please enter a valid address."
       redirect_to root_path
     end
   end
 
   def getzipcode
-
     @zipcode = Zipcode.get_zipcode(params['address'])
     render partial: 'zipcodes/generate_code', layout: false
   end

@@ -1,20 +1,18 @@
 <div class="zipcode_show">
-
-
   <h2>Welcome <%=@user.email%>.
-  <% unless @district.include? "Sorry" %>
-    You reside in <span id="state_name"><%=@district%></span><br>
+  <% unless @user.district.include? "Sorry" %>
+    You reside in <span id="state_name"><%=@user.district%></span><br>
   <% end %>
   </h2>
 
   <p><em>(Address incorrect? Edit your profile <%= link_to "here", edit_user_path, class: "edit-profile-reminder" %>.)</em></p><br>
-    <% unless @polling_place.include? "Sorry" %>
+    <% unless @user.polling_place.include? "Sorry" %>
       <h3>Your polling place</h3>
-      <%=@polling_place%>
+      <%=@user.polling_place%>
       <%= render "users/map" %>
     <% end %>
   <p><h3>Upcoming elections</h3></p>
-  <% @state_elections.each do |election| %>
+  <% @user.state_elections.each do |election| %>
     <ul class="accordion" data-accordion>
       <li class="accordion-navigation">
         <a href="#panel0"><%=election.election_title%></a>
