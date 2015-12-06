@@ -9,14 +9,13 @@ require 'json'
     @zip = params["zip"]
     @zipcode = Zipcode.find_by(zip: @zip)
     if @zipcode.present?
-      @voter_registration_data = StateVotingInformation.find_by(name: @zipcode.state_name)
+      @user = User.new(zip: @zip)
     else flash[:error] = "Please enter a valid address."
       redirect_to root_path
     end
   end
 
   def getzipcode
-
     @zipcode = Zipcode.get_zipcode(params['address'])
     render partial: 'zipcodes/generate_code', layout: false
   end

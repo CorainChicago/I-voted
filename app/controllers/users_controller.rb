@@ -53,21 +53,13 @@ class UsersController < ApplicationController
       return
     end
 
-
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
     @zip = session[:zip]
     @user = User.find_by(id: session[:user_id])
 
-
-
-
-
     Candidate.remove_appointed_politicians(@zip)
     @candidates = Candidate.where(zip: @zip).where.not("name LIKE ?", "%#{Candidate.current_president}%")
     @offices = Candidate.get_offices(@candidates)
-
-    # @voter_registration_data = StateVotingInformation.find_by(name: Zipcode.find_by(zip: @zip).state_name)
-
 
   end
 
