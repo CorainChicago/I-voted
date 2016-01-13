@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
 
 
   def send_reminders_email
-    date = Date.parse("#{DateTime.now.day}/#{DateTime.now.mon}")
+    date = Date.parse("#{DateTime.now.day} / #{DateTime.now.mon}")
     if date.mon == 9 && date.day == 1
       User.all.each do |user|
         if user.subscribe == true && !user.reminder_emails.last.nil? && user.reminder_emails.last.subject != "elections coming up"
