@@ -4,10 +4,9 @@ class ZipcodesController < ApplicationController
 
   def show
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
-    @zip = params["zip"]
-    @zipcode = Zipcode.make_zipcode_object(@zip)
+    @zipcode = Zipcode.make_zipcode_object(params['zip'])
     if @zipcode.present?
-      @user = User.new(zip: @zip)
+      @user = User.new(zip: @zipcode[:zip])
     else flash[:error] = "Please enter a valid address."
       redirect_to root_path
     end
