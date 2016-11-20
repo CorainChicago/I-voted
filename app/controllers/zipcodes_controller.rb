@@ -2,9 +2,7 @@ class ZipcodesController < ApplicationController
   require 'net/http'
   require 'json'
 
-
   def show
-    puts "here's the params! #{params['zip']}"
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
     @zip = params["zip"]
     @zipcode = Zipcode.find_by(zip: @zip)
