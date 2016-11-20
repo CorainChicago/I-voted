@@ -5,7 +5,7 @@ class ZipcodesController < ApplicationController
   def show
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
     @zip = params["zip"]
-    @zipcode = Zipcode.find_by(zip: @zip)
+    @zipcode = Zipcode.make_zipcode_object(@zip)
     if @zipcode.present?
       @user = User.new(zip: @zip)
     else flash[:error] = "Please enter a valid address."
