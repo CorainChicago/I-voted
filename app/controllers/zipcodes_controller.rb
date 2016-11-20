@@ -7,6 +7,7 @@ class ZipcodesController < ApplicationController
     @zipcode = Zipcode.make_zipcode_object(params['zip'])
     if @zipcode.present?
       @user = User.new(zip: @zipcode[:zip])
+      @user.post_initialize(@zipcode)
     else flash[:error] = "Please enter a valid address."
       redirect_to root_path
     end

@@ -16,11 +16,9 @@ class User < ActiveRecord::Base
 
   attr_reader :district, :state_elections, :polling_place, :voter_registration_data, :candidates, :offices
 
-  after_initialize :post_initialize
-
-  def post_initialize
+  def post_initialize(zipcode)
     @district = get_district
-    @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: self.zip).try(:state_name)}%")
+    @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{zipcode.try(:state_name)}%")
     @polling_place = get_polling_place
     @voter_registration_data = get_voter_registration_data
     @candidates = get_candidates
