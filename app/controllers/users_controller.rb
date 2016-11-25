@@ -56,6 +56,7 @@ class UsersController < ApplicationController
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
     @zip = session[:zip]
     @user = User.find_by(id: session[:user_id])
+    @zipcode = Zipcode.make_zipcode_object(@zip)
 
   end
 
