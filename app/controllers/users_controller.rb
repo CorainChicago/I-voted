@@ -54,7 +54,11 @@ class UsersController < ApplicationController
     end
 
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
-    @zip = session[:zip]
+    @zip  = session[:zip]
+
+    all_candidates = Candidate.query_for_candidates(@zip)
+    @candidates = Candidate.remove_appointed_politicians_and_current_president(all_candidates)
+
     @user = User.find_by(id: session[:user_id])
     @zipcode = Zipcode.make_zipcode_object(@zip)
 

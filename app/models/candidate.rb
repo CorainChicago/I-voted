@@ -4,8 +4,8 @@ class Candidate < ActiveRecord::Base
   require 'json'
 
   belongs_to :zipcode
-  APPOINTED_OFFICES = ['U.S. Secretary', 'U.S. Attorney', 'Justice']
-  CURRENT_PRESIDENT = "Barack Obama"
+  APPOINTED_OFFICES = ['U.S. Secretary', 'U.S. Attorney', 'Justice', 'Vice']
+  CURRENT_PRESIDENT = "Barack Obama II"
   def self.current_president
     CURRENT_PRESIDENT
   end
@@ -13,7 +13,7 @@ class Candidate < ActiveRecord::Base
   def self.get_offices(candidates)
     offices = []
     candidates.each do |candidate|
-      offices << candidate.office
+      offices << candidate[:office]
     end
     offices.uniq
   end
@@ -35,11 +35,19 @@ class Candidate < ActiveRecord::Base
     candidates
   end
 
-  def self.remove_appointed_politicians(zip)
-    APPOINTED_OFFICES.each do |office|
-
-      Candidate.where(zip: zip).where('office LIKE ?', "%#{office}%").destroy_all
-
+  def self.candidates_in_given_office(candidates, office)
+    candidate_list = []
+    candidates.each do |candidate|
+      candidate_list << candidate if candidate[:office] == office
     end
+    
+    candidate_list
+  end
+
+  def self.remove_appointed_politicians_and_current_president(candidates)
+    APPOINTED_OFFICES.each do |office|
+      candidates.delete_if{ |candidate| candidate[:office].include?(office) || candidate[:name] == current_president}
+    end
+    candidates
   end
 end

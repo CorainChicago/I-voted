@@ -23,8 +23,8 @@ class User < ActiveRecord::Base
     @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.make_zipcode_object(zip).try(:state_name)}%")
     @polling_place = get_polling_place
     @voter_registration_data = get_voter_registration_data
-    @candidates = get_candidates
-    @offices = get_offices
+    @candidates = []
+    @offices = []
   end
 
   def get_polling_place
