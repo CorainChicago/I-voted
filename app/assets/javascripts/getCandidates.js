@@ -37,7 +37,7 @@ var insertComma = function() {
 }
 
 var getCandidates = function(form) {
-  formattedUrl = 'https://votesmart.org/x/search?s=' + $('#user_street_address').val() + '%20' + $('#user_city').val() + '%20' + $('#user_state').val() + '%20' + $('#user_zip').val();
+  formattedUrl = 'https://votesmart.org/x/search?s=' + $('#user_zip').val();
   var candidatesRequest = $.ajax({
    method: 'get',
    url: formattedUrl
