@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
+gem 'curb', '~> 0.9.3'
+
+gem 'json'
+
 gem 'dotenv-rails', :groups => [:development, :test]
- gem 'foundation-rails'
+gem 'foundation-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
