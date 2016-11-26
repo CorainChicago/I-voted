@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def get_voter_registration_data
-    StateVotingInformation.find_by(name: Zipcode.find_by(zip: self.zip).try(:state_name))
+    StateVotingInformation.find_by(name: Zipcode.make_zipcode_object(zip).try(:state_name))
   end
 
   def get_district
