@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.token = (0...20).map { (1..100).to_a[rand(26)] }.join
     if @user.save
-      ReminderEmail.create(user_id: @user.id, subject: "welcome")
       IvotedMailer.welcome(@user).deliver
       session[:user_id] = @user.id
       session[:zip] = @user.zip
