@@ -48,7 +48,7 @@
 
   <li class="accordion-navigation">
     <%if @candidates.present? %>
-    <a href="#panel5">Candidates</a>
+    <a href="#panel5">Candidates and elected officials</a>
     <%@index = 1%>
     <% Candidate.get_offices(@candidates).each do |office| %>
       <div id="panel5" class="content">
