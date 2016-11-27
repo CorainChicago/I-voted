@@ -30,7 +30,9 @@
     <%=f.hidden_field :zip%>
 
     <br>
-    <%=f.submit 'Register'%>
+    <%=f.submit 'Register', id: :reg_button%>
+    <%=f.label 'Please wait...', class: 'waiting hidden'%>
+    <%=image_tag('ballot.gif', class: 'waiting hidden')%>
   <%end%>
   </div>
 </div>
