@@ -15,7 +15,8 @@ describe Candidate do
     expect(candidate.party_affiliation).to eq(party_affiliation)
   end
   it "should have a current_president method" do
-    CURRENT_PRESIDENT = "Barack Obama"
-    expect(Candidate.current_president).to eq(CURRENT_PRESIDENT)
+    CURRENT_PRESIDENT = "Barack Obama II"
+    PRESIDENT_ELECT = "Donald Trump"
+    expect(Candidate.current_president).to eq(CURRENT_PRESIDENT || PRESIDENT_ELECT)
   end
 end
