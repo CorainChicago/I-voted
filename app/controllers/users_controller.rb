@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def check_for_errors
     @errors = []
     @errors = ['Please make a user or login first'] if session[:user_id].nil?
-    @errors = ['Please select a valid address'] if !Zipcode.find_by(zip: session[:zip])
+    @errors = ['Please select a valid address'] if session[:zip].blank?
     return @errors
   end
 
