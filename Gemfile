@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
+
 gem 'curb', '~> 0.9.3'
 
 gem 'json'
