@@ -2,5 +2,5 @@
 <h2>Absentee Voting <h2>
   <h4><%= link_to "People Living Abroad", "http://www.fvap.gov/" %></h4>
   <h4><%= link_to "Military Voters", "http://www.fvap.gov/military-voter" %></h4>
-  <h4><%= link_to "Other Absentee Voting", StateWebsite.find_by(name: Zipcode.find_by(zip: @zip).state_name).url %></h4>
+  <h4><%= link_to "Other Absentee Voting", StateWebsite.find_by(name: @zipcode.state_name).url %></h4>
 </div>

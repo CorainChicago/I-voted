@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.token = (0...20).map { (1..100).to_a[rand(26)] }.join
     if @user.save
-      ReminderEmail.create(user_id: @user.id, subject: "welcome")
       IvotedMailer.welcome(@user).deliver
       session[:user_id] = @user.id
       session[:zip] = @user.zip
@@ -42,7 +41,7 @@ class UsersController < ApplicationController
   def check_for_errors
     @errors = []
     @errors = ['Please make a user or login first'] if session[:user_id].nil?
-    @errors = ['Please select a valid address'] if !Zipcode.find_by(zip: session[:zip])
+    @errors = ['Please select a valid address'] if session[:zip].blank?
     return @errors
   end
 
@@ -54,8 +53,13 @@ class UsersController < ApplicationController
     end
 
     @user_friendly_display = {true: "Yes", false: "No", nil: "No"}
-    @zip = session[:zip]
+    @zip  = session[:zip]
+
+    all_candidates = Candidate.query_for_candidates(@zip)
+    @candidates = Candidate.remove_appointed_politicians_and_current_president(all_candidates)
+
     @user = User.find_by(id: session[:user_id])
+    @zipcode = Zipcode.make_zipcode_object(@zip)
 
   end
 

@@ -11,7 +11,7 @@
       <%=@user.polling_place%>
       <%= render "users/map" %>
     <% end %>
-  <p><h3>Upcoming elections</h3></p>
+  <p><h3>Elections</h3></p>
   <% @user.state_elections.each do |election| %>
     <ul class="accordion" data-accordion>
       <li class="accordion-navigation">

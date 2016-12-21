@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124142502) do
+ActiveRecord::Schema.define(version: 20161204110704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20151124142502) do
     t.boolean  "absentee_voting_with_excuse"
     t.boolean  "same_day_voter_registration"
     t.string   "all_mail_voting"
-    t.string   "voter_id_on_election_day"
+    t.string   "provisional_voting"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "sos_url"

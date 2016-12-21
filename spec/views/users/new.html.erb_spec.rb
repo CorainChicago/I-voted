@@ -11,14 +11,10 @@ feature "User creates new account" do
     expect(page).to have_content("Sign Up")
     expect(page).to have_content("Email:")
     expect(page).to have_content("Password:")
-    expect(page).to have_content("Street address:")
-    expect(page).to have_content("City:")
-    expect(page).to have_content("State:")
-    expect(page).to have_content("Zip:")
+    expect(page).to have_content("Address")
   end
   it "user registers without password" do
     visit 'users/new'
-      fill_in "user_zip", :with => '20500'
     click_button 'Register'
     expect(page).to have_content("Password can't be blank")
   end

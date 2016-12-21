@@ -17,7 +17,7 @@
       <% if @user.voter_registration_data.no_excuse_absentee_voting == true %>
       <em><p>Voter Can Absentee Vote Without Providing a Reason:</p></em>
       <p>You're in luck! No reason is required to absentee vote!</p>
-      <% elsif @user.voter_registration_data.absentee_voting_with_excuse == true %>
+      <% else @user.voter_registration_data.absentee_voting_with_excuse == true %>
       <em><p>Voter Must Provide Reason for Absentee Vote:</p></em>
       <p>This state requires voters to provide a reason to absentee vote - hope you have a good one!</p>
       <% end %>
@@ -35,29 +35,29 @@
     </div>
   </li>
   <li class="accordion-navigation">
-    <a href="#panel4">Voter ID Requirements</a>
+    <a href="#panel4">Provisional Voting</a>
     <div id="panel4" class="content">
-      <em><p>ID Requirements:</p></em>
-      <% if @user.voter_registration_data.voter_id_on_election_day != "" %>
-      <%= @user.voter_registration_data.voter_id_on_election_day %>
+      <em><p>Provisional voting rules:</p></em>
+      <% if @user.voter_registration_data.provisional_voting == false %>
+        <p>This state does not offer provisional voting.</p>
       <% else %>
-      <p>No voter ID laws in this state! Isn't democracy great?</p>
+      <p>Provisional voting is available in this state! Isn't democracy great?</p>
       <% end %>
     </div>
   </li>
 
   <li class="accordion-navigation">
-    <%if @user.offices.length > 1%>
-    <a href="#panel5">Candidates</a>
+    <%if @candidates.present? %>
+    <a href="#panel5">Candidates and elected officials</a>
     <%@index = 1%>
-    <% @user.offices.each do |office| %>
+    <% Candidate.get_offices(@candidates).each do |office| %>
       <div id="panel5" class="content">
 
         <a class="candidate-name-list" id="<%=@index%>">Running For <%= office %>:
         </a>
         <div class="candite-name-list-div" style="display: none;">
-          <% @user.candidates.where("office = ?", office).each do |candidate|%>
-          <a target="_blank" href=https://www.google.com/#q=<%=candidate.name.gsub(' ', '+')%>><%=candidate.name%> </a> <%if candidate.party_affiliation.length > 1%>(<%end%><%=candidate.party_affiliation%><%if candidate.party_affiliation.length > 1%>)<%end%>
+          <% Candidate.candidates_in_given_office(@candidates, office).each do |candidate|%>
+          <a target="_blank" href=https://www.google.com/#q=<%=candidate[:name].gsub(' ', '+')%>><%=candidate[:name]%> </a> <%if candidate[:party_affiliation].present?%>(<%end%><%=candidate[:party_affiliation]%><%if candidate[:party_affiliation].present?%>)<%end%>
           <%end%>
         </div>
         <% @index += 1%>

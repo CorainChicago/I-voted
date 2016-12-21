@@ -16,20 +16,14 @@ describe Zipcode do
   end
 
   it "returns a polling location for a location" do 
-    zipcode = class_double(Zipcode)
-    address = '1505 W Wilson, Chicago, IL 60640'
-    result = zipcode.get_polling_place(address)
-    expect(result).to eq("GERMAN SCHOOL OF CHICAGO
-      1447 WMONTROSE AV
-      Chicago 60613")
+    expect(Zipcode.get_polling_place('1505 W Wilson, Chicago, IL 60640')['address']['locationName']).to eq("GERMAN SCHOOL OF CHICAGO")
   end
 end
 
 describe "#get_district" do
-  it "returns a json object" do 
+  it "returns a disctrict" do 
     address = "4432 N. Seeley, Chicago, IL"
     response = Zipcode.get_district(address)
-    response.to_json
-    expect(response).to include(response['district']['name'])
+    expect(response).to eq("Illinois's 5th congressional district")
   end
 end

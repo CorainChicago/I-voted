@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
+
+gem 'curb', '~> 0.9.3'
+
+gem 'json'
+
 gem 'dotenv-rails', :groups => [:development, :test]
- gem 'foundation-rails'
+gem 'foundation-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
@@ -44,7 +50,7 @@ gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  # gem 'byebug'
 
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'

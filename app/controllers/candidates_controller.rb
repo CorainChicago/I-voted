@@ -1,4 +1,6 @@
 class CandidatesController < ApplicationController
+  require 'json'
+  
   def create
     post_params.each do |candidate|
       if (Candidate.where(zip: zip_params[:zip]).where(name: candidate[1][:name]).count == 0)
@@ -14,5 +16,9 @@ class CandidatesController < ApplicationController
   
   def zip_params
     params.permit(:zip)
+  end
+
+  def show
+    render json: {candidates: (Candidate.query_for_candidates(params[:zip]) || [])}
   end
 end

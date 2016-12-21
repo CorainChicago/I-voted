@@ -14,17 +14,17 @@ class User < ActiveRecord::Base
   validates :state, presence: true
   validates :password, presence: true, :on => :create
 
-  attr_reader :district, :state_elections, :polling_place, :voter_registration_data, :candidates, :offices
-
   after_initialize :post_initialize
+
+  attr_reader :district, :state_elections, :polling_place, :voter_registration_data, :candidates, :offices
 
   def post_initialize
     @district = get_district
-    @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.find_by(zip: self.zip).try(:state_name)}%")
+    @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.make_zipcode_object(zip).try(:state_name)}%")
     @polling_place = get_polling_place
     @voter_registration_data = get_voter_registration_data
-    @candidates = get_candidates
-    @offices = get_offices
+    @candidates = []
+    @offices = []
   end
 
   def get_polling_place
@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def get_voter_registration_data
-    StateVotingInformation.find_by(name: Zipcode.find_by(zip: self.zip).try(:state_name))
+    StateVotingInformation.find_by(name: Zipcode.make_zipcode_object(zip).try(:state_name))
   end
 
   def get_district
