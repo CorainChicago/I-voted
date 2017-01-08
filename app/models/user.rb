@@ -18,11 +18,15 @@ class User < ActiveRecord::Base
 
   attr_reader :district, :state_elections, :polling_place, :voter_registration_data, :candidates, :offices
 
+  private
+
   def post_initialize
-    @district = get_district
-    @state_elections = StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.make_zipcode_object(zip).try(:state_name)}%")
-    @polling_place = get_polling_place
-    @voter_registration_data = get_voter_registration_data
+    return if zip.nil? #Only initialize these variables if a value exists for zip, as they depend on a zipcode.
+
+    @district = Rails.cache.fetch(cache_key('district')) { get_district }  
+    @state_elections = Rails.cache.fetch(cache_key('state_elections')) { StateElectionInfo.where("election_title LIKE ?", "%#{Zipcode.make_zipcode_object(zip).try(:state_name)}%") }
+    @polling_place = Rails.cache.fetch(cache_key('polling_place')) { get_polling_place }
+    @voter_registration_data = Rails.cache.fetch(cache_key('voter_reg_data')) {get_voter_registration_data }
     @candidates = []
     @offices = []
   end
@@ -51,6 +55,10 @@ class User < ActiveRecord::Base
 
   def get_offices
     Candidate.get_offices(@candidates)
+  end
+
+  def cache_key(action_name)
+    action_name + zip + Time.now.strftime('%U').to_s + Time.now.year.to_s
   end
 
 end
