@@ -18,8 +18,6 @@ class User < ActiveRecord::Base
 
   attr_reader :district, :state_elections, :polling_place, :voter_registration_data, :candidates, :offices
 
-  private
-
   def post_initialize
     return if zip.nil? #Only initialize these variables if a value exists for zip, as they depend on a zipcode.
 
@@ -60,5 +58,4 @@ class User < ActiveRecord::Base
   def cache_key(action_name)
     action_name + zip + Time.now.strftime('%U').to_s + Time.now.year.to_s
   end
-
 end
