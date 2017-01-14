@@ -5,11 +5,16 @@ class Zipcode < ActiveRecord::Base
 
   def self.make_zipcode_object(zip_string)
     zip_file = 'db/zipcodes/us_postal_codes_all_zips.csv'
-    zip_file_text = File.read(zip_file)
-    zip_file_csv = CSV.parse(zip_file_text, headers: false)
-    state_info_row = zip_file_csv.find {|row| row[0] == zip_string}
-    return nil if state_info_row.blank?
-    new(zip: state_info_row[0].try(:to_s), state_name: state_info_row[2], abbreviation: state_info_row[3])
+    
+    Rails.cache.fetch("zip_hash#{Time.now.strftime('%U').to_s}#{Time.now.year.to_s}") do
+      zip_codes = {}
+      CSV.foreach(zip_file) do |row|
+        zip_codes[row[0]] = [row[2], row[3]]
+      end
+    end
+
+    target_zip_info = zip_codes[zip_string]
+    new(zip: zip_string, state_name: target_zip_info[0], abbreviation: target_zip_info[1])
   end
 
   def self.get_polling_place(address)

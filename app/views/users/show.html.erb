@@ -1,7 +1,9 @@
 <div class="zipcode_show">
   <h2>Welcome <%=@user.email%>.
   <% unless @user.district.include? "Sorry" %>
-    You reside in <span id="state_name"><%=@user.district%></span><br>
+    <%cache @user.cache_key('show_district') do%>
+      You reside in <span id="state_name"><%=@user.district%></span><br>
+    <%end%>
   <% end %>
   </h2>
 
@@ -12,22 +14,26 @@
       <%= render "users/map" %>
     <% end %>
   <p><h3>Elections</h3></p>
-  <% @user.state_elections.each do |election| %>
-    <ul class="accordion" data-accordion>
-      <li class="accordion-navigation">
-        <a href="#panel0"><%=election.election_title%></a>
-        <div id="panel0" class="content">
-           <p>Election date: <%=election.election_date%> </p>
-           <p>Voter registration: <%=election.voter_registration%></p>
-           <p>Absentee ballot request: <%=election.absentee_ballot_request%></p>
-           <p>Early in-person voting: <%=election.absentee_ballot_return%></p>
-           <p>Voter registration: <%=election.early_in_person_voting%></p>
-        </div>
-      </li>
-    </ul>
-  <% end %>
+  <%cache @user.cache_key('show_state_elections') do%>
+    <% @user.state_elections.each do |election| %>
+      <ul class="accordion" data-accordion>
+        <li class="accordion-navigation">
+          <a href="#panel0"><%=election.election_title%></a>
+          <div id="panel0" class="content">
+             <p>Election date: <%=election.election_date%> </p>
+             <p>Voter registration: <%=election.voter_registration%></p>
+             <p>Absentee ballot request: <%=election.absentee_ballot_request%></p>
+             <p>Early in-person voting: <%=election.absentee_ballot_return%></p>
+             <p>Voter registration: <%=election.early_in_person_voting%></p>
+          </div>
+        </li>
+      </ul>
+    <% end %>
+  <%end%>
 
   <p><h3>State Voting Information</h3></p>
-  <%= render "zipcodes/state_voter_info" %>
-  <%= render "zipcodes/soswebsite" %>
+  <%cache @user.cache_key('show_state_voter_info') do%>
+    <%= render "zipcodes/state_voter_info" %>
+    <%= render "zipcodes/soswebsite" %>
+  <%end%>
 </div>

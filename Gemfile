@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
+gem 'redis-rails'
+
 gem 'curb', '~> 0.9.3'
 
 gem 'json'

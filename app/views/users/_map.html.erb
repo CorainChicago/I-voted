@@ -68,5 +68,6 @@ $('div').on("click", function(){
   $('.maps.embed-container').on('click', onMapClickHandler);
 </script>
 
-
-<div class="hide-for-small-only" id="map"></div>
+<%cache @user.cache_key('show_map') do%>
+  <div class="hide-for-small-only" id="map"></div>
+<%end%>
