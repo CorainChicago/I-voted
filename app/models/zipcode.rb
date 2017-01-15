@@ -5,15 +5,16 @@ class Zipcode < ActiveRecord::Base
 
   def self.make_zipcode_object(zip_string)
     zip_file = 'db/zipcodes/us_postal_codes_all_zips.csv'
-    
-    Rails.cache.fetch("zip_hash#{Time.now.strftime('%U').to_s}#{Time.now.year.to_s}") do
+
+    zip_codes = Rails.cache.fetch("zip_hash#{Time.now.strftime('%U').to_s}#{Time.now.year.to_s}") do
       zip_codes = {}
       CSV.foreach(zip_file) do |row|
         zip_codes[row[0]] = [row[2], row[3]]
       end
+      zip_codes
     end
-
     target_zip_info = zip_codes[zip_string]
+
     new(zip: zip_string, state_name: target_zip_info[0], abbreviation: target_zip_info[1])
   end
 
@@ -55,5 +56,3 @@ class Zipcode < ActiveRecord::Base
     return "Sorry, we couldn't find a district for that address. Please enter a different address."
   end
 end
-
-
