@@ -5,7 +5,7 @@ $(window).load(function() {
 var map;
 
 function initialize() {
-        
+
   var mapOptions = {
           center: new google.maps.LatLng(30.055487, 31.279766),
           zoom: 8,
@@ -17,8 +17,8 @@ function initialize() {
         };
         // initializing map
         map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
-        
-   // geocoding 
+
+   // geocoding
       var geocoding  = new google.maps.Geocoder();
       $("#submit_button_geocoding").click(function(){
         codeAddress(geocoding);
@@ -26,8 +26,8 @@ function initialize() {
       $("#submit_button_reverse").click(function(){
         codeLatLng(geocoding);
       });
-      
-   
+
+
 }
 
 var info;
@@ -35,7 +35,7 @@ function codeLatLng(geocoding){
 
   var input = $('#search_box_reverse').val();
   console.log(input);
-  
+
   var latlngbounds = new google.maps.LatLngBounds();
   var listener;
   var regex = /([1-9])+\.([1-9])+\,([1-9])+\.([1-9])+/g;
@@ -58,7 +58,7 @@ function codeLatLng(geocoding){
              map: map,
              position: results[i].geometry.location
            });
-          
+
           google.maps.event.addListener(marker, 'click', (function(marker,i) {
             return function() {
             info.setContent(results[i].formatted_address);
@@ -76,7 +76,7 @@ function codeLatLng(geocoding){
      }
     else{
        alert("Geocoder failed due to: " + status);
-     }  
+     }
   });
   }else{
     alert("Wrong lat,lng format!");
@@ -109,6 +109,7 @@ function loadScript() {
   script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' +
     //'&v=3.14'+
     //'&key=AIzaSyBJYFdplGeKUUEmGZ-vL4ydiSZ09Khsa_o'+
+    '&key=AIzaSyALYFv4bWyuwd1yIFAbMKHBi8S_9GkxeeA' +
     '&libraries=drawing'+
     '&callback=initialize';
   document.body.appendChild(script);
