@@ -31,8 +31,9 @@ class User < ActiveRecord::Base
 
   def get_polling_place
     raw_polling_data = Zipcode.get_polling_place(("#{self.street_address} #{self.city}, #{self.state}").gsub(' ', "%20"))['address']
+
     if raw_polling_data['locationName']
-      @polling_place = raw_polling_data['locationName'] + ', ' + raw_polling_data['line1'] + '. ' +  raw_polling_data['city'] + ', ' + raw_polling_data['state'] + " " + raw_polling_data['zip']
+      @polling_place = (raw_polling_data['locationName'] || '') + ', ' + (raw_polling_data['line1'] || '') + '. ' + (raw_polling_data['city'] || '') + ', ' + (raw_polling_data['state'] || '') + " " + (raw_polling_data['zip'] || '')
     else
       return raw_polling_data
     end
